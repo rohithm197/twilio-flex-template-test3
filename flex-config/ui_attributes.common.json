@@ -10,10 +10,10 @@
       "log_level": "info",
       "audit_log_ttl": 1209600,
       "teams": [
-        "Blue Team",
-        "Red Team",
-        "Gold Team",
-        "VIP Team"
+        "Customer Support",
+        "Clinical Support",
+        "iTero Support",
+        "CAD Designers"
       ],
       "departments": [
         "General Management",
