@@ -21,7 +21,7 @@ const mergedSettings = merge(globalSettings, getFeatureFlagsUser());
 export const getFeatureFlags = () => {
   //#001 start - teams worker attributes
   if (manager.workerClient?.attributes) {
-    const selectedTeams = mergedSettings?.common.teamList[manager.workerClient?.attributes.country.toLowerCase()];
+    const selectedTeams = mergedSettings?.common.teamList[manager.workerClient?.attributes.location.toLowerCase()];
     if (selectedTeams) {
       mergedSettings.common.teams = selectedTeams;
     } else {

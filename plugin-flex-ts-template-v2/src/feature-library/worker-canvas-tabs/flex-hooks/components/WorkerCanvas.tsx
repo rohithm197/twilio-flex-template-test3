@@ -1,6 +1,6 @@
 import * as Flex from '@twilio/flex-ui';
 import { Box } from '@twilio-paste/core/box';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { FlexComponent } from '../../../../types/feature-loader';
 import WorkerCanvasTabs from '../../custom-components/WorkerCanvasTabs/WorkerCanvasTabs';
@@ -15,8 +15,8 @@ export const componentHook = function addWorkerCanvasTabs(flex: typeof Flex, _ma
   flex.WorkerCanvas.Content.remove('skills');
 
   flex.WorkerCanvas.Content.addWrapper((OriginalComponent) => (originalProps) => {
-    if (originalProps.worker.attributes.country) {
-      workerCountry = originalProps.worker.attributes.country;
+    if (originalProps.worker.attributes.location) {
+      workerCountry = originalProps.worker.attributes.location;
     } else {
       workerCountry = null;
     }
