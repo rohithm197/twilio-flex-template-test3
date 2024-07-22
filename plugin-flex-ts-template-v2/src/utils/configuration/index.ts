@@ -19,6 +19,18 @@ export const getFeatureFlagsUser = () => {
 const mergedSettings = merge(globalSettings, getFeatureFlagsUser());
 
 export const getFeatureFlags = () => {
+  //#001 start - teams worker attributes
+  if (manager.workerClient?.attributes) {
+    const selectedTeams = mergedSettings?.common.teamList[manager.workerClient?.attributes.country.toLowerCase()];
+    if (selectedTeams) {
+      mergedSettings.common.teams = selectedTeams;
+    } else {
+      mergedSettings.common.teams = [];
+    }
+  } else {
+    mergedSettings.common.teams = [];
+  }
+  //#001 end - teams worker attributes
   return mergedSettings;
 };
 

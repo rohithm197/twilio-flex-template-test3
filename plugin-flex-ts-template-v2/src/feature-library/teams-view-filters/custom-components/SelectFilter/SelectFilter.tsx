@@ -14,6 +14,7 @@ import {
   ResetQueuePlaceholder,
 } from '../../flex-hooks/states/QueueNoWorkerDataFilterSlice';
 import { StringTemplates } from '../../flex-hooks/strings/TeamViewQueueFilter';
+import { getTeams } from '../../../../feature-library/worker-details/config';
 
 const FilterContainer = styled('div')`
   margin-left: 16px;
@@ -75,6 +76,20 @@ export const MultiSelectFilter = (props: OwnProps) => {
       dispatch(selectQueue(''));
     }
   }, [selectedQueue]);
+
+  // # 001 - teams worker attributes
+  useEffect(() => {
+    const teams = getTeams();
+    const fetchWorkerData = () => {
+      if (props.name === 'teams') {
+        setSelectedItems(teams);
+      }
+    };
+
+    fetchWorkerData();
+  }, [props.name]);
+
+  // #001 - teams worker attributes
 
   const elementId = `${props.name}-select`;
 
