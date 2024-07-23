@@ -1,4 +1,5 @@
 import * as Flex from '@twilio/flex-ui';
+import { clearHangUpBy } from 'feature-library/hang-up-by/helpers/hangUpBy';
 import merge from 'lodash/merge';
 import { UIAttributes } from 'types/manager/ServiceConfiguration';
 import { CustomWorkerAttributes } from 'types/task-router/Worker';
@@ -32,6 +33,13 @@ export const getFeatureFlags = () => {
   }
   //#001 end - teams worker attributes
   return mergedSettings;
+};
+export const getManagerLocation = () => {
+  //#001 start - teams worker attributes
+  if (manager.workerClient?.attributes) {
+    console.log(manager.workerClient?.attributes.location)
+  return manager.workerClient?.attributes.location;
+  }
 };
 
 export const getUserLanguage = () => {
