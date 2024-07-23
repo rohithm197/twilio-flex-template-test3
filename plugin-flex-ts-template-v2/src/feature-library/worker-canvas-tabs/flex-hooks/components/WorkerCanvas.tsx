@@ -1,11 +1,11 @@
 import * as Flex from '@twilio/flex-ui';
 import { Box } from '@twilio-paste/core/box';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import { FlexComponent } from '../../../../types/feature-loader';
 import WorkerCanvasTabs from '../../custom-components/WorkerCanvasTabs/WorkerCanvasTabs';
 
-let workerCountry: any;
+let workerLocation: any;
 export const componentName = FlexComponent.WorkerCanvas;
 export const componentHook = function addWorkerCanvasTabs(flex: typeof Flex, _manager: Flex.Manager) {
   // Remove Agent Details header
@@ -15,13 +15,13 @@ export const componentHook = function addWorkerCanvasTabs(flex: typeof Flex, _ma
   flex.WorkerCanvas.Content.remove('skills');
 
   flex.WorkerCanvas.Content.addWrapper((OriginalComponent) => (originalProps) => {
-    if (originalProps.worker.attributes.location) {
-      workerCountry = originalProps.worker.attributes.location;
+    if (originalProps?.worker?.attributes?.location) {
+      workerLocation = originalProps?.worker?.attributes?.location;
     } else {
-      workerCountry = null;
+      workerLocation = null;
     }
     useEffect(() => {
-      getWorkerCountry();
+      getWorkerLocation();
     }, [originalProps.worker.attributes]);
     // preserve the fragments from the WorkerCanvas
     const fragments = flex.WorkerCanvas.Content.fragments
@@ -47,6 +47,6 @@ export const componentHook = function addWorkerCanvasTabs(flex: typeof Flex, _ma
   });
 };
 
-export const getWorkerCountry = () => {
-  return workerCountry;
+export const getWorkerLocation = () => {
+  return workerLocation;
 };
