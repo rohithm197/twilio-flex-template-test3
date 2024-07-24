@@ -4,6 +4,7 @@ import {
   isActivitiesFilterEnabled,
   isDepartmentFilterEnabled,
   isEmailFilterEnabled,
+  isLocationFilterEnabled,
   isQueueNoWorkerDataFilterEnabled,
   isQueueWorkerDataFilterEnabled,
   isTeamFilterEnabled,
@@ -12,6 +13,7 @@ import {
 import { activitiesFilter } from '../../filters/activitiesFilter';
 import { departmentFilter } from '../../filters/departmentFilter';
 import { emailFilter } from '../../filters/emailFilter';
+import { locationFilter } from '../../filters/locationFilter';
 import { queueNoWorkerDataFilter } from '../../filters/queueNoWorkerDataFilter';
 import { queueWorkerDataFilter } from '../../filters/queueWorkerDataFilter';
 import { teamFilter } from '../../filters/teamFilter';
@@ -30,6 +32,10 @@ export const teamsFilterHook = async function getSampleFilters() {
 
   if (isEmailFilterEnabled()) {
     enabledFilters.push(emailFilter());
+  }
+
+  if (isLocationFilterEnabled()) {
+    enabledFilters.push(locationFilter());
   }
 
   if (isQueueNoWorkerDataFilterEnabled()) {
