@@ -25,6 +25,7 @@ export const locationFilter = () =>
     options: locationfilter.map((value: any) => ({
       value,
       label: value,
+      default:true,
     })),
 
     customStructure: {
