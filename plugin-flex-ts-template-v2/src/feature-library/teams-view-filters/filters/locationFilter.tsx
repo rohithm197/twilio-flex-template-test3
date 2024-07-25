@@ -1,7 +1,4 @@
 import { FilterDefinition, Manager } from '@twilio/flex-ui';
-
-import FreeTextFilter from '../custom-components/FreeTextFilter';
-import FreeTextFilterLabel from '../custom-components/FreeTextFilterLabel';
 import { StringTemplates } from '../flex-hooks/strings/TeamViewQueueFilter';
 import SelectFilter from '../custom-components/SelectFilter';
 import SelectFilterLabel from '../custom-components/SelectFilterLabel';
@@ -25,11 +22,11 @@ export const locationFilter = () =>
     options: locationfilter.map((value: any) => ({
       value,
       label: value,
-      default:true,
+      default: true,
     })),
 
     customStructure: {
-      field: <SelectFilter IsMulti={true} />,
+      field: <SelectFilter IsMulti={true} hide={true} />,
       label: <SelectFilterLabel />,
     },
     condition: 'CONTAINS',

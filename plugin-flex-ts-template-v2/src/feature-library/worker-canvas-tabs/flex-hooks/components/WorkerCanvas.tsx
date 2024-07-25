@@ -15,6 +15,7 @@ export const componentHook = function addWorkerCanvasTabs(flex: typeof Flex, _ma
   flex.WorkerCanvas.Content.remove('skills');
 
   flex.WorkerCanvas.Content.addWrapper((OriginalComponent) => (originalProps) => {
+    //teamviewfilters-author-rohithm
     if (originalProps?.worker?.attributes?.location) {
       workerLocation = originalProps?.worker?.attributes?.location;
     } else {

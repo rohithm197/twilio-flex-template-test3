@@ -19,25 +19,28 @@ export const getFeatureFlagsUser = () => {
 
 const mergedSettings = merge(globalSettings, getFeatureFlagsUser());
 
+//teamviewfilters-author-rohithm
+
 export const getFeatureFlags = () => {
-  //#001 start - teams worker attributes
+  // Initialize teams array
+  let teams = [];
+  // Check if workerClient attributes exist
   if (manager.workerClient?.attributes) {
-    const selectedTeams = mergedSettings?.common.teamList[manager.workerClient?.attributes.location?.toLowerCase()];
-    if (selectedTeams) {
-      mergedSettings.common.teams = selectedTeams;
-    } else {
-      mergedSettings.common.teams = [];
-    }
-  } else {
-    mergedSettings.common.teams = [];
+    const location = manager.workerClient.attributes.location?.toLowerCase();
+    // Retrieve selected teams based on location
+    const selectedTeams = mergedSettings?.common.teamList[location];
+    // Assign selected teams if found, otherwise assign an empty array
+    teams = selectedTeams ? selectedTeams : [];
   }
-  //#001 end - teams worker attributes
+  // Update common.teams in mergedSettings
+  mergedSettings.common.teams = teams;
+  // Return updated mergedSettings object
   return mergedSettings;
 };
+
 export const getManagerLocation = () => {
   //#001 start - teams worker attributes
   if (manager.workerClient?.attributes) {
-    console.log(manager.workerClient?.attributes.location)
   return manager.workerClient?.attributes.location;
   }
 };

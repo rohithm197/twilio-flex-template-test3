@@ -10,7 +10,7 @@ export const AgentActivity = styled('div')<ThemeOnlyProps>`
   background-color: ${(props) => props.bgColor || props.theme.tokens.backgroundColors.colorBackgroundBody};
   display: flex;
   flex: 1 1 auto;
-  flex-direction: ;
+  flex-direction: row;
   font-size: 11px;
   justify-content: center;
   border-width: 0px;
