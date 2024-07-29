@@ -9,12 +9,13 @@
     "common": {
       "log_level": "info",
       "audit_log_ttl": 1209600,
-      "teams": [
-        "Customer Support",
-        "Clinical Support",
-        "iTero Support",
-        "CAD Designers"
-      ],
+      "teams":[],
+        "teamList": {
+          "italy":"['IT Customer Support', 'IT Clinical Support', 'IT iTero Support']",
+          "us":"['US Customer Support', 'US Clinical Support', 'US iTero Support', 'US CAD Designers']",
+          "uk":"['UK Customer Support', 'UK Clinical Support']",
+          "fr":"['FR Customer Support', 'FR Clinical Support']"
+        },
       "departments": [
         "General Management",
         "Marketing",
@@ -140,6 +141,7 @@
           "activities": true,
           "email": true,
           "department": true,
+          "location":true,
           "queue_no_worker_data": false,
           "queue_worker_data": false,
           "team": true,
