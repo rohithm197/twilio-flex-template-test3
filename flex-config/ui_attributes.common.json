@@ -9,6 +9,7 @@
     "common": {
       "log_level": "info",
       "audit_log_ttl": 1209600,
+<<<<<<< Updated upstream
       "teams":[],
         "teamList": {
           "italy":"['IT Customer Support', 'IT Clinical Support', 'IT iTero Support']",
@@ -16,6 +17,15 @@
           "uk":"['UK Customer Support', 'UK Clinical Support']",
           "fr":"['FR Customer Support', 'FR Clinical Support']"
         },
+=======
+      "teams": [ ],
+      "teamList": {
+        "italy":"['IT Customer Support', 'IT Clinical Support', 'IT iTero Support']",
+        "us":"['US Customer Support', 'US Clinical Support', 'US iTero Support', 'US CAD Designers']",
+        "uk":"['UK Customer Support', 'UK Clinical Support']",
+        "fr":"['FR Customer Support', 'FR Clinical Support']"
+      },      
+>>>>>>> Stashed changes
       "departments": [
         "General Management",
         "Marketing",
@@ -140,6 +150,7 @@
         "applied_filters": {
           "activities": true,
           "email": true,
+          "location": true,
           "department": true,
           "location":true,
           "queue_no_worker_data": false,
