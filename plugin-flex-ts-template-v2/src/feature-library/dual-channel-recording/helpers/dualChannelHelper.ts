@@ -259,10 +259,16 @@ const startRecording = async (task: ITask, callSid: string | undefined) => {
     logger.warn('[dual-channel-recording] Unable to determine call SID for recording');
     return;
   }
-
+  console.log('TASK DETAILS', task);
+  // @ts-ignore
+  const pressedKey = task?._task?.attributes?.ivr;
+  console.log('[pressedKey]', pressedKey);
   try {
-    const recording = await DualChannelService.startDualChannelRecording(callSid);
-    await addCallDataToTask(task, callSid, recording);
+    if (pressedKey !== '0' || pressedKey === '') {
+      console.log('[initiate-call-recording]');
+      const recording = await DualChannelService.startDualChannelRecording(callSid);
+      await addCallDataToTask(task, callSid, recording);
+    }
   } catch (error: any) {
     logger.error('[dual-channel-recording] Unable to start dual channel recording.', error);
   }
