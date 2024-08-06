@@ -13,7 +13,7 @@
       "teamList": {
         "italy": "['IT Customer Support', 'IT Clinical Support', 'IT iTero Support']",
         "us": "['US Customer Support', 'US Clinical Support', 'US iTero Support', 'US CAD Designers']",
-        "uk": "['UK Customer Support', 'UK Clinical Support']",
+        "uk": "['UK Customer Support', 'UK Clinical Support', 'US iTero Support']",
         "fr": "['FR Customer Support', 'FR Clinical Support']"
       },
       "departments": [
@@ -112,9 +112,9 @@
         "input_select": false
       },
       "dual_channel_recording": {
-        "enabled": false,
+        "enabled": true,
         "channel": "worker",
-        "exclude_attributes": [],
+        "exclude_attributes": [{ "key": "ivr", "value": 0 }],
         "exclude_queues": []
       },
       "pause_recording": {
