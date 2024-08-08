@@ -21,6 +21,7 @@ import {
 } from '../../config';
 import AttributeSelect from './AttributeSelect';
 import AttributeCustom from './AttributeCustom';
+import { getFeatureFlags } from '../../../../utils/configuration';
 
 interface OwnProps {
   worker?: IWorker;
@@ -97,7 +98,9 @@ const WorkerDetailsContainer = ({ worker }: OwnProps) => {
     border-bottom: 1px solid ${(props) => (props.theme as Theme).tokens.borderColors.colorBorderWeak};
     color: ${(props) => (props.theme as Theme).tokens.textColors.colorText};
   `;
-
+  //teamviewfilters-author-rohithm
+  const { teams = [] } = getFeatureFlags().common || {};
+  
   return (
     <Stack orientation="vertical" spacing="space0">
       {isWorkerCanvasTabsEnabled() ? null : (
@@ -112,7 +115,7 @@ const WorkerDetailsContainer = ({ worker }: OwnProps) => {
               <AttributeSelect
                 label="Team"
                 value={teamName || 'NO_ITEM_SELECTED'}
-                options={getTeams()}
+                options={teams}
                 onChangeHandler={handleTeamChange}
                 disabled={!editTeam()}
               />

@@ -14,9 +14,12 @@ import {
   ResetQueuePlaceholder,
 } from '../../flex-hooks/states/QueueNoWorkerDataFilterSlice';
 import { StringTemplates } from '../../flex-hooks/strings/TeamViewQueueFilter';
+import { getTeams } from '../../../../feature-library/worker-details/config';
 
-const FilterContainer = styled('div')`
+//teamviewfilters-author-rohithm
+const FilterContainer = styled.div<{ hide?: boolean }>`
   margin-left: 16px;
+  ${({ hide }) => hide && 'display: none;'}
 `;
 
 export type OwnProps = {
@@ -25,6 +28,7 @@ export type OwnProps = {
   name?: string;
   currentValue?: string[];
   IsMulti: boolean;
+  hide?: boolean;
 };
 
 export const MultiSelectFilter = (props: OwnProps) => {
@@ -76,6 +80,20 @@ export const MultiSelectFilter = (props: OwnProps) => {
     }
   }, [selectedQueue]);
 
+    // # 001 - teams worker attributes
+    useEffect(() => {
+      const teams = getTeams();
+      const fetchWorkerData = () => {
+        if (props.name === 'teams') {
+          setSelectedItems(teams);
+        }
+      };
+  
+      fetchWorkerData();
+    }, [props.name]);
+  
+    // #001 - teams worker attributes
+
   const elementId = `${props.name}-select`;
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -95,7 +113,7 @@ export const MultiSelectFilter = (props: OwnProps) => {
   };
 
   return (
-    <FilterContainer>
+    <FilterContainer  hide={props.hide}>
       <Stack orientation="vertical" spacing="space30">
         <Select
           id={elementId}
