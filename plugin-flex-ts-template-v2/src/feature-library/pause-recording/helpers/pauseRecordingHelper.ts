@@ -8,8 +8,17 @@ import { PauseRecordingState, pause, resume } from '../flex-hooks/states/PauseRe
 import { isBannerIndicatorEnabled, isIncludeSilenceEnabled, isDualChannelEnabled, getChannelToRecord } from '../config';
 import logger from '../../../utils/logger';
 
+const ALLOWED_LOCATIONS = ['us', 'italy'];
+
 const manager = Manager.getInstance();
 const isSingleChannelRecEnabled = manager.serviceConfiguration.call_recording_enabled;
+const workerLocation = manager.workerClient?.attributes?.location;
+
+const showBannerBasedOnWorkerLocation = ALLOWED_LOCATIONS.includes(workerLocation);
+
+console.log('Manager Details in Helper file', manager);
+console.log('workerLocation Details in Helper file', workerLocation);
+console.log('showBannerBasedOnWorkerLocation Details in Helper file', showBannerBasedOnWorkerLocation);
 
 const getDualChannelCallSid = (task: ITask): string | null => {
   const participants = task.conference?.participants;
@@ -106,10 +115,13 @@ export const pauseRecording = async (task: ITask): Promise<boolean> => {
           recordingSidSC,
         }),
       );
-      if (isBannerIndicatorEnabled()) Notifications.showNotification(NotificationIds.RECORDING_PAUSED);
+      if (showBannerBasedOnWorkerLocation && isBannerIndicatorEnabled()) {
+        Notifications.showNotification(NotificationIds.RECORDING_PAUSED);
+      }
       return true;
     } else if (isMissingRecording || (!isSingleChannelRecEnabled && !isDualChannelEnabled())) {
       // We didn't fail, there was simply no recording to pause
+      // if (showBannerBasedOnWorkerLocation) {
       Notifications.showNotification(NotificationIds.MISSING_RECORDING);
       return false;
     }
@@ -165,7 +177,9 @@ export const resumeRecording = async (task: ITask): Promise<boolean> => {
 
     if (success) {
       manager.store.dispatch(resume(recordingIndex));
-      if (isBannerIndicatorEnabled()) Notifications.showNotification(NotificationIds.RESUME_RECORDING);
+      if (showBannerBasedOnWorkerLocation && isBannerIndicatorEnabled()) {
+        Notifications.showNotification(NotificationIds.RESUME_RECORDING);
+      }
       return true;
     }
   } catch (error: any) {
