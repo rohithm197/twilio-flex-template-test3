@@ -15,7 +15,7 @@ import {
     createSfTask2,
     screenPop2,
     updateSfTicket2,
-  } from '../../utils/salesforcehelper2';
+  } from '../../utils/salesforcehelper2';//Sunil
   
 import { Task } from 'types/task-router';
   //C:\Twilio-instancemerge-plugins\plugin-templatebased\twilio-flex-template-testv2\twilio-flex-template-test3-main\plugin-flex-ts-template-v2\src\feature-library\create-sf-case\utils
@@ -30,6 +30,6 @@ export const eventHook = function createCaseAfterTaskAcceptance(
  console.log('Sunil- Task accepted-agent answered call----');
  console.log('Sunil-- task attributes--'+JSON.stringify(task.attributes));
     if (task.attributes.sfcontactid && task.attributes.sfcontactid !== ''  ) {
-      createSfTicket2(task)
+      createSfTicket2(task);
     };
 }
