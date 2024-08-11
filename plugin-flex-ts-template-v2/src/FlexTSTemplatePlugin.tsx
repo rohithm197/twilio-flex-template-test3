@@ -20,5 +20,6 @@ export default class FlexTSTemplatePlugin extends FlexPlugin {
    */
   init(flex: typeof Flex, manager: Flex.Manager) {
     initFeatures(flex, manager);
+    
   }
 }

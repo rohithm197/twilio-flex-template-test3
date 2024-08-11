@@ -27,20 +27,17 @@ const createSfTicket = function (task) {
     window.sforce.opencti.saveLog({
       value: {
         entityApiName: 'Case',
-        //Subject: acceptedReservation.task.attributes.direction+" Call from " + acceptedReservation.task.attributes.caller?acceptedReservation.task.attributes.caller:acceptedReservation.task.attributes.outbound_to + " " + acceptedReservation.task.dateCreated,
         Subject:
-          acceptedReservation.task.attributes.direction +
+          task.attributes.direction +
           ' Call from ' +
-          acceptedReservation.task.attributes.caller +
+          task.attributes.caller +
           ' ' +
-          acceptedReservation.task.dateCreated,
+          task.dateCreated,
         Origin: 'Call',
         RecordtypeId: '012i00000019r5uAAA',
-        ContactId: acceptedReservation.task.attributes.sfcontactid,
-        //Description: "callType:Inbound \nCaller:" + acceptedReservation.task.attributes.caller?acceptedReservation.task.attributes.caller:acceptedReservation.task.attributes.outbound_to
-        Description:
+        ContactId: task.attributes.sfcontactid,Description:
           'callType:Inbound \n Caller:' +
-          acceptedReservation.task.attributes.caller,
+          task.attributes.caller,
       },
       callback: (response) => {
         console.log('createSfTicket only response' + JSON.stringify(response))
@@ -51,7 +48,7 @@ const createSfTicket = function (task) {
               params: { recordId: response.returnValue.recordId },
             })
             updateTwilioAttributes(
-              acceptedReservation.task,
+              task,
               response.returnValue.recordId
             )
           } else {
@@ -69,7 +66,7 @@ const createSfTicket = function (task) {
     })
   }
 }
-const createSfTask = function (acceptedReservation) {
+const createSfTask = function (task) {
   console.log('API Call for createSfTask called ')
   if (window.sforce) {
     window.sforce.opencti.saveLog({
@@ -78,22 +75,22 @@ const createSfTask = function (acceptedReservation) {
         //Subject: "Subjectinbound",
         Subject:
           'inbound voice Call from ' +
-          acceptedReservation.task.attributes.caller +
+          task.attributes.caller +
           ' ' +
-          acceptedReservation.task.dateCreated,
+          task.dateCreated,
         Type: 'Call',
         //Priority: "Normal",
         //Status: "Not Started",
         RecordtypeId: '012i00000019r6TAAQ',
         Description:
           'callType:Inbound \nCaller:' +
-          acceptedReservation.task.attributes.caller,
+          task.attributes.caller,
         Internal_Comments__c:
           'callSID:' +
-          acceptedReservation.task.attributes.call_sid +
+          task.attributes.call_sid +
           '\n ConferenceSID:' +
-          acceptedReservation.task.attributes.conference.sid,
-        WhoId: '[{id:' + acceptedReservation.task.attributes.sfcontactid + '}]',
+          task.attributes.conference.sid,
+        WhoId: '[{id:' + task.attributes.sfcontactid + '}]',
         //WhoId:"[{id:003i000000UsDocAAF}]"
       },
       callback: (response) => {
