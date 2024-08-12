@@ -1,5 +1,4 @@
-import updateTwilioAttributes from './twilio-helpers'
-
+import updateTwilioAttributes from './twilio-helper';
 const searchAndScreenPop = function (searchParams, callType) {
   console.log('API Call for searchAndScreenPop called')
   if (window.sforce) {
