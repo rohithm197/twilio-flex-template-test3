@@ -63,7 +63,7 @@ const createSfTicket3 = (task: Task): void => {
               type: (window as any).sforce.opencti.SCREENPOP_TYPE.SOBJECT,
               params: { recordId: response.returnValue.recordId },
             });
-           // updateTwilioAttributes(task, response.returnValue.recordId); // Sunil - uncomment after testing create case
+            updateTwilioAttributes(task, response.returnValue.recordId); // Sunil - uncomment after testing create case
           } else {
             console.log(
               'API Call for Ticket creation failed ' +
