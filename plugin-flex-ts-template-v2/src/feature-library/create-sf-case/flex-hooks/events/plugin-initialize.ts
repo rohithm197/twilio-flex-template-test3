@@ -15,6 +15,7 @@ export const eventHook = async function initializeSalesforceOpenCtiscript(
 ) {
   // your code here
   const sfdcBaseUrl = window.location.ancestorOrigins[0]
+  console.log('create-sf-case initialize called - sfdcBaseUrl'+sfdcBaseUrl);
 if (!isSalesForce(sfdcBaseUrl)) {
     console.log(
     'Not initializing Salesforce since this instance has been launched independently...'
@@ -27,6 +28,7 @@ var sfClicklistener = function (payload) {
     salesforcepayload = payload
 }*/
 const sfApiUrl = `${sfdcBaseUrl}/support/api/53.0/lightning/opencti_min.js`
+console.log('create-sf-case initialize called - sfApiUrl'+sfApiUrl);
 await loadScript(sfApiUrl)
 if (!(window as any).sforce) {
     console.log('Saleforce cannot be found')

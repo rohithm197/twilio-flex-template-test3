@@ -16,7 +16,7 @@ interface Task {
   dateCreated: string;
 }
 
-const searchAndScreenPop2 = (searchParams: string, callType: string): void => {
+const searchAndScreenPop3 = (searchParams: string, callType: string): void => {
   console.log('API Call for searchAndScreenPop called');
   if ((window as any).sforce) {
     (window as any).sforce.opencti.searchAndScreenPop({
@@ -37,7 +37,7 @@ const searchAndScreenPop2 = (searchParams: string, callType: string): void => {
   }
 }; //Sunil
 
-const createSfTicket2 = (task: Task): void => {
+const createSfTicket3 = (task: Task): void => {
   console.log('API Call for createSfTicket called ');
   if ((window as any).sforce) {
     (window as any).sforce.opencti.saveLog({
@@ -63,7 +63,7 @@ const createSfTicket2 = (task: Task): void => {
               type: (window as any).sforce.opencti.SCREENPOP_TYPE.SOBJECT,
               params: { recordId: response.returnValue.recordId },
             });
-            updateTwilioAttributes(task, response.returnValue.recordId);
+           // updateTwilioAttributes(task, response.returnValue.recordId); // Sunil - uncomment after testing create case
           } else {
             console.log(
               'API Call for Ticket creation failed ' +
@@ -80,7 +80,7 @@ const createSfTicket2 = (task: Task): void => {
   }
 };
 
-const createSfTask2 = (task: Task): void => {
+const createSfTask3 = (task: Task): void => {
   console.log('API Call for createSfTask called ');
   if ((window as any).sforce) {
     (window as any).sforce.opencti.saveLog({
@@ -126,7 +126,7 @@ const createSfTask2 = (task: Task): void => {
   }
 };
 
-const screenPop2 = (sfcontactid: string): void => {
+const screenPop3 = (sfcontactid: string): void => {
   console.log('API Call for screenPop called - ' + sfcontactid);
   const cid = sfcontactid.trim();
   if ((window as any).sforce) {
@@ -137,7 +137,7 @@ const screenPop2 = (sfcontactid: string): void => {
   }
 };
 
-const updateSfTicket2 = (ticketId: string, newOwnerId: string): void => {
+const updateSfTicket3 = (ticketId: string, newOwnerId: string): void => {
   console.log(
     `API Call for updateSfTicket called for ticket: ${ticketId} and owner: ${newOwnerId}`
   );
@@ -175,9 +175,9 @@ const updateSfTicket2 = (ticketId: string, newOwnerId: string): void => {
 };
 
 export {
-  searchAndScreenPop2,
-  createSfTicket2,
-  createSfTask2,
-  screenPop2,
-  updateSfTicket2,
+  searchAndScreenPop3,
+  createSfTicket3,
+  createSfTask3,
+  screenPop3,
+  updateSfTicket3,
 };
