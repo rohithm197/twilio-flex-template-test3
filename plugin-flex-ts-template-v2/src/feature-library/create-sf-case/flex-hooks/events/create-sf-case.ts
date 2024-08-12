@@ -30,6 +30,6 @@ export const eventHook = function createCaseAfterTaskAcceptance(
  console.log('Sunil- Task accepted-agent answered call----');
  console.log('Sunil-- task attributes--'+JSON.stringify(task.attributes));
     if (task.attributes.sfcontactid && task.attributes.sfcontactid !== ''  ) {
-      createSfTicket2(task);
+      createSfTicket(task);
     };
 }
