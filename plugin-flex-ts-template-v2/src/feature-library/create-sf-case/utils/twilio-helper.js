@@ -35,9 +35,11 @@ const updateTaskAttributesWithCaseId = async (taskSid, ticketId) => {
     "ticketId": ticketId, // Add the Salesforce Case ID to the TaskAttributes
   };
   try {
+    console.log(`Updating TaskAttributes for Task SID: ${taskSid} with Case ID: ${ticketId}`);
     await TaskRouterService.updateTaskAttributes(taskSid, updatedAttributes);
+    console.log('TaskAttributes update response:', response);
   } catch (error) {
-    console.error('Error updating TaskAttributes:', error);
+    console.error('Error updating TaskAttributes:', error.response?.data || error.message);
   }
 };
 
