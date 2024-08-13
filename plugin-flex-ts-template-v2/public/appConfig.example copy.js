@@ -375,6 +375,8 @@ var appConfig = {
         assigned_tasks_column: true,
         wrapping_tasks_column: true,
         agent_activity_stats_column: true,
+        asset_serverless_domain: true,
+
       },
       sip_support: {
         enabled: false,

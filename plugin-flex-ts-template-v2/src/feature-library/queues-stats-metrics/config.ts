@@ -6,7 +6,7 @@ const {
   assigned_tasks_column = true,
   wrapping_tasks_column = true,
   agent_activity_stats_column = true,
-  asset_serverless_domain
+  asset_serverless_domain = true,
 } = (getFeatureFlags()?.features?.queues_stats_metrics as QueuesStatsConfig) || {};
 
 export const isFeatureEnabled = () => {

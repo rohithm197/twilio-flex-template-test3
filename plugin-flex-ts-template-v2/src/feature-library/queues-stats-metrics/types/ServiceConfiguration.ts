@@ -3,4 +3,5 @@ export default interface QueuesStatsConfig {
   assigned_tasks_column: boolean;
   wrapping_tasks_column: boolean;
   agent_activity_stats_column: boolean;
+  asset_serverless_domain: boolean;
 }
