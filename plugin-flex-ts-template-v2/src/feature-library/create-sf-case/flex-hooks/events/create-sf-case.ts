@@ -10,12 +10,6 @@ import {
     screenPop,
     updateSfTicket,
   } from '../../utils/salesforcehelper';
-  import {
-    createSfTicket2,
-    createSfTask2,
-    screenPop2,
-    updateSfTicket2,
-  } from '../../utils/salesforcehelper2';//Sunil
   
 import { Task } from 'types/task-router';
   //C:\Twilio-instancemerge-plugins\plugin-templatebased\twilio-flex-template-testv2\twilio-flex-template-test3-main\plugin-flex-ts-template-v2\src\feature-library\create-sf-case\utils
