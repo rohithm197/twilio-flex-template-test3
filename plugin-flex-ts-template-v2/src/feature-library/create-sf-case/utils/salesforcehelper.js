@@ -1,4 +1,4 @@
-import updateTwilioAttributes from './twilio-helper';
+import updateTaskAttributesWithCaseId from './twilio-helper';
 const searchAndScreenPop = function (searchParams, callType) {
   console.log('API Call for searchAndScreenPop called')
   if (window.sforce) {
@@ -46,10 +46,20 @@ const createSfTicket = function (task) {
               type: sforce.opencti.SCREENPOP_TYPE.SOBJECT,
               params: { recordId: response.returnValue.recordId },
             })
-            updateTwilioAttributes(
+            const ticketId = response.returnValue.recordId;
+            console.log('Salesforce Case created with ID:', ticketId);
+
+            // Update the TaskAttributes using TaskRouterService
+            try {
+              updateTaskAttributesWithCaseId(task.sid, ticketId);
+              console.log('TaskAttributes updated successfully with ticketId:', ticketId);
+            } catch (error) {
+              console.error('Failed to update TaskAttributes:', error);
+            }
+            /*updateTwilioAttributes(
               task,
               response.returnValue.recordId
-            )
+            )*/
           } else {
             console.log(
               'API Call for Ticket creation failed ' +

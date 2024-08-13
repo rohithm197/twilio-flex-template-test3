@@ -1,6 +1,7 @@
 import { Manager } from '@twilio/flex-ui'
 
-const updateTwilioAttributes = (task, ticketId) => {
+import TaskRouterService from '../../../utils/serverless/TaskRouter/TaskRouterService';
+/*const updateTwilioAttributes = (task, ticketId) => {
   return new Promise((resolve, reject) => {
     const token = Manager.getInstance().user.token
 
@@ -28,6 +29,16 @@ const updateTwilioAttributes = (task, ticketId) => {
         reject(error)
       })
   })
-}
+};*/
+const updateTaskAttributesWithCaseId = async (taskSid, ticketId) => {
+  const updatedAttributes = {
+    ticketId: ticketId, // Add the Salesforce Case ID to the TaskAttributes
+  };
+  try {
+    await TaskRouterService.updateTaskAttributes(taskSid, updatedAttributes);
+  } catch (error) {
+    console.error('Error updating TaskAttributes:', error);
+  }
+};
 
-export default updateTwilioAttributes
+export default updateTaskAttributesWithCaseId

@@ -5,8 +5,6 @@ import { FlexEvent } from '../../../../types/feature-loader';
 //import TaskRouterService from '../../../../utils/serverless/TaskRouter/TaskRouterService';
 //TaskRouterService.updateTaskAttributes(taskSid, newAttribute);
 
-//const sfdcBaseUrl = window.location.ancestorOrigins[0]
-
 export const eventName = FlexEvent.pluginsInitialized;//FlexEvent.taskAccepted;
 export const eventHook = async function initializeSalesforceOpenCtiscript(
   flex: typeof Flex,
@@ -14,6 +12,7 @@ export const eventHook = async function initializeSalesforceOpenCtiscript(
   //task: Flex.ITask,
 ) {
   // your code here
+  console.log('create-sf-case initialize called');
   const sfdcBaseUrl = window.location.ancestorOrigins[0]
   console.log('create-sf-case initialize called - sfdcBaseUrl'+sfdcBaseUrl);
 if (!isSalesForce(sfdcBaseUrl)) {
