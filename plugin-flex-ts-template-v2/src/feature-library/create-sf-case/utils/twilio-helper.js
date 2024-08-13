@@ -32,7 +32,7 @@ import TaskRouterService from '../../../utils/serverless/TaskRouter/TaskRouterSe
 };*/
 const updateTaskAttributesWithCaseId = async (taskSid, ticketId) => {
   const updatedAttributes = {
-    ticketId: ticketId, // Add the Salesforce Case ID to the TaskAttributes
+    "ticketId": ticketId, // Add the Salesforce Case ID to the TaskAttributes
   };
   try {
     await TaskRouterService.updateTaskAttributes(taskSid, updatedAttributes);
