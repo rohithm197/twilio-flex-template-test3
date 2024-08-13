@@ -53,6 +53,7 @@ const createSfTicket = function (task) {
             try {
               updateTaskAttributesWithCaseId(task.sid, ticketId);
               console.log('TaskAttributes updated successfully with ticketId:', ticketId);
+              console.log('Sunil-- task attributes after ticket id update--'+JSON.stringify(task.attributes));
             } catch (error) {
               console.error('Failed to update TaskAttributes:', error);
             }
