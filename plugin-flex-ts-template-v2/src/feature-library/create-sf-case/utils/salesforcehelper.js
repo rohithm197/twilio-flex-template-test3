@@ -51,7 +51,7 @@ const createSfTicket = function (task) {
 
             // Update the TaskAttributes using TaskRouterService
             try {
-              updateTaskAttributesWithCaseId(task.sid, ticketId);
+              updateTaskAttributesWithCaseId(task.taskSid, ticketId);
               console.log('TaskAttributes updated successfully with ticketId:', ticketId);
               console.log('Sunil-- task attributes after ticket id update--'+JSON.stringify(task.attributes));
             } catch (error) {
