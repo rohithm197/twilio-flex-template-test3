@@ -6,6 +6,7 @@ const { enabled = false, log_filters = false } =
 const {
   activities = true,
   email = false,
+  location = false,
   department = false,
   queue_no_worker_data = false,
   queue_worker_data = false,
@@ -28,6 +29,11 @@ export const isActivitiesFilterEnabled = () => {
 
 export const isEmailFilterEnabled = () => {
   return enabled && email;
+};
+
+//teamviewfilters-author-rohithm
+export const isLocationFilterEnabled = () => {
+  return enabled && location;
 };
 
 export const isDepartmentFilterEnabled = () => {

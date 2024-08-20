@@ -1,4 +1,4 @@
-import { getFeatureFlags } from '../../utils/configuration';
+import { getFeatureFlags, getManagerLocation } from '../../utils/configuration';
 import DataTilesConfig from './types/ServiceConfiguration';
 
 const {
@@ -58,6 +58,7 @@ const {
 } = (getFeatureFlags()?.features?.metrics_data_tiles as DataTilesConfig) || {};
 
 const { teams = [] } = getFeatureFlags().common || {};
+const { location = [] } = getManagerLocation() || {};
 
 export const isFeatureEnabled = () => {
   return enabled;

@@ -1,10 +1,11 @@
 import * as Flex from '@twilio/flex-ui';
 import { Box } from '@twilio-paste/core/box';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { FlexComponent } from '../../../../types/feature-loader';
 import WorkerCanvasTabs from '../../custom-components/WorkerCanvasTabs/WorkerCanvasTabs';
 
+let workerLocation: any;
 export const componentName = FlexComponent.WorkerCanvas;
 export const componentHook = function addWorkerCanvasTabs(flex: typeof Flex, _manager: Flex.Manager) {
   // Remove Agent Details header
@@ -14,6 +15,15 @@ export const componentHook = function addWorkerCanvasTabs(flex: typeof Flex, _ma
   flex.WorkerCanvas.Content.remove('skills');
 
   flex.WorkerCanvas.Content.addWrapper((OriginalComponent) => (originalProps) => {
+    //teamviewfilters-author-rohithm
+    if (originalProps?.worker?.attributes?.location) {
+      workerLocation = originalProps?.worker?.attributes?.location;
+    } else {
+      workerLocation = null;
+    }
+    useEffect(() => {
+      getWorkerLocation();
+    }, [originalProps.worker.attributes]);
     // preserve the fragments from the WorkerCanvas
     const fragments = flex.WorkerCanvas.Content.fragments
       .concat([])
@@ -36,4 +46,8 @@ export const componentHook = function addWorkerCanvasTabs(flex: typeof Flex, _ma
       </>
     );
   });
+};
+
+export const getWorkerLocation = () => {
+  return workerLocation;
 };
