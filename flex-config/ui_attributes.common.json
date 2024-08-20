@@ -136,14 +136,14 @@
       },
       "teams_view_filters": {
         "enabled": true,
-        "log_filters": false,
+        "log_filters": true,
         "applied_filters": {
           "activities": true,
           "email": true,
           "location": true,
           "department": true,
-          "queue_no_worker_data": false,
-          "queue_worker_data": false,
+          "queue_no_worker_data": true,
+          "queue_worker_data": true,
           "team": true,
           "agent_skills": true
         }
