@@ -6,6 +6,7 @@ const {
   assigned_tasks_column = true,
   wrapping_tasks_column = true,
   agent_activity_stats_column = true,
+  asset_serverless_domain = true,
 } = (getFeatureFlags()?.features?.queues_stats_metrics as QueuesStatsConfig) || {};
 
 export const isFeatureEnabled = () => {
@@ -20,4 +21,8 @@ export const isWrappingTasksColumnEnabled = () => {
 };
 export const iAgentActivityStatsColumnEnabled = () => {
   return agent_activity_stats_column;
+};
+
+export const getAssetServerlessDomain = () => {
+  return asset_serverless_domain;
 };

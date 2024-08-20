@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as Flex from '@twilio/flex-ui';
 import { WorkerQueue } from '@twilio/flex-ui/src/state/QueuesState';
 
@@ -11,9 +11,31 @@ import {
 import { StringTemplates } from '../strings';
 import { isColumnDescriptionSupported } from '../../utils/helpers';
 import QueueActivityStats from './QueueActivityStats/QueueActivityStats';
+import QueuesFilterAssetService from '../../utils/QueuesFilterAssetService';
 
 export const componentName = FlexComponent.QueueStats;
+
+const manager = Flex.Manager.getInstance();
+
 export const componentHook = function addQueuesDataTableColumns(flex: typeof Flex, manager: Flex.Manager) {
+  // console.log('LOG INSIDE addQueuesDataTableColumns HOOK');
+
+  // const WORKER_QUEUES = manager.workerClient?.attributes?.queue?.split(';')
+  // console.log('WORKER QUEUES', WORKER_QUEUES);
+
+  // Flex.QueuesStats.setSubscriptionFilter((queue: { friendly_name: string; sid: string }) => {
+  //     console.log("QUEUE DETAILS -> ", queue)
+  //     return WORKER_QUEUES.includes(queue.friendly_name)
+  //   }
+  // );
+
+  // @ts-ignore
+  useEffect(() => {
+    console.log('INSIDE useEffect of GET CONFIG ASSET FUNCTION');
+    const data = QueuesFilterAssetService.getConfigAsset().then((res) => console.log(res));
+    console.log('DATA FROM CONFIG ASSETS', data);
+  }, []);
+
   if (isAssignedTasksColumnEnabled()) {
     const props: any = {};
     if (isColumnDescriptionSupported()) {

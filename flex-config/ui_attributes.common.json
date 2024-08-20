@@ -379,7 +379,8 @@
         "enabled": false,
         "assigned_tasks_column": true,
         "wrapping_tasks_column": true,
-        "agent_activity_stats_column": true
+        "agent_activity_stats_column": true,
+          "asset_serverless_domain": "<YOUR_CONFIG_ASSETS_SERVERLESS_DOMAIN>"
       },
       "sip_support": {
         "enabled": false
