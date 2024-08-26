@@ -7,6 +7,7 @@ import {
   isAssignedTasksColumnEnabled,
   isWrappingTasksColumnEnabled,
   iAgentActivityStatsColumnEnabled,
+  getCommonFeatureDetails,
 } from '../../config';
 import { StringTemplates } from '../strings';
 import { isColumnDescriptionSupported } from '../../utils/helpers';
@@ -14,6 +15,20 @@ import QueueActivityStats from './QueueActivityStats/QueueActivityStats';
 
 export const componentName = FlexComponent.QueueStats;
 export const componentHook = function addQueuesDataTableColumns(flex: typeof Flex, manager: Flex.Manager) {
+  const commonSettings = getCommonFeatureDetails();
+
+//queuestatsfilters-author-rohithm
+  const AVAILABLE_QUEUES = commonSettings.queuesStatsList;
+
+  Flex.QueuesStats.setFilter((queue: Flex.QueuesStats.WorkerQueue) => {
+    return AVAILABLE_QUEUES.includes(queue.friendly_name);
+  });
+
+  Flex.QueuesStats.setSubscriptionFilter((queue: { friendly_name: string; sid: string }) => {
+    return AVAILABLE_QUEUES.includes(queue.friendly_name);
+  });
+
+
   if (isAssignedTasksColumnEnabled()) {
     const props: any = {};
     if (isColumnDescriptionSupported()) {
