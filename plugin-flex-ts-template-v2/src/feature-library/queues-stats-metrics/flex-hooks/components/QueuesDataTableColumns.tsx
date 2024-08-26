@@ -17,25 +17,18 @@ export const componentName = FlexComponent.QueueStats;
 export const componentHook = function addQueuesDataTableColumns(flex: typeof Flex, manager: Flex.Manager) {
   const commonSettings = getCommonFeatureDetails();
 
-  // if(commonSettings?.)
-  // console.log('COMMON DETAILS', commonSettings);
-
+//queuestatsfilters-author-rohithm
   const AVAILABLE_QUEUES = commonSettings.queuesStatsList;
-  console.log('AVAILABLE QUEUES => ', AVAILABLE_QUEUES);
 
   Flex.QueuesStats.setFilter((queue: Flex.QueuesStats.WorkerQueue) => {
-    console.log('QUEUES test =>', queue);
-    console.log('AVAILABLE_QUEUES.includes(queue.friendly_names)', AVAILABLE_QUEUES.includes(queue.friendly_name));
     return AVAILABLE_QUEUES.includes(queue.friendly_name);
   });
 
   Flex.QueuesStats.setSubscriptionFilter((queue: { friendly_name: string; sid: string }) => {
-    console.log('QUEUES =>', queue);
-    console.log('AVAILABLE_QUEUES.includes(queue.friendly_name)', AVAILABLE_QUEUES.includes(queue.friendly_name));
     return AVAILABLE_QUEUES.includes(queue.friendly_name);
   });
 
-  console.log('FLEX QUEUES', Flex.QueuesStats);
+
   if (isAssignedTasksColumnEnabled()) {
     const props: any = {};
     if (isColumnDescriptionSupported()) {

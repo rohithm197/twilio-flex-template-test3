@@ -37,9 +37,6 @@ export const getFeatureFlags = () => {
   // Update common.teams in mergedSettings
   mergedSettings.common.teams = teams;
   mergedSettings.common.queuesStatsList = queuesStatsList;
-
-  console.log("MERGE SETTINGS", mergedSettings);
-  // console.log("MERGE SETTINGS ", mergedSettings)
   // Return updated mergedSettings object
   return mergedSettings;
 };
