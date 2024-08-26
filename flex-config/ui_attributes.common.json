@@ -11,10 +11,23 @@
       "audit_log_ttl": 1209600,
       "teams": [],
       "teamList": {
-        "italy": "['IT Customer Support', 'IT Clinical Support', 'IT iTero Support']",
-        "us": "['US Customer Support', 'US Clinical Support', 'US iTero Support', 'US CAD Designers']",
-        "uk": "['UK Customer Support', 'UK Clinical Support', 'US iTero Support']",
-        "fr": "['FR Customer Support', 'FR Clinical Support']"
+        "italy": [
+          "IT Customer Support",
+          "IT Clinical Support",
+          "IT iTero Support"
+        ],
+        "us": [
+          "US Customer Support",
+          "US Clinical Support",
+          "US iTero Support",
+          "US CAD Designers"
+        ],
+        "uk": [
+          "UK Customer Support",
+          "UK Clinical Support",
+          "US iTero Support"
+        ],
+        "fr": ["FR Customer Support", "FR Clinical Support"]
       },
       "departments": [
         "General Management",
