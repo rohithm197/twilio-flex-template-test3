@@ -21,3 +21,7 @@ export const isWrappingTasksColumnEnabled = () => {
 export const iAgentActivityStatsColumnEnabled = () => {
   return agent_activity_stats_column;
 };
+
+export const getCommonFeatureDetails = () => {
+  return getFeatureFlags().common || {};
+}
