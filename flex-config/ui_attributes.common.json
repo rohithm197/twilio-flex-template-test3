@@ -11,6 +11,7 @@
       "audit_log_ttl": 1209600,
       "teams": [],
       "teamList": {
+<<<<<<< Updated upstream
         "italy": [
           "IT Customer Support",
           "IT Clinical Support",
@@ -28,6 +29,97 @@
           "US iTero Support"
         ],
         "fr": ["FR Customer Support", "FR Clinical Support"]
+=======
+        "it": [
+          "IT-Invisalign CS",
+          "IT-iTero CS",
+          "IT-Tech Support",
+          "IT-iTero Onboarding",
+          "IT-iTero Training",
+          "IT-Clinical Support",
+          "IT-Treat",
+          "IT-Credit & Collections",
+          "IT-ISRs"
+        ],
+        "uk": [
+          "UK-Invisalign CS",
+          "UK-iTero CS",
+          "UK-Tech Support",
+          "UK-iTero Onboarding",
+          "UK-iTero Training",
+          "UK-Clinical Support",
+          "UK-Treat",
+          "UK-Credit & Collections",
+          "UK-ISRs"
+        ],
+        "pl": [
+          "PL-Invisalign CS",
+          "PL-iTero CS",
+          "PL-Tech Support",
+          "PL-iTero Onboarding",
+          "PL-iTero Training",
+          "PL-Clinical Support",
+          "PL-Treat",
+          "PL-Credit & Collections",
+          "PL-ISRs"
+        ],
+        "fr": [
+          "FR-Invisalign CS",
+          "FR-iTero CS",
+          "FR-Tech Support",
+          "FR-iTero Onboarding",
+          "FR-iTero Training",
+          "FR-Clinical Support",
+          "FR-Treat",
+          "FR-Credit & Collections",
+          "FR-ISRs"
+        ]
+      },
+      "queuesList": {
+        "it": [
+          "IT-Invisalign",
+          "IT-General",
+          "IT-Master Plan",
+          "IT-iTero",
+          "IT-Clinical Support",
+          "IT-Treat",
+          "IT-Credit & Collections",
+          "IT-ISRs"
+        ],
+        "uk": [
+          "UK-Invisalign",
+          "UK-iTero",
+          "UK-Tech Support",
+          "UK-iTero Onboarding",
+          "UK-iTero Training",
+          "UK-Clinical Support",
+          "UK-Treat",
+          "UK-Credit & Collections",
+          "UK-ISRs"
+        ],
+        "pl": [
+          "PL-Invisalign",
+          "PL-iTero",
+          "PL-Tech Support",
+          "PL-iTero Onboarding",
+          "PL-iTero Training",
+          "PL-Clinical Support",
+          "PL-Treat",
+          "PL-Credit & Collections",
+          "PL-ISRs"
+        ],
+        "fr": [
+          "FR-Invisalign",
+          "FR-iTero",
+          "FR-Tech Support",
+          "FR-iTero Onboarding",
+          "FR-iTero Training",
+          "FR-Clinical Support",
+          "FR-Treat",
+          "FR-Credit & Collections",
+          "FR-ISRs"
+        ]
+>>>>>>> Stashed changes
       },
       "departments": [
         "General Management",
