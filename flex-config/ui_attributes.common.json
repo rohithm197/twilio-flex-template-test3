@@ -11,25 +11,6 @@
       "audit_log_ttl": 1209600,
       "teams": [],
       "teamList": {
-<<<<<<< Updated upstream
-        "italy": [
-          "IT Customer Support",
-          "IT Clinical Support",
-          "IT iTero Support"
-        ],
-        "us": [
-          "US Customer Support",
-          "US Clinical Support",
-          "US iTero Support",
-          "US CAD Designers"
-        ],
-        "uk": [
-          "UK Customer Support",
-          "UK Clinical Support",
-          "US iTero Support"
-        ],
-        "fr": ["FR Customer Support", "FR Clinical Support"]
-=======
         "it": [
           "IT-Invisalign CS",
           "IT-iTero CS",
@@ -119,7 +100,6 @@
           "FR-Credit & Collections",
           "FR-ISRs"
         ]
->>>>>>> Stashed changes
       },
       "departments": [
         "General Management",

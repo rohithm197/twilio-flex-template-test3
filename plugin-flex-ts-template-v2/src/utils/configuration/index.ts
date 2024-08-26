@@ -24,16 +24,19 @@ const mergedSettings = merge(globalSettings, getFeatureFlagsUser());
 export const getFeatureFlags = () => {
   // Initialize teams array
   let teams = [];
+  let queuesStatsList = [];
   // Check if workerClient attributes exist
   if (manager.workerClient?.attributes) {
     const location = manager.workerClient.attributes.location?.toLowerCase();
     // Retrieve selected teams based on location
     const selectedTeams = mergedSettings?.common.teamList[location];
-    // Assign selected teams if found, otherwise assign an empty array
+    const workerQueues = mergedSettings?.common.queuesList[location];
     teams = selectedTeams ? selectedTeams : [];
+    queuesStatsList = workerQueues || [];
   }
   // Update common.teams in mergedSettings
   mergedSettings.common.teams = teams;
+  mergedSettings.common.queuesStatsList = queuesStatsList;
   // Return updated mergedSettings object
   return mergedSettings;
 };
