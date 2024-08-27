@@ -11,7 +11,7 @@
       "audit_log_ttl": 1209600,
       "teams": [],
       "teamList": {
-        "it": [
+        "IT": [
           "IT-Invisalign CS",
           "IT-iTero CS",
           "IT-Tech Support",
@@ -22,7 +22,7 @@
           "IT-Credit & Collections",
           "IT-ISRs"
         ],
-        "uk": [
+        "UK": [
           "UK-Invisalign CS",
           "UK-iTero CS",
           "UK-Tech Support",
@@ -33,7 +33,7 @@
           "UK-Credit & Collections",
           "UK-ISRs"
         ],
-        "pl": [
+        "PL": [
           "PL-Invisalign CS",
           "PL-iTero CS",
           "PL-Tech Support",
@@ -44,7 +44,7 @@
           "PL-Credit & Collections",
           "PL-ISRs"
         ],
-        "fr": [
+        "FR": [
           "FR-Invisalign CS",
           "FR-iTero CS",
           "FR-Tech Support",
@@ -57,7 +57,7 @@
         ]
       },
       "queuesList": {
-        "it": [
+        "IT": [
           "IT-Invisalign",
           "IT-General",
           "IT-Master Plan",
@@ -67,7 +67,7 @@
           "IT-Credit & Collections",
           "IT-ISRs"
         ],
-        "uk": [
+        "UK": [
           "UK-Invisalign",
           "UK-iTero",
           "UK-Tech Support",
@@ -78,7 +78,7 @@
           "UK-Credit & Collections",
           "UK-ISRs"
         ],
-        "pl": [
+        "PL": [
           "PL-Invisalign",
           "PL-iTero",
           "PL-Tech Support",
@@ -89,7 +89,7 @@
           "PL-Credit & Collections",
           "PL-ISRs"
         ],
-        "fr": [
+        "FR": [
           "FR-Invisalign",
           "FR-iTero",
           "FR-Tech Support",
