@@ -1,25 +1,17 @@
-import updateTaskAttributesWithCaseId from './twilio-helper';
-const searchAndScreenPop = function (searchParams, callType) {
-  console.log('API Call for searchAndScreenPop called')
-  if (window.sforce) {
-    window.sforce.opencti.searchAndScreenPop({
-      searchParams: searchParams,
-      callType: window.sforce.opencti.CALL_TYPE.INBOUND,
-      deferred: false,
-      callback: (response) => {
-        if (response.success) {
-          console.log(
-            'API method call executed successfully! returnValue:',
-            response.returnValue
-          )
-        } else {
-          console.error('Something went wrong! Errors:', response.errors)
-        }
-      },
-    })
-  }
-}
+/**
+ * @fileOverview This file contains Salesforce related functions for handling automation at Salesforce side
+ * 
+ * @author Sunil Taruvu
+ * @version 1.0
+ * @date 14-08-2024
+ */
 
+import updateTaskAttributesWithCaseId from './twilio-helper';
+
+/*
+  Auto create a Salesforce Ticket when an agent accepts the call in Flex
+  task : this is Twilio payload which contains call/task attributes which are used while creation a Ticket
+*/
 const createSfTicket = function (task) {
   console.log('API Call for createSfTicket called ')
   if (window.sforce) {
@@ -47,9 +39,6 @@ const createSfTicket = function (task) {
               params: { recordId: response.returnValue.recordId },
             })
             const ticketId = response.returnValue.recordId;
-            console.log('Salesforce Case created with ID:', ticketId);
-
-            // Update the TaskAttributes using TaskRouterService
             try {
               updateTaskAttributesWithCaseId(task.taskSid, ticketId);
               console.log('TaskAttributes updated successfully with ticketId:', ticketId);
@@ -57,40 +46,80 @@ const createSfTicket = function (task) {
             } catch (error) {
               console.error('Failed to update TaskAttributes:', error);
             }
-            /*updateTwilioAttributes(
-              task,
-              response.returnValue.recordId
-            )*/
           } else {
             console.log(
-              'API Call for Ticket creation failed ' +
+              'API Call for SF Ticket creation failed ' +
                 response.errors
             )
           }
         } else {
           console.log(
-            'API Call for Ticket creation failed ' + response.errors
+            'API Call for SF Ticket creation failed ' + response.errors
           )
         }
       },
     })
   }
 }
+
+/*
+  Update the owner(to agent 2) of Salesforce Ticket when an agent 1 transfers call to agent 2 in Flex
+  ticketId : Salesforce Ticket ID
+  newOwnerId : Salesforce UserID of the new owner
+*/
+const updateSfTicket = function (ticketId, newOwnerId) {
+  console.log(
+    `API Call for updateSfTicket called for ticket: ${ticketId} and owner: ${newOwnerId}`
+  )
+  if (window.sforce) {
+    window.sforce.opencti.saveLog({
+      value: {
+        Id: ticketId,
+        OwnerId: newOwnerId,
+      },
+      callback: (response) => {
+        if (response.success) {
+          if (response.returnValue.recordId) {
+            console.log(
+              'SF Ticket Update Successful for: ' + response.returnValue.recordId
+            )
+            window.sforce.opencti.screenPop({
+              type: sforce.opencti.SCREENPOP_TYPE.SOBJECT,
+              params: { recordId: response.returnValue.recordId },
+            })
+          } else {
+            console.log(
+              'API Call for SF ticket update failed ' +
+                JSON.stringify(response.errors)
+            )
+          }
+        } else {
+          console.log(
+            'API Call for SF ticket update failed ' +
+              JSON.stringify(response.errors)
+          )
+        }
+      },
+    })
+  }
+}
+
+/*
+  Auto create a Salesforce Task when an agent accepts the call in Flex
+  task : this is Twilio payload which contains call/task attributes which are used while creating a task in SF
+*/
 const createSfTask = function (task) {
   console.log('API Call for createSfTask called ')
   if (window.sforce) {
     window.sforce.opencti.saveLog({
       value: {
         entityApiName: 'Task',
-        //Subject: "Subjectinbound",
         Subject:
           'inbound voice Call from ' +
           task.attributes.caller +
           ' ' +
           task.dateCreated,
         Type: 'Call',
-        //Priority: "Normal",
-        //Status: "Not Started",
         RecordtypeId: '012i00000019r6TAAQ',
         Description:
           'callType:Inbound \nCaller:' +
@@ -101,7 +130,6 @@ const createSfTask = function (task) {
           '\n ConferenceSID:' +
           task.attributes.conference.sid,
         WhoId: '[{id:' + task.attributes.sfcontactid + '}]',
-        //WhoId:"[{id:003i000000UsDocAAF}]"
       },
       callback: (response) => {
         console.log('createSfTask only response' + JSON.stringify(response))
@@ -126,6 +154,35 @@ const createSfTask = function (task) {
   }
 }
 
+/*
+To search and auto open the appropriate record page in Salesforce
+searchParams : Any Salesforce record id 
+*/
+const searchAndScreenPop = function (searchParams, callType) {
+  console.log('API Call for searchAndScreenPop called')
+  if (window.sforce) {
+    window.sforce.opencti.searchAndScreenPop({
+      searchParams: searchParams,
+      callType: window.sforce.opencti.CALL_TYPE.INBOUND,
+      deferred: false,
+      callback: (response) => {
+        if (response.success) {
+          console.log(
+            'API method call executed successfully! returnValue:',
+            response.returnValue
+          )
+        } else {
+          console.error('Something went wrong! Errors:', response.errors)
+        }
+      },
+    })
+  }
+}
+
+/*
+To auto open the recognized contact page in Salesforce
+sfcontactid : SF Contact id of the recognized caller
+*/
 const screenPop = function (sfcontactid) {
   console.log('API Call for screenPop called1142 - ' + sfcontactid)
   let cid = sfcontactid.trim()
@@ -133,43 +190,6 @@ const screenPop = function (sfcontactid) {
     window.sforce.opencti.screenPop({
       type: sforce.opencti.SCREENPOP_TYPE.SOBJECT,
       params: { recordId: cid },
-    })
-  }
-}
-
-const updateSfTicket = function (ticketId, newOwnerId) {
-  console.log(
-    `API Call for updateSfTicket called for ticket: ${ticketId} and owner: ${newOwnerId}`
-  )
-  if (window.sforce) {
-    window.sforce.opencti.saveLog({
-      value: {
-        Id: ticketId,
-        OwnerId: newOwnerId,
-      },
-      callback: (response) => {
-        if (response.success) {
-          if (response.returnValue.recordId) {
-            console.log(
-              'Ticket Update Successful for: ' + response.returnValue.recordId
-            )
-            window.sforce.opencti.screenPop({
-              type: sforce.opencti.SCREENPOP_TYPE.SOBJECT,
-              params: { recordId: response.returnValue.recordId },
-            })
-          } else {
-            console.log(
-              'API Call for ticket update failed ' +
-                JSON.stringify(response.errors)
-            )
-          }
-        } else {
-          console.log(
-            'API Call for ticket update failed ' +
-              JSON.stringify(response.errors)
-          )
-        }
-      },
     })
   }
 }

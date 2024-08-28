@@ -1,45 +1,30 @@
-import { Manager } from '@twilio/flex-ui'
+/**
+ * @fileOverview This file contains Twilio related functions for handling * 
+ * 
+ * It includes function:"updateTaskAttributesWithCaseId" for updating Twilio task attributes payload with Salesforce Ticket ID.
+ *  
+ * @author Sunil Taruvu
+ * @version 1.0
+ * @date 14-08-2024
+ */
 
+//import { Manager } from '@twilio/flex-ui'
 import TaskRouterService from '../../../utils/serverless/TaskRouter/TaskRouterService';
-/*const updateTwilioAttributes = (task, ticketId) => {
-  return new Promise((resolve, reject) => {
-    const token = Manager.getInstance().user.token
 
-    return fetch(
-      `https://studio-calls-functions-2551.twil.io/update-task-attributes`,
-      {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        method: 'POST',
-        mode: 'no-cors',
-        body:
-          `Token=${token}` +
-          `&taskId=${task.sid}` +
-          `&attributes=${JSON.stringify(task.attributes)}` +
-          `&ticketId=${ticketId}`,
-      }
-    )
-      .then(() => {
-        console.log('Task Attributes Updated Successfully')
-        resolve()
-      })
-      .catch((error) => {
-        console.error(`Error updating Task Attributes\r\n`, error)
-        reject(error)
-      })
-  })
-};*/
+
+/*
+Sunil - This method is to update the Twilio Task attributes payload with Salesforce Ticket ID.
+          This is used to update the Same Ticket owner during call Transfer.
+*/
 const updateTaskAttributesWithCaseId = async (taskSid, ticketId) => {
   const updatedAttributes = {
     ticketId: ticketId, // Add the Salesforce Case ID to the TaskAttributes
   };
   try {
-    console.log(`Updating TaskAttributes for Task SID: ${taskSid} with Case ID: ${ticketId}`);
+    console.log(`Updating TaskAttributes for Task SID: ${taskSid} with SF TicketID: ${ticketId}`);
     await TaskRouterService.updateTaskAttributes(taskSid, updatedAttributes);
-    //console.log('TaskAttributes update response:', response);
   } catch (error) {
-    console.error('Error updating TaskAttributes:', error.response?.data || error.message);
+    console.error('Error updating TaskAttributes with SF TicketID:', error.response?.data || error.message);
   }
 };
 
