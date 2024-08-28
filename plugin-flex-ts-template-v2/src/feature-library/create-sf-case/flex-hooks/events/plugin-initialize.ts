@@ -15,6 +15,9 @@ export const eventHook = async function initializeSalesforceOpenCtiscript(
   console.log('create-sf-case initialize called');
   const sfdcBaseUrl = window.location.ancestorOrigins[0]
   console.log('create-sf-case initialize called - sfdcBaseUrl'+sfdcBaseUrl);
+
+  flex.AgentDesktopView.defaultProps.showPanel2 = false;//To remove CRM Block in the Flex UI
+  
 if (!isSalesForce(sfdcBaseUrl)) {
     console.log(
     'Not initializing Salesforce since this instance has been launched independently...'
