@@ -254,9 +254,9 @@
         "configuration": [
           {
             "channel": "voice",
-            "auto_accept": false,
+            "auto_accept": true,
             "auto_select": true,
-            "auto_wrapup": true,
+            "auto_wrapup": false,
             "required_attributes": [],
             "required_worker_attributes": [],
             "wrapup_time": 30000,
@@ -321,7 +321,7 @@
         }
       },
       "dispositions": {
-        "enabled": true,
+        "enabled": false,
         "enable_notes": true,
         "global": {
           "require_disposition": false,
