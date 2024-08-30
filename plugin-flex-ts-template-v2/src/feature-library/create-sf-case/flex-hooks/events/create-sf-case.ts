@@ -25,33 +25,27 @@ export const eventHook = function createCaseAfterTaskAcceptance(
   task: Flex.ITask,
 ) {
   // your code here
- console.log('Sunil- Task accepted-agent answered call----');
- console.log('Sunil-- task attributes--'+JSON.stringify(task.attributes));
- console.log('Sunil- Task accepted-agent answered call taskSid----'+task.taskSid);
- console.log('Sunil- Task accepted-agent answered call worker attributes----'+JSON.stringify(manager.workerClient?.attributes));
- //console.log('worker attributes'+Flex.Manager.workerClient.attributes.userid);
-    /*if (task.attributes.sfcontactid && task.attributes.sfcontactid !== ''  ) {
-      createSfTicket(task);
-    };*/
+ console.log('task attributes--'+JSON.stringify(task.attributes));
+ console.log('Task accepted-agent answered call worker attributes----'+JSON.stringify(manager.workerClient?.attributes));
     if (task.attributes.sfcontactid && task.attributes.sfcontactid !== ''  ) {
         if (task.attributes.ticketId && task.attributes.ticketId !== '') {
           if (manager.workerClient?.attributes.userId) {
             updateSfTicket(task.attributes.ticketId,manager.workerClient?.attributes.userId)
             screenPop(task.attributes.ticketId)
           }else{
-            console.log('Cannnot update ticket owner ID. Worker attributes missing userId.')
+            console.log('Cannnot update SF ticket owner ID. Worker attributes missing userId.')
           }
         }else {
             //No Existing Ticket Associated with Task
             console.log('No existing Ticket in SF')
             screenPop(task.attributes.sfcontactid)
             createSfTicket(task)
-            createSfTask(task)
+            //createSfTask(task)
           }
       }else {
           //No SF Contact ID
           createSfTicket(task)//as per ESW-1739 added creation of tickets for un recognized callers//For Italy, no auto creation of tickets in case of caller not recognized
-          console.log('acceptedReservation else condition passed open task---')
+          console.log('acceptedReservation else condition passed No SF Contact recognized ---')
           //screenPop();
       }
 }

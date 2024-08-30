@@ -31,7 +31,7 @@ const createSfTicket = function (task) {
           task.attributes.caller,
       },
       callback: (response) => {
-        console.log('createSfTicket only response' + JSON.stringify(response))
+        console.log('createSfTicket response' + JSON.stringify(response))
         if (response.success) {
           if (response.returnValue.recordId) {
             window.sforce.opencti.screenPop({
