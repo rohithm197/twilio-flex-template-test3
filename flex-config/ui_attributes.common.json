@@ -297,7 +297,7 @@
         "enabled": true,
         "worker": {
           "enabled": true,
-          "show_only_available_workers": false
+          "show_only_available_workers": true
         },
         "queue": {
           "enabled": true,
@@ -380,7 +380,7 @@
         }
       },
       "ring_notification": {
-        "enabled": false
+        "enabled": true
       },
       "send_audio_rec_file": {
         "enabled": true
@@ -461,7 +461,7 @@
         }
       },
       "queues_stats_metrics": {
-        "enabled": false,
+        "enabled": true,
         "assigned_tasks_column": true,
         "wrapping_tasks_column": true,
         "agent_activity_stats_column": true
