@@ -1,5 +1,4 @@
 import * as Flex from '@twilio/flex-ui';
-import { clearHangUpBy } from 'feature-library/hang-up-by/helpers/hangUpBy';
 import merge from 'lodash/merge';
 import { UIAttributes } from 'types/manager/ServiceConfiguration';
 import { CustomWorkerAttributes } from 'types/task-router/Worker';
@@ -22,21 +21,32 @@ const mergedSettings = merge(globalSettings, getFeatureFlagsUser());
 //teamviewfilters-author-rohithm
 
 export const getFeatureFlags = () => {
-  // Initialize teams array
+  // Initialize teams array and queuesStatsList array
   let teams = [];
   let queuesStatsList = [];
+
   // Check if workerClient attributes exist
   if (manager.workerClient?.attributes) {
-    const location = manager.workerClient.attributes.location?.toLowerCase();
-    // Retrieve selected teams based on location
-    const selectedTeams = mergedSettings?.common.teamList[location];
-    const workerQueues = mergedSettings?.common.queuesList[location];
-    teams = selectedTeams ? selectedTeams : [];
-    queuesStatsList = workerQueues || [];
+    // Convert location to lowercase for consistent key lookup
+    const location = manager.workerClient.attributes.location?.toString().toLowerCase();
+
+    // Normalize teamList and queuesList keys to lowercase for lookup
+    const teamList = mergedSettings?.common.teamList || {};
+    const queuesList = mergedSettings?.common.queuesList || {};
+
+    // Retrieve selected teams and worker queues based on lowercase location
+    const selectedTeams = teamList[location.toLowerCase()] || [];
+    const workerQueues = queuesList[location.toLowerCase()] || [];
+
+    // Assign teams and queuesStatsList
+    teams = selectedTeams;
+    queuesStatsList = workerQueues;
   }
-  // Update common.teams in mergedSettings
+
+  // Update common.teams and common.queuesStatsList in mergedSettings
   mergedSettings.common.teams = teams;
   mergedSettings.common.queuesStatsList = queuesStatsList;
+
   // Return updated mergedSettings object
   return mergedSettings;
 };
@@ -44,7 +54,7 @@ export const getFeatureFlags = () => {
 export const getManagerLocation = () => {
   //#001 start - teams worker attributes
   if (manager.workerClient?.attributes) {
-  return manager.workerClient?.attributes.location;
+    return manager.workerClient?.attributes.location;
   }
 };
 
