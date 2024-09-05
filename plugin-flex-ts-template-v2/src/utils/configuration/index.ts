@@ -21,29 +21,26 @@ const mergedSettings = merge(globalSettings, getFeatureFlagsUser());
 //teamviewfilters-author-rohithm
 
 export const getFeatureFlags = () => {
-  // Initialize teams array and queuesStatsList array
+  // Initialize teams array and queuesStatsList
   let teams = [];
   let queuesStatsList = [];
 
   // Check if workerClient attributes exist
   if (manager.workerClient?.attributes) {
-    // Convert location to lowercase for consistent key lookup
-    const location = manager.workerClient.attributes.location?.toString().toLowerCase();
-
-    // Normalize teamList and queuesList keys to lowercase for lookup
+    const location = manager.workerClient.attributes.location?.toLowerCase();
+    // Access teamList and queuesList from mergedSettings
     const teamList = mergedSettings?.common.teamList || {};
     const queuesList = mergedSettings?.common.queuesList || {};
 
-    // Retrieve selected teams and worker queues based on lowercase location
-    const selectedTeams = teamList[location.toLowerCase()] || [];
-    const workerQueues = queuesList[location.toLowerCase()] || [];
+    // Find the matching key in teamList and queuesList
+    const selectedTeams = Object.keys(teamList).find((key) => key.toLowerCase() === location);
+    const workerQueues = Object.keys(queuesList).find((key) => key.toLowerCase() === location);
 
-    // Assign teams and queuesStatsList
-    teams = selectedTeams;
-    queuesStatsList = workerQueues;
+    // Set teams and queuesStatsList based on found keys
+    teams = selectedTeams ? teamList[selectedTeams] : [];
+    queuesStatsList = workerQueues ? queuesList[workerQueues] : [];
   }
-
-  // Update common.teams and common.queuesStatsList in mergedSettings
+  // Update common.teams in mergedSettings
   mergedSettings.common.teams = teams;
   mergedSettings.common.queuesStatsList = queuesStatsList;
 
