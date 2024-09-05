@@ -239,4 +239,3 @@ jobs:
           npm install
           npm run install-flex-plugin
           npm run deploy -- --changelog="Deploy from CI/CD for commit ${{ github.sha }}"
-          npm run release -- --name="Release from CI/CD for commit ${{ github.sha }}" --description="Release from CI/CD for commit ${{ github.sha }}"
