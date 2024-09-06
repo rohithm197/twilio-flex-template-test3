@@ -224,13 +224,13 @@
         "log_filters": true,
         "applied_filters": {
           "activities": true,
-          "email": true,
-          "location": true,
-          "department": true,
-          "queue_no_worker_data": true,
+          "email": false,
+          "location": false,
+          "department": false,
+          "queue_no_worker_data": false,
           "queue_worker_data": true,
-          "team": true,
-          "agent_skills": true
+          "team": false,
+          "agent_skills": false
         }
       },
       "supervisor_capacity": {
