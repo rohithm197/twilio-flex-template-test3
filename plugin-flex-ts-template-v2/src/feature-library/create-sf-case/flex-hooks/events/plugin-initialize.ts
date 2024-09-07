@@ -3,15 +3,48 @@ import { isSalesForce } from '../../utils/salesforce';
 import { loadScript } from '../../utils/load-script'
 import { FlexEvent } from '../../../../types/feature-loader';
 
+
+
 export const eventName = FlexEvent.pluginsInitialized;//FlexEvent.taskAccepted;
 export const eventHook = async function initializeSalesforceOpenCtiscript(
   flex: typeof Flex,
   manager: Flex.Manager,
-  //task: Flex.ITask,
+  //task: Flex.ITask,//sunil - remove   
 ) {
   // your code here
   const sfdcBaseUrl = window.location.ancestorOrigins[0]
   console.log('create-sf-case initialize called - sfdcBaseUrl'+sfdcBaseUrl);
+  //const callChannel = flex.DefaultTaskChannels.Call
+  console.log('create-sf-case initialize called - CallChannel'+JSON.stringify(flex.DefaultTaskChannels.Call));
+  //console.log('create-sf-case initialize called - task'+JSON.stringify(task)); 
+
+  const callChannel = flex.DefaultTaskChannels.Call
+  if (callChannel?.templates?.TaskListItem) {
+    callChannel.templates.TaskListItem.firstLine = (task) =>
+      task.attributes.direction === 'inbound'
+        ? `${task.attributes.doctorname}: ${task.attributes.name} : \n Call SID - ${task.attributes.call_sid}`
+        : task.attributes.outbound_to
+  }
+  /*if(callChannel?.templates?.TaskCanvasHeader){
+    callChannel.templates.TaskCanvasHeader.title = (task) =>
+  task.attributes.direction === 'inbound'
+    ? `${task.attributes.doctorname}: ${task.attributes.name}` +  `<h2 style="font-size: 10px;">` + `Call SID - ${task.attributes.call_sid}`+`</h2>`
+    : task.attributes.outbound_to
+  }*/
+  if (callChannel?.templates?.TaskCanvasHeader) {
+    callChannel.templates.TaskCanvasHeader.title = (task) =>
+      task.attributes.direction === 'inbound'
+        ? `${task.attributes.doctorname}: ${task.attributes.name} : \n Call SID - ${task.attributes.call_sid}`
+        : task.attributes.outbound_to;
+  }
+
+  if(callChannel?.templates?.CallCanvas){
+    callChannel.templates.CallCanvas.firstLine = (task) =>
+  task.attributes.direction === 'inbound'
+    ? `${task.attributes.doctorname}: ${task.attributes.name}`
+    : task.attributes.outbound_to
+  }
+  flex.TaskChannels.register(callChannel)
 
   flex.AgentDesktopView.defaultProps.showPanel2 = false;//To remove CRM Block in the Flex UI
   
