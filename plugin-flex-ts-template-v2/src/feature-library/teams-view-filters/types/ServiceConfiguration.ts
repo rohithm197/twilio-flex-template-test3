@@ -9,5 +9,6 @@ export default interface TeamViewFiltersConfig {
     queue_worker_data: boolean;
     team: boolean;
     agent_skills: boolean;
+    asset_serverless_domain: boolean;
   };
 }

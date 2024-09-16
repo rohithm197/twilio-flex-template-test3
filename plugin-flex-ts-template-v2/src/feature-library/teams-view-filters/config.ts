@@ -12,6 +12,7 @@ const {
   queue_worker_data = false,
   team = false,
   agent_skills = false,
+  asset_serverless_domain = true,
 } = getFeatureFlags().features?.teams_view_filters?.applied_filters || {};
 const { teams = [], departments = [] } = getFeatureFlags().common || {};
 
@@ -62,4 +63,8 @@ export const getDepartmentOptions = () => {
 
 export const getTeamOptions = () => {
   return teams;
+};
+
+export const getAssetServerlessDomain = () => {
+  return asset_serverless_domain;
 };
