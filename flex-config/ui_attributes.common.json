@@ -209,7 +209,7 @@
         "indicator_permanent": true
       },
       "activity_reservation_handler": {
-        "enabled": false,
+        "enabled": true,
         "system_activity_names": {
           "available": "Available",
           "onATask": "In Call",
