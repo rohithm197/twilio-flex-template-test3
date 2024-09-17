@@ -212,8 +212,8 @@
         "enabled": false,
         "system_activity_names": {
           "available": "Available",
-          "onATask": "On a Task",
-          "onATaskNoAcd": "On a Task, No ACD",
+          "onATask": "In Call",
+          "onATaskNoAcd": "In Call, No ACD",
           "wrapup": "Wrap Up",
           "wrapupNoAcd": "Wrap Up, No ACD",
           "extendedWrapup": "Extended Wrap Up"
