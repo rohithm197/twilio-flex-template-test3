@@ -227,8 +227,8 @@
           "email": false,
           "location": false,
           "department": false,
-          "queue_no_worker_data": false,
-          "queue_worker_data": true,
+          "queue_no_worker_data": true,
+          "queue_worker_data": false,
           "team": false,
           "agent_skills": false
         }
