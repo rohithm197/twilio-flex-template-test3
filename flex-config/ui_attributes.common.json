@@ -111,7 +111,24 @@
         "Purchasing",
         "Customer Service",
         "Recruiting"
-      ]
+      ],
+      "callerIddata":{
+        "US1": {
+          "phoneNumber": "+12563882164",
+          "queueName": "IT-Invisalign",
+          "queueSid" :"WQ175f8b1efdf8e0cf7e83d636c21329ed"
+        },
+        "US2": {
+          "phoneNumber": "+19412719861",
+          "queueName": "IT-Master Plan",
+          "queueSid" :"WQ93b5a52a3c3f101fd32cb3bcb75f5def"
+        },
+        "US3": {
+            "phoneNumber": "+19412719862",
+            "queueName": "IT-General",
+            "queueSid" :"WQd7971c4f4f7264e2e6dcfdcd97468b0c"
+        }
+      }
     },
     "features": {
       "activity_skill_filter": {
@@ -227,8 +244,8 @@
           "email": false,
           "location": false,
           "department": false,
-          "queue_no_worker_data": true,
-          "queue_worker_data": false,
+          "queue_no_worker_data": false,
+          "queue_worker_data": true,
           "team": false,
           "agent_skills": false
         }
