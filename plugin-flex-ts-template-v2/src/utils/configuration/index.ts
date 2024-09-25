@@ -29,6 +29,8 @@ export const getFeatureFlags = () => {
   if (manager.workerClient?.attributes) {
     const location = manager.workerClient.attributes.location?.toLowerCase();
     // Access teamList and queuesList from mergedSettings
+    // const config = await FilterAssetService.getConfigAsset();
+
     const teamList = mergedSettings?.common.teamList || {};
     const queuesList = mergedSettings?.common.queuesList || {};
 

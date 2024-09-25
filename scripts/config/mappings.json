@@ -62,5 +62,9 @@
     "type": "tr-workflow",
     "name": "/Internal Call/",
     "parent": "TWILIO_FLEX_WORKSPACE_SID"
+  },
+  "CONFIG_ASSETS_SERVERLESS_DOMAIN": {
+    "type": "serverless-domain",
+    "name": "teamList"
   }
 }
