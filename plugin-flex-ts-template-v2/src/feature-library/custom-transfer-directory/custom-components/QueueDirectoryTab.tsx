@@ -24,6 +24,7 @@ import {
   isCbmColdTransferEnabled,
   isCbmWarmTransferEnabled,
   showRealTimeQueueData,
+  getCommonFeatureDetails
 } from '../config';
 import { CustomTransferDirectoryNotification } from '../flex-hooks/notifications/CustomTransferDirectory';
 import { CustomWorkerAttributes } from '../../../types/task-router/Worker';
@@ -88,19 +89,21 @@ const QueueDirectoryTab = (props: OwnProps) => {
     props.task && TaskHelper.isCBMTask(props.task) ? isCbmWarmTransferEnabled() : callWarmTransferEnabled;
   const isColdTransferEnabled = props.task && TaskHelper.isCBMTask(props.task) ? isCbmColdTransferEnabled() : true;
 
+  // const manager = Manager.getInstance();
+  // const workerLocation = manager.workerClient?.attributes?.location;
+
+  const commonSettings = getCommonFeatureDetails();
+  const AVAILABLE_QUEUES = commonSettings.queuesStatsList;
+
   // async function to retrieve the task queues from the tr sdk
   // this will trigger the useEffect for a fetchedQueues update
   const fetchSDKTaskQueues = async () => {
-    if (workspaceClient)
-      setFetchedQueues(
-        Array.from(
-          (
-            await workspaceClient.fetchTaskQueues({
-              Ordering: 'DateUpdated:desc',
-            })
-          ).values(),
-        ) as unknown as Array<IQueue>,
-      );
+    if (workspaceClient) {
+      const queuesArray = Array.from((await workspaceClient.fetchTaskQueues({Ordering: 'DateUpdated:desc',})).values(),) as unknown as Array<IQueue>;
+      setFetchedQueues(() => {
+        return queuesArray.filter(queue => AVAILABLE_QUEUES.includes(queue.name))
+      });
+    }
   };
 
   // async function to retrieve queues from the insights client with
@@ -207,6 +210,7 @@ const QueueDirectoryTab = (props: OwnProps) => {
   const filterQueues = () => {
     const updatedQueues = transferQueues.current
       .filter((queue) => {
+        console.log('QUEUE DETAILS', queue);
         if (showOnlyQueuesWithAvailableWorkers()) {
           // returning only queues with available workers
           // or queues where meta data is not available
