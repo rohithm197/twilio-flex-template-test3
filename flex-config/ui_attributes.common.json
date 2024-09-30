@@ -57,48 +57,30 @@
         ]
       },
       "queuesList": {
-        "IT": [
-          "IT-Invisalign",
-          "IT-General",
-          "IT-Master Plan",
-          "IT-iTero",
-          "IT-Clinical Support",
-          "IT-Treat",
-          "IT-Credit & Collections",
-          "IT-ISRs"
+        "IB": [
+          "CS-SP-Primary_Queue",
+          "iTero-SP-Primary_Queue",
+          "iTero-SP-Secondary_Queue",
+          "CS-PT-Primary_Queue",
+          "CS-PT-Secondary_Queue",
+          "iTero-PT-Primary_Queue",
+          "iTero-PT-Secondary_Queue",
+          "SP-Collections",
+          "SP-Treat Team",
+          "Tech Support",
+          "CS-SP-Secondary_Queue",
+          "Onboarding queue",
+          "SP-Treat-Hotline",
+          "IBERIA iTero Sales Support",
+          "IBERIA Invisalign Sales Support",
+          "IBERIA PT iTero Sales Support",
+          "IBERIA PT Invisalign Sales Support"
         ],
         "UK": [
-          "UK-Invisalign",
-          "UK-iTero",
-          "UK-Tech Support",
-          "UK-iTero Onboarding",
-          "UK-iTero Training",
-          "UK-Clinical Support",
-          "UK-Treat",
-          "UK-Credit & Collections",
-          "UK-ISRs"
-        ],
-        "PL": [
-          "PL-Invisalign",
-          "PL-iTero",
-          "PL-Tech Support",
-          "PL-iTero Onboarding",
-          "PL-iTero Training",
-          "PL-Clinical Support",
-          "PL-Treat",
-          "PL-Credit & Collections",
-          "PL-ISRs"
-        ],
-        "FR": [
-          "FR-Invisalign",
-          "FR-iTero",
-          "FR-Tech Support",
-          "FR-iTero Onboarding",
-          "FR-iTero Training",
-          "FR-Clinical Support",
-          "FR-Treat",
-          "FR-Credit & Collections",
-          "FR-ISRs"
+          "UKI-Invisalign Queue",
+          "UKI-iTero Queue",
+          "UKI-Tech support",
+          "UKI-CS-General Queue"
         ]
       },
       "departments": [
@@ -112,21 +94,16 @@
         "Customer Service",
         "Recruiting"
       ],
-      "callerIddata":{
-        "US1": {
-          "phoneNumber": "+12563882164",
-          "queueName": "IT-Invisalign",
-          "queueSid" :"WQ175f8b1efdf8e0cf7e83d636c21329ed"
+      "callerIddata": {
+        "IB": {
+          "phoneNumber": "+34911671923",
+          "queueName": "Outbound",
+          "queueSid": "WQd64b82aa23f9654c1a81682eccf745f3"
         },
-        "US2": {
+        "UKI": {
           "phoneNumber": "+19412719861",
           "queueName": "IT-Master Plan",
-          "queueSid" :"WQ93b5a52a3c3f101fd32cb3bcb75f5def"
-        },
-        "US3": {
-            "phoneNumber": "+19412719862",
-            "queueName": "IT-General",
-            "queueSid" :"WQd7971c4f4f7264e2e6dcfdcd97468b0c"
+          "queueSid": "WQ93b5a52a3c3f101fd32cb3bcb75f5def"
         }
       }
     },
