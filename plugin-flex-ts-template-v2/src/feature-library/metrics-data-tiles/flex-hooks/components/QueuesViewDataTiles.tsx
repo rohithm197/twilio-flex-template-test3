@@ -19,6 +19,7 @@ import {
   isEnhancedAgentsByActivityPieChartEnabled,
   getAgentActivityConfig,
 } from '../../config';
+import AgentLocationActivityTile from '../../custom-components/AgentLocationActivityTile/AgentLocationActivityTile';
 
 const colors = getChannelColors();
 const channelList = Object.keys(getChannelsConfig()).map((ch) => ch.toLowerCase());
@@ -51,6 +52,11 @@ export const componentHook = function addDataTiles(flex: typeof Flex) {
       { sortOrder: 0 },
     );
   }
+
+  // flex.QueuesStats.AggregatedQueuesDataTiles.Content.add(
+  //   <AgentLocationActivityTile key="agent-location-activity-tile" />,
+  //   { sortOrder: 0 },
+  // );
 
   if (isEnhancedAgentsByActivityPieChartEnabled()) {
     const agentActivityConfig = getAgentActivityConfig();

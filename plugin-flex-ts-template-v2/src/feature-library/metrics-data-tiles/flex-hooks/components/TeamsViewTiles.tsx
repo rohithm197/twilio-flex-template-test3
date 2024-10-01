@@ -8,7 +8,7 @@ import { isTaskSummaryEnabled, isTeamActivityEnabled } from '../../config';
 
 export const componentName = FlexComponent.TeamsView;
 export const componentHook = function addTeamsViewTiles(flex: typeof Flex) {
-  if (isTaskSummaryEnabled() || isTeamActivityEnabled()) {
+  if (isTaskSummaryEnabled() || isTeamActivityEnabled() || true) {
     flex.TeamsView.Content.addWrapper((OriginalComponent) => (originalProps) => {
       const updatedProps = { ...originalProps };
       return (

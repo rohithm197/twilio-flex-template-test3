@@ -401,7 +401,7 @@ var appConfig = {
         enabled: true,
       },
       metrics_data_tiles: {
-        enabled: false,
+        enabled: true,
         queues_view_tiles: {
           active_tasks_data_tile: false,
           waiting_tasks_data_tile: false,
@@ -419,21 +419,21 @@ var appConfig = {
         channels: {
           Voice: {
             color: '#ADD8E6',
-            SLA_data_tile: true,
-            task_counts_data_tile: true,
-            teams_task_summary: true,
+            SLA_data_tile: false,
+            task_counts_data_tile: false,
+            teams_task_summary: false,
           },
           Chat: {
             color: '#87CEFA',
-            SLA_data_tile: true,
-            task_counts_data_tile: true,
-            teams_task_summary: true,
+            SLA_data_tile: false,
+            task_counts_data_tile: false,
+            teams_task_summary: false,
           },
           SMS: {
             color: '#59cef8',
             SLA_data_tile: false,
             task_counts_data_tile: false,
-            teams_task_summary: true,
+            teams_task_summary: false,
           },
           Video: {
             color: '#00CED1',
