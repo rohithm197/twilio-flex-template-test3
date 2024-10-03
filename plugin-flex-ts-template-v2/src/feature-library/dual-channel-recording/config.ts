@@ -6,6 +6,7 @@ const {
   channel,
   exclude_attributes = [],
   exclude_queues = [],
+  recording_location_list = []
 } = (getFeatureFlags()?.features?.dual_channel_recording as DualChannelRecordingConfig) || {};
 
 export const isFeatureEnabled = () => {
@@ -22,4 +23,8 @@ export const getExcludedAttributes = () => {
 
 export const getExcludedQueues = () => {
   return exclude_queues;
+};
+
+export const getRecordingLocationList = () => {
+  return recording_location_list;
 };
