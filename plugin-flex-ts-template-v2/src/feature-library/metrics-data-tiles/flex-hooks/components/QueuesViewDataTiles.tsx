@@ -52,12 +52,15 @@ export const componentHook = function addDataTiles(flex: typeof Flex) {
     );
   }
 
-  flex.QueuesStats.AggregatedQueuesDataTiles.defaultProps.dataTileFilter = (id) => {
-    if (id === 'agents-by-activity-chart-tile') {
-      return false;
-    }
-    return true;
-  };
+  // (flex.QueuesStats.AggregatedQueuesDataTiles as any).defaultProps = {
+  //   dataTileFilter: (id: string) => {
+  //     if (id === 'agents-by-activity-chart-tile') {
+  //       return false;
+  //     }
+  //     return true;
+  //   },
+  // };
+  
   if (isEnhancedAgentsByActivityPieChartEnabled()) {
     const agentActivityConfig = getAgentActivityConfig();
     flex.QueuesStats.AggregatedQueuesDataTiles.Content.add(
