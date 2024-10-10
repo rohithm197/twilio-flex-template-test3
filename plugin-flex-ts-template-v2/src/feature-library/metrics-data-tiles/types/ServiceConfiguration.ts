@@ -11,6 +11,7 @@ export default interface DataTilesConfig {
   teams_view_tiles: {
     task_summary_tile: boolean;
     team_activity_tile: boolean;
+    team_location_tile: boolean;
     status_idle_color: string;
     status_busy_color: string;
   };

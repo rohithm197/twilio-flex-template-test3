@@ -14,6 +14,7 @@ const {
   teams_view_tiles = {
     task_summary_tile: false,
     team_activity_tile: false,
+    team_location_tile: false,
     status_idle_color: 'limegreen',
     status_busy_color: 'royalblue',
   },
@@ -128,6 +129,9 @@ export const isTaskSummaryEnabled = () => {
 };
 export const isTeamActivityEnabled = () => {
   return teams_view_tiles.team_activity_tile;
+};
+export const isTeamLocationEnabled = () => {
+  return teams_view_tiles.team_location_tile;
 };
 export const getIdleStatusColor = () => {
   return teams_view_tiles.status_idle_color;
