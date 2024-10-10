@@ -401,7 +401,7 @@ var appConfig = {
         enabled: true,
       },
       metrics_data_tiles: {
-        enabled: false,
+        enabled: true,
         queues_view_tiles: {
           active_tasks_data_tile: false,
           waiting_tasks_data_tile: false,
@@ -413,6 +413,7 @@ var appConfig = {
         teams_view_tiles: {
           task_summary_tile: false,
           team_activity_tile: false,
+          team_location_tile: true,
           status_idle_color: 'limegreen',
           status_busy_color: 'royalblue',
         },
