@@ -35,14 +35,29 @@ const QueueDirectoryTab = (props: OwnProps) => {
     props.task && TaskHelper.isCBMTask(props.task) ? isCbmWarmTransferEnabled() : callWarmTransferEnabled;
   const isColdTransferEnabled = props.task && TaskHelper.isCBMTask(props.task) ? isCbmColdTransferEnabled() : true;
 
+  const manager = Manager.getInstance();
+  const workerLocation = manager.workerClient?.attributes?.location;
+
   // async function to retrieve the workers from the tr sdk
   // this will trigger the useEffect for a fetchedWorkers update
-  const fetchSDKWorkers = async () => {
-    if (!workspaceClient) {
-      return;
-    }
-    setFetchedWorkers(Array.from((await workspaceClient.fetchWorkers()).values()) as unknown as Array<Worker>);
-  };
+const fetchSDKWorkers = async () => {
+  if (!workspaceClient) {
+    return;
+  }
+
+  // Fetch the list of workers from workspaceClient
+  const workerArray = Array.from((await workspaceClient.fetchWorkers()).values()) as unknown as Array<Worker>;
+
+  // Filter workers by location, handling case insensitivity
+  setFetchedWorkers(() => {
+    return workerArray.filter(worker => {
+      const workerAttrLocation = worker?.attributes?.location?.toString().toLowerCase();
+      const normalizedWorkerLocation = workerLocation?.toString().toLowerCase();
+      return workerAttrLocation === normalizedWorkerLocation;
+    });
+  });
+};
+
 
   // function to filter the generatedQueueList and trigger a re-render
   const filterWorkers = () => {

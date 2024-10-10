@@ -15,15 +15,15 @@ import { StringTemplates } from '../../flex-hooks/strings';
 import {callerIdList} from '../../config'; //get the callerIds json/list from config
 import { friendlyName } from '@twilio/flex-ui/src/components/LiveCommsBar/LiveCommsBarItem/LiveCommsBarItem';
 
-const OutboundCallerIDSelectorComponent = () => {
+const OutboundQueueIDSelectorComponent = () => {
   const dispatch = useDispatch();
 
   //const { isFetchingPhoneNumbers, fetchingPhoneNumbersFailed, phoneNumbers, selectedCallerId } = useSelector(
   //  (state: AppState) => state[reduxNamespace].outboundCallerIdSelector as OutboundCallerIDSelectorState,
   //);
-  const {selectedCallerId} = useSelector(
-      (state: AppState) => state[reduxNamespace].outboundCallerIdSelector as OutboundCallerIDSelectorState,
-  );
+ // const {selectedCallerId} = useSelector(
+ //     (state: AppState) => state[reduxNamespace].outboundCallerIdSelector as OutboundCallerIDSelectorState,
+ // );
 
   //const [helpText, setHelpText] = useState(templates[StringTemplates.Loading]());
   const [selectOptions, setSelectOptions] = useState([] as PhoneNumberItem[]);
@@ -36,22 +36,23 @@ const OutboundCallerIDSelectorComponent = () => {
     //Define the callerId based on the workers location
     console.log('callerIdList****'+JSON.stringify(callerIdList));
     //const dynamicCallerId = callerIdList[loggedInWorkerLocation].phoneNumber;
-    const dynamicCallerId = (callerIdList[loggedInWorkerLocation] || callerIdList.US1).phoneNumber;
+    const dynamicQueueId = (callerIdList[loggedInWorkerLocation] || callerIdList.US1);
+
     
-    setSelectOptions([{friendlyName:dynamicCallerId, phoneNumber: dynamicCallerId}]);
-    dispatch(Actions.setCallerId(dynamicCallerId));
+    setSelectOptions([{friendlyName:dynamicQueueId.queueName, phoneNumber: dynamicQueueId.queueSid}]);
+    //dispatch(Actions.setCallerId(dynamicQueueId));
   }, []);
 
 
   return (
     <Box width="100%">
-      <Label htmlFor="outboundCallerIdSelect">
-        <Template source={templates[StringTemplates.CallerId]} />
+      <Label htmlFor="outboundQueueIdSelect">
+        Queue
       </Label>
       <Select
-        id="outboundCallerIdSelect"
-        value={selectedCallerId}
-        onChange={(e) => dispatch(Actions.setCallerId(e.target.value))}
+        id="outboundQueueIdSelect"
+       // value={selectedCallerId}
+        //onChange={(e) => dispatch(Actions.setCallerId(e.target.value))}
       >
         {selectOptions.map((item: PhoneNumberItem) => (
           <Option value={item.phoneNumber} disabled={item.phoneNumber === 'placeholder'} key={item.phoneNumber}>
@@ -63,4 +64,4 @@ const OutboundCallerIDSelectorComponent = () => {
   );
 };
 
-export default OutboundCallerIDSelectorComponent;
+export default OutboundQueueIDSelectorComponent;

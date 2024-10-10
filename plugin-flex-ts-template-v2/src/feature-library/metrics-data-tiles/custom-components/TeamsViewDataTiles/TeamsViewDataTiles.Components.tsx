@@ -4,13 +4,19 @@ export interface ThemeOnlyProps {
   theme?: any;
 }
 
-export const TeamsViewTilesContainer = styled('div')<ThemeOnlyProps>`
-  max-height: 220px;
-  display: flex;
+
+//Agent-activity-tile-component
+export const TeamsViewTilesMainContainer = styled('div')<ThemeOnlyProps>`
   width: 100%;
+  padding: 10px 28px 0px;
+  position: absolute;
+  top: 54px;
+`;
+
+export const TeamsViewTilesContainer = styled('div')<ThemeOnlyProps>`
+  display: flex;
+  width: fit-content;
   margin-top: ${({ theme }) => theme.tokens.spacings.space40};
-  margin-left: auto;
-  margin-right: auto;
   margin-bottom: ${({ theme }) => theme.tokens.spacings.space0};
   height: auto;
   box-sizing: border-box;
@@ -22,4 +28,11 @@ export const TeamsViewTilesContainer = styled('div')<ThemeOnlyProps>`
     margin-left: ${({ theme }) => theme.tokens.spacings.space50};
   }
   ${(props) => props.theme.QueuesStats.TilesGrid}
+`;
+
+//Agent-activity-tile-component
+export const TeamsHeaderTilesContainer = styled('div')<ThemeOnlyProps>`
+  position: relative;
+  top: 42px;
+  z-index: 1;
 `;

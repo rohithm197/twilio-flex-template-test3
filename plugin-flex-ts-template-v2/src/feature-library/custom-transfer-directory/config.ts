@@ -102,3 +102,7 @@ export const isCustomWorkerTransferEnabled = (): boolean => {
 export const showOnlyAvailableWorkers = (): boolean => {
   return show_only_available_workers;
 };
+
+export const getCommonFeatureDetails = () => {
+  return getFeatureFlags().common || {};
+}

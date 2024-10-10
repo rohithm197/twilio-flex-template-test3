@@ -27,25 +27,27 @@ export const eventHook = function createCaseAfterTaskAcceptance(
   // your code here
  console.log('task attributes--'+JSON.stringify(task.attributes));
  console.log('Task accepted-agent answered call worker attributes----'+JSON.stringify(manager.workerClient?.attributes));
+ if(task.taskChannelUniqueName === 'voice' && task.attributes.direction && task.attributes.direction === 'inbound'){
     if (task.attributes.sfcontactid && task.attributes.sfcontactid !== ''  ) {
-        if (task.attributes.ticketId && task.attributes.ticketId !== '') {
-          if (manager.workerClient?.attributes.userId) {
-            updateSfTicket(task.attributes.ticketId,manager.workerClient?.attributes.userId)
-            screenPop(task.attributes.ticketId)
-          }else{
-            console.log('Cannnot update SF ticket owner ID. Worker attributes missing userId.')
-          }
-        }else {
-            //No Existing Ticket Associated with Task
-            console.log('No existing Ticket in SF')
-            screenPop(task.attributes.sfcontactid)
-            createSfTicket(task)
-            //createSfTask(task)
-          }
+      if (task.attributes.ticketId && task.attributes.ticketId !== '') {
+        if (manager.workerClient?.attributes.userId) {
+          updateSfTicket(task.attributes.ticketId,manager.workerClient?.attributes.userId)
+          screenPop(task.attributes.ticketId)
+        }else{
+          console.log('Cannnot update SF ticket owner ID. Worker attributes missing userId.')
+        }
       }else {
+          //No Existing Ticket Associated with Task
+          console.log('No existing Ticket in SF')
+          screenPop(task.attributes.sfcontactid)
+          createSfTicket(task)
+          //createSfTask(task)
+      }
+    }else {
           //No SF Contact ID
           createSfTicket(task)//as per ESW-1739 added creation of tickets for un recognized callers//For Italy, no auto creation of tickets in case of caller not recognized
           console.log('acceptedReservation else condition passed No SF Contact recognized ---')
           //screenPop();
-      }
+    }
+  }
 }
