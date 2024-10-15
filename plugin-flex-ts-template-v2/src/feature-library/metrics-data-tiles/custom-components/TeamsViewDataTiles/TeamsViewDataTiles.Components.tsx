@@ -7,7 +7,7 @@ export interface ThemeOnlyProps {
 
 //Agent-activity-tile-component
 export const TeamsViewTilesMainContainer = styled('div')<ThemeOnlyProps>`
-  width: 100%;
+  width: auto;
   padding: 10px 28px 0px;
   position: absolute;
   top: 54px;
