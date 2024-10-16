@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as Flex from '@twilio/flex-ui';
 
 import { FlexComponent } from '../../../../types/feature-loader';
@@ -37,6 +37,13 @@ export const componentHook = function addDataTiles(flex: typeof Flex) {
     );
   });
 
+  // useEffect(() => {
+  //   (flex.QueuesStats.AggregatedQueuesDataTiles as any).defaultProps.dataTileFilter = (id: string) => {
+  //     return id !== 'agents-by-activity-chart-tile';
+  //   };
+  //   // No cleanup function needed
+  // }, []); // Empty dependency array to run only on mount
+
   const slaTileChannels = getSLATileChannels();
   slaTileChannels.forEach((ch) => {
     flex.QueuesStats.AggregatedQueuesDataTiles.Content.add(
@@ -52,7 +59,6 @@ export const componentHook = function addDataTiles(flex: typeof Flex) {
     );
   }
 
-
   if (isEnhancedAgentsByActivityPieChartEnabled()) {
     const agentActivityConfig = getAgentActivityConfig();
     flex.QueuesStats.AggregatedQueuesDataTiles.Content.add(
@@ -61,12 +67,12 @@ export const componentHook = function addDataTiles(flex: typeof Flex) {
     );
   }
 
-  // (flex.QueuesStats.AggregatedQueuesDataTiles as any).defaultProps.dataTileFilter = (id: string) => {
-  //   if (id === 'agents-by-activity-chart-tile') {
-  //     return false;
-  //   }
-  //   return true;
-  // };
+  (flex.QueuesStats.AggregatedQueuesDataTiles as any).defaultProps.dataTileFilter = (id: string) => {
+    if (id === 'agents-by-activity-chart-tile') {
+      return false;
+    }
+    return true;
+  };
 
   if (!isActiveTasksEnabled()) {
     flex.QueuesStats.AggregatedQueuesDataTiles.Content.remove('active-tasks-tile');
