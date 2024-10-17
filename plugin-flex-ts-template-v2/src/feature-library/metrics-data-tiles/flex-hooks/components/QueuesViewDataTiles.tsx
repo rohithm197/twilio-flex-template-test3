@@ -37,12 +37,6 @@ export const componentHook = function addDataTiles(flex: typeof Flex) {
     );
   });
 
-  // useEffect(() => {
-  //   (flex.QueuesStats.AggregatedQueuesDataTiles as any).defaultProps.dataTileFilter = (id: string) => {
-  //     return id !== 'agents-by-activity-chart-tile';
-  //   };
-  //   // No cleanup function needed
-  // }, []); // Empty dependency array to run only on mount
 
   const slaTileChannels = getSLATileChannels();
   slaTileChannels.forEach((ch) => {
@@ -67,15 +61,6 @@ export const componentHook = function addDataTiles(flex: typeof Flex) {
     );
   }
 
-  // Check if AggregatedQueuesDataTiles exists
-  if (flex.QueuesStats && flex.QueuesStats.AggregatedQueuesDataTiles) {
-    // Set the dataTileFilter
-    flex.QueuesStats.AggregatedQueuesDataTiles.defaultProps.dataTileFilter = (id: string) => {
-      return id !== 'agents-by-activity-chart-tile'; // Return false for the specific ID
-    };
-  } else {
-    console.error('AggregatedQueuesDataTiles is undefined.');
-  }
 
   if (!isActiveTasksEnabled()) {
     flex.QueuesStats.AggregatedQueuesDataTiles.Content.remove('active-tasks-tile');
