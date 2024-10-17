@@ -67,13 +67,12 @@ export const componentHook = function addDataTiles(flex: typeof Flex) {
     );
   }
 
-  if (flex.QueuesStats.AggregatedQueuesDataTiles) {
-    (flex.QueuesStats.AggregatedQueuesDataTiles as any).defaultProps.dataTileFilter = (id: string) => {
-        return id !== 'agents-by-activity-chart-tile';
-    };
-} else {
-    console.error("AggregatedQueuesDataTiles is undefined.");
-}
+  flex.QueuesStats.AggregatedQueuesDataTiles.defaultProps.dataTileFilter = (id: string) => {
+    if (id === 'agents-by-activity-chart-tile') {
+      return false;
+    }
+    return true;
+  };
 
   if (!isActiveTasksEnabled()) {
     flex.QueuesStats.AggregatedQueuesDataTiles.Content.remove('active-tasks-tile');
