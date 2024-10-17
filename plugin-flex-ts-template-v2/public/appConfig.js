@@ -132,6 +132,29 @@ var appConfig = {
       ],
     },
     features: {
+      embedded_insights_dashboards: {
+        enabled: true,
+        workspace_uri: '/gdc/workspaces/cfwqkednqj571z1wa1aaxwh9nt6pz9l6',
+        dashboards: [
+          {
+            title: 'IM-Abandoned Comparison',
+            dashboard_uri: 'gdc/md/cfwqkednqj571z1wa1aaxwh9nt6pz9l6/obj/2121257',
+          },
+          {
+            title: 'IM-Volume Comparison',
+            dashboard_uri: '/gdc/md/cfwqkednqj571z1wa1aaxwh9nt6pz9l6/obj/2100794',
+          },
+          {
+            title: 'IM-Trends',
+            dashboard_uri: '/gdc/md/cfwqkednqj571z1wa1aaxwh9nt6pz9l6/obj/2121396',
+          },
+          {
+            title: 'IM-RAW',
+            dashboard_uri: '/gdc/md/cfwqkednqj571z1wa1aaxwh9nt6pz9l6/obj/2121256',
+          },
+        ],
+        analytics_base_url: 'https://analytics.ytica.com/dashboard.html',
+      },
       activity_skill_filter: {
         enabled: true,
         rules: {
