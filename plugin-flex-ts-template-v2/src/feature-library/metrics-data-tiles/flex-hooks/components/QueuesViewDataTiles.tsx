@@ -62,10 +62,8 @@ export const componentHook = function addDataTiles(flex: typeof Flex) {
 
   if (flex.QueuesStats.AggregatedQueuesDataTiles?.defaultProps) {
     flex.QueuesStats.AggregatedQueuesDataTiles.defaultProps.dataTileFilter = (id: string) => {
-      if (id === 'agents-by-activity-chart-tile') {
-        return false;
-      }
-      return true;
+      // Always return false for agents-by-activity-chart-tile
+      return id !== 'agents-by-activity-chart-tile';
     };
   }
 
