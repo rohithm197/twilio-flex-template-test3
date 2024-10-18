@@ -60,10 +60,14 @@ export const componentHook = function addDataTiles(flex: typeof Flex) {
     );
   }
 
-if (flex.QueuesStats.AggregatedQueuesDataTiles?.defaultProps) {
-    flex.QueuesStats.AggregatedQueuesDataTiles.defaultProps.dataTileFilter = id => id !== 'agents-by-activity-chart-tile';
-}
-
+  if (flex.QueuesStats.AggregatedQueuesDataTiles?.defaultProps) {
+    flex.QueuesStats.AggregatedQueuesDataTiles.defaultProps.dataTileFilter = (id: string) => {
+      if (id === 'agents-by-activity-chart-tile') {
+        return false;
+      }
+      return true;
+    };
+  }
 
   if (!isActiveTasksEnabled()) {
     flex.QueuesStats.AggregatedQueuesDataTiles.Content.remove('active-tasks-tile');
