@@ -60,11 +60,12 @@ export const componentHook = function addDataTiles(flex: typeof Flex) {
       { sortOrder: 6 },
     );
   }
-
+  if (!isAgentsByActivityEnabled()) {
   flex.QueuesStats.AggregatedQueuesDataTiles.Content.add(
     <HideAgentTile key={'hide-agent-tile'} />,
     { sortOrder: 6 },
   );
+}
 
   console.log('=== QUEUES VIEW DATA TILES =====', flex.QueuesStats);
 
