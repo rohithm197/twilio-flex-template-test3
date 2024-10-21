@@ -60,7 +60,9 @@ export const componentHook = function addDataTiles(flex: typeof Flex) {
     );
   }
 
+  console.log('=== QUEUES VIEW DATA TILES ===');
   if (flex.QueuesStats.AggregatedQueuesDataTiles?.defaultProps) {
+    console.log('=== QUEUES VIEW DATA TILES ===', true);
     flex.QueuesStats.AggregatedQueuesDataTiles.defaultProps.dataTileFilter = (id: string) => {
       if (id === 'agents-by-activity-chart-tile') {
         return false;
