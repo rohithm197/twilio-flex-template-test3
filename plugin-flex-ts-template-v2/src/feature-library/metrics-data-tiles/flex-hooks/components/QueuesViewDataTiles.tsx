@@ -6,11 +6,12 @@ import ChannelTaskCountTile from '../../custom-components/ChannelTaskCountTile/C
 import ChannelSLATile from '../../custom-components/ChannelSLATile/ChannelSLATile';
 import AllChannelsSLATile from '../../custom-components/AllChannelsSLATile/AllChannelsSLATile';
 import AgentActivityTile from '../../custom-components/AgentActivityTile/AgentActivityTile';
+import HideAgentTile from '../../custom-components/HideAgentTile';
 import {
   isActiveTasksEnabled,
   isWaitingTasksEnabled,
   isLongestWaitTimeEnabled,
-isAgentsByActivityEnabled,
+  isAgentsByActivityEnabled,
   getChannelsConfig,
   getChannelColors,
   getTaskCountsTileChannels,
@@ -60,6 +61,12 @@ export const componentHook = function addDataTiles(flex: typeof Flex) {
     );
   }
 
+  flex.QueuesStats.AggregatedQueuesDataTiles.Content.add(
+    <HideAgentTile key={'hide-agent-tile'} />,
+    { sortOrder: 6 },
+  );
+
+  console.log('=== QUEUES VIEW DATA TILES =====', flex.QueuesStats);
 
   if (!isActiveTasksEnabled()) {
     flex.QueuesStats.AggregatedQueuesDataTiles.Content.remove('active-tasks-tile');
@@ -73,6 +80,7 @@ export const componentHook = function addDataTiles(flex: typeof Flex) {
   console.log('isAgentsByActivityEnabled', isAgentsByActivityEnabled());
 
   if (!isAgentsByActivityEnabled()) {
+    console.log('REMOVE agents-by-activity-chart-tile !isAgentsByActivityEnabled()', isAgentsByActivityEnabled())
     flex.QueuesStats.AggregatedQueuesDataTiles.Content.remove('agents-by-activity-chart-tile');
   }
 };

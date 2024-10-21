@@ -400,7 +400,7 @@
           "longest_wait_time_data_tile": false,
           "agents_by_activity_bar_chart": false,
           "all_channels_data_tile": false,
-          "enhanced_agent_by_activity_pie_chart": true
+          "enhanced_agent_by_activity_pie_chart": false
         },
         "teams_view_tiles": {
           "task_summary_tile": false,
