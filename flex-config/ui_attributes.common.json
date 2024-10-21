@@ -22,6 +22,13 @@
           "IT-Credit & Collections",
           "IT-ISRs"
         ],
+        "IB": [
+          "IB-Invisalign CS",
+          "IB-iTero CS",
+          "IB-Invisalign Sales Support",
+          "IB-Treat Team",
+          "IB-Tech Support"
+        ],
         "UK": [
           "UK-Invisalign CS",
           "UK-iTero CS",
@@ -57,12 +64,7 @@
         ]
       },
       "queuesList": {
-        "IT": [
-          "IT-Invisalign",
-          "IT-General",
-          "IT-Master Plan",
-          "IT-iTero"
-        ],
+        "IT": ["IT-Invisalign", "IT-General", "IT-Master Plan", "IT-iTero"],
         "IB": [
           "CS-SP-Primary_Queue",
           "iTero-SP-Primary_Queue",
@@ -343,10 +345,7 @@
         "per_queue": {
           "exampleQueueName": {
             "require_disposition": true,
-            "dispositions": [
-              "Promotional Sale",
-              "Renewal"
-            ],
+            "dispositions": ["Promotional Sale", "Renewal"],
             "text_attributes": [],
             "select_attributes": []
           }
