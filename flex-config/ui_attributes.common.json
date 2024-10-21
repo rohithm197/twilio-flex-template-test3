@@ -106,10 +106,10 @@
           "queueName": "Outbound",
           "queueSid": "WQd64b82aa23f9654c1a81682eccf745f3"
         },
-        "UKI": {
+        "UK": {
           "phoneNumber": "+19412719861",
-          "queueName": "IT-Master Plan",
-          "queueSid": "WQ93b5a52a3c3f101fd32cb3bcb75f5def"
+          "queueName": "UKI-Invisalign Queue",
+          "queueSid": "WQ7f0cfbe115999b33c42c91dd8c417eac"
         }
       }
     },

@@ -1,10 +1,9 @@
 import { Manager } from '@twilio/flex-ui';
 import * as Flex from '@twilio/flex-ui';
 
-import { isFeatureEnabled, getCustomDashboards, getWorkspaceUri, getAnalyticsBaseUrl } from '../config';
+import { isFeatureEnabled, getCustomDashboards, getWorkspaceUri, getAnalyticsBaseUrl,queuesList } from '../config';
 
 export const canShowEmbeddedDashboardManager = (manager: Manager) => {
-  //const { roles } = manager.user;
   const getroles = manager.workerClient?.attributes;
   const roles = getroles?.roles;
   console.log('roles----',roles);
@@ -17,7 +16,11 @@ export const getDashboards = (manager: Manager) => {
 
   console.log('departmentName---'+departmentName);
 
-  if (!departmentName) {
+  //const dynamicCallerId = callerIdList[loggedInWorkerLocation].phoneNumber;
+  const fqueuesList = queuesList[departmentName];
+  console.log('fqueuesList---'+fqueuesList);
+
+  if (!departmentName) { 
     return [];
   }
 
@@ -34,9 +37,16 @@ export const getDashboards = (manager: Manager) => {
     'label.conversations.handling_department_name': departmentName,
   }).toString();
 
+  // Build the queue parameters - Sunil
+  const queueParams = fqueuesList
+    .map((queue: string) => `label.conversations.queue=${encodeURIComponent(queue)}`)
+    .join('&');
+    console.log('queueParams---',queueParams);
+    
   return getCustomDashboards().map((dashboard) => ({
     name: dashboard.title,
-    url: `${baseUrl}?${params}&${filterParam}#workspace=${workspaceUri}&dashboard=${dashboard.dashboard_uri}`,
+    //url: `${baseUrl}?${params}&${filterParam}#workspace=${workspaceUri}&dashboard=${dashboard.dashboard_uri}`,
+    url: `${baseUrl}?${params}&${filterParam}&${queueParams}#workspace=${workspaceUri}&dashboard=${dashboard.dashboard_uri}`,
   }));
 };
 
