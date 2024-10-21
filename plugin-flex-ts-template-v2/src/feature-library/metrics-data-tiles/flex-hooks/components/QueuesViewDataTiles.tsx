@@ -62,8 +62,10 @@ export const componentHook = function addDataTiles(flex: typeof Flex) {
 
   if (flex.QueuesStats.AggregatedQueuesDataTiles?.defaultProps) {
     flex.QueuesStats.AggregatedQueuesDataTiles.defaultProps.dataTileFilter = (id: string) => {
-      // Always return false for agents-by-activity-chart-tile
-      return id !== 'agents-by-activity-chart-tile';
+      if (id === 'agents-by-activity-chart-tile') {
+        return false;
+      }
+      return true;
     };
   }
 
@@ -76,6 +78,8 @@ export const componentHook = function addDataTiles(flex: typeof Flex) {
   if (!isLongestWaitTimeEnabled()) {
     flex.QueuesStats.AggregatedQueuesDataTiles.Content.remove('longest-wait-time-tile');
   }
+  console.log('isAgentsByActivityEnabled', isAgentsByActivityEnabled());
+
   if (!isAgentsByActivityEnabled()) {
     flex.QueuesStats.AggregatedQueuesDataTiles.Content.remove('agents-by-activity-chart-tile');
   }
