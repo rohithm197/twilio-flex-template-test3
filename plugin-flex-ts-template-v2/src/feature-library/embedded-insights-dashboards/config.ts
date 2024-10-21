@@ -23,3 +23,7 @@ export const getWorkspaceUri = () => {
 export const getAnalyticsBaseUrl = () => {
   return analytics_base_url;
 };
+
+const queuesList = getFeatureFlags()?.common.queuesList;
+console.log('queuesList dashboard----',queuesList);
+export {queuesList};
