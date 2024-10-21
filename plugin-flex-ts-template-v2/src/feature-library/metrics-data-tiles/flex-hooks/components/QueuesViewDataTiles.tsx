@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as Flex from '@twilio/flex-ui';
 
 import { FlexComponent } from '../../../../types/feature-loader';
@@ -52,21 +52,19 @@ export const componentHook = function addDataTiles(flex: typeof Flex) {
     );
   }
 
-  // (flex.QueuesStats.AggregatedQueuesDataTiles as any).defaultProps = {
-  //   dataTileFilter: (id: string) => {
-  //     if (id === 'agents-by-activity-chart-tile') {
-  //       return false;
-  //     }
-  //     return true;
-  //   },
-  // };
-  
   if (isEnhancedAgentsByActivityPieChartEnabled()) {
     const agentActivityConfig = getAgentActivityConfig();
     flex.QueuesStats.AggregatedQueuesDataTiles.Content.add(
       <AgentActivityTile key="agent-activity-tile" activityConfig={agentActivityConfig} />,
       { sortOrder: 6 },
     );
+  }
+
+  if (flex.QueuesStats.AggregatedQueuesDataTiles?.defaultProps) {
+    flex.QueuesStats.AggregatedQueuesDataTiles.defaultProps.dataTileFilter = (id: string) => {
+      // Always return false for agents-by-activity-chart-tile
+      return id !== 'agents-by-activity-chart-tile';
+    };
   }
 
   if (!isActiveTasksEnabled()) {

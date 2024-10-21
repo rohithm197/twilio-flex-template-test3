@@ -1,11 +1,9 @@
 import { Manager } from '@twilio/flex-ui';
 import * as Flex from '@twilio/flex-ui';
-//import 
 
 import { isFeatureEnabled, getCustomDashboards, getWorkspaceUri, getAnalyticsBaseUrl,queuesList } from '../config';
 
 export const canShowEmbeddedDashboardManager = (manager: Manager) => {
-  //const { roles } = manager.user;
   const getroles = manager.workerClient?.attributes;
   const roles = getroles?.roles;
   console.log('roles----',roles);

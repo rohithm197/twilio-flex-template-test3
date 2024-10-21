@@ -281,13 +281,12 @@ var appConfig = {
         log_filters: false,
         applied_filters: {
           activities: true,
-          email: true,
-          department: true,
+          email: false,
+          department: false,
           queue_no_worker_data: false,
           queue_worker_data: false,
           team: true,
-          agent_skills: true,
-          asset_serverless_domain: 'teamlist-1839.twil.io',
+          agent_skills: false,
         },
       },
       supervisor_capacity: {
@@ -443,7 +442,7 @@ var appConfig = {
           active_tasks_data_tile: false,
           waiting_tasks_data_tile: false,
           longest_wait_time_data_tile: false,
-          agents_by_activity_bar_chart: true,
+          agents_by_activity_bar_chart: false,
           all_channels_data_tile: false,
           enhanced_agent_by_activity_pie_chart: false,
         },
@@ -457,15 +456,15 @@ var appConfig = {
         channels: {
           Voice: {
             color: '#ADD8E6',
-            SLA_data_tile: true,
-            task_counts_data_tile: true,
-            teams_task_summary: true,
+            SLA_data_tile: false,
+            task_counts_data_tile: false,
+            teams_task_summary: false,
           },
           Chat: {
             color: '#87CEFA',
-            SLA_data_tile: true,
-            task_counts_data_tile: true,
-            teams_task_summary: true,
+            SLA_data_tile: false,
+            task_counts_data_tile: false,
+            teams_task_summary: false,
           },
           SMS: {
             color: '#59cef8',
