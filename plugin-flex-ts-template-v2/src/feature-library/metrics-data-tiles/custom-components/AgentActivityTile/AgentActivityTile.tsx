@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { PieChart } from 'react-minimal-pie-chart';
 import { Box } from '@twilio-paste/core/box';
 import { BaseDataEntry, Data } from 'react-minimal-pie-chart/types/commonTypes';
@@ -9,6 +9,7 @@ import { ActivityStatistic } from '@twilio/flex-ui/src/state/QueuesState';
 import { WideTileWrapper, Title, Summary, Chart } from '../DataTiles.Components';
 import { AgentActivity, Label, Metric } from './AgentActivityTile.Components';
 import { StringTemplates } from '../../flex-hooks/strings';
+import * as Flex from '@twilio/flex-ui';
 
 interface ActivityCounts {
   [key: string]: number;
@@ -55,6 +56,21 @@ const AgentActivityTile = (props: ComponentProps) => {
   }
   const activityNames = Object.keys(activityConfig.activities);
 
+  // Flex.QueuesStats.AggregatedQueuesDataTiles.defaultProps.dataTileFilter
+
+  useEffect(() => {
+    console.log('USEEFFECT called');
+    Flex.QueuesStats.AggregatedQueuesDataTiles.Content.remove('agents-by-activity-chart-tile');
+    if (Flex.QueuesStats.AggregatedQueuesDataTiles?.defaultProps) {
+      console.log('AGENT ACtivity Tile === QUEUES VIEW DATA TILES ===', true);
+      Flex.QueuesStats.AggregatedQueuesDataTiles.defaultProps.dataTileFilter = (id: string) => {
+        if (id === 'agents-by-activity-chart-tile') {
+          return false;
+        }
+        return true;
+      };
+    }
+  }, [Flex]);
   return (
     <WideTileWrapper className="Twilio-AggregatedDataTile">
       <Summary>

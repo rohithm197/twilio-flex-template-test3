@@ -10,7 +10,7 @@ import {
   isActiveTasksEnabled,
   isWaitingTasksEnabled,
   isLongestWaitTimeEnabled,
-  isAgentsByActivityEnabled,
+isAgentsByActivityEnabled,
   getChannelsConfig,
   getChannelColors,
   getTaskCountsTileChannels,
@@ -60,12 +60,6 @@ export const componentHook = function addDataTiles(flex: typeof Flex) {
     );
   }
 
-  flex.QueuesStats.AggregatedQueuesDataTiles.defaultProps.dataTileFilter = (id: string) => {
-    if (id === 'agents-by-activity-chart-tile') {
-      return false;
-    }
-    return true;
-  };
 
   if (!isActiveTasksEnabled()) {
     flex.QueuesStats.AggregatedQueuesDataTiles.Content.remove('active-tasks-tile');
