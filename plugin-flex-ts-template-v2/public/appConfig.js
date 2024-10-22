@@ -166,6 +166,10 @@ var appConfig = {
             title: 'IM-RAW',
             dashboard_uri: '/gdc/md/cfwqkednqj571z1wa1aaxwh9nt6pz9l6/obj/2121256',
           },
+          {
+            title: 'IM-EMEA Dashboard WFM',
+            dashboard_uri: '/gdc/md/cfwqkednqj571z1wa1aaxwh9nt6pz9l6/obj/2163115',
+          },
         ],
         analytics_base_url: 'https://analytics.ytica.com/dashboard.html',
       },

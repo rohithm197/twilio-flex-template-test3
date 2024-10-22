@@ -24,6 +24,6 @@ export const getAnalyticsBaseUrl = () => {
   return analytics_base_url;
 };
 
-const queuesList = getFeatureFlags()?.common.queuesList;
+const queuesList = getFeatureFlags()?.common.queuesList;// Sunil - To apply queue filters to the dashboard w.r.t loggedin user location.
 console.log('queuesList dashboard----',queuesList);
 export {queuesList};
