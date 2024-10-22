@@ -29,6 +29,13 @@ var appConfig = {
           'IT-Credit & Collections',
           'IT-ISRs',
         ],
+        IB: [
+          'IB-Invisalign CS',
+          'IB-iTero CS',
+          'IB-Invisalign Sales Support',
+          'IB-Treat Team',
+          'IB-Tech Support'
+        ],
         UK: [
           'UK-Invisalign CS',
           'UK-iTero CS',

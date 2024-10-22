@@ -6,6 +6,7 @@ import ChannelTaskCountTile from '../../custom-components/ChannelTaskCountTile/C
 import ChannelSLATile from '../../custom-components/ChannelSLATile/ChannelSLATile';
 import AllChannelsSLATile from '../../custom-components/AllChannelsSLATile/AllChannelsSLATile';
 import AgentActivityTile from '../../custom-components/AgentActivityTile/AgentActivityTile';
+import HideAgentTile from '../../custom-components/HideAgentTile';
 import {
   isActiveTasksEnabled,
   isWaitingTasksEnabled,
@@ -59,13 +60,14 @@ export const componentHook = function addDataTiles(flex: typeof Flex) {
       { sortOrder: 6 },
     );
   }
+  if (!isAgentsByActivityEnabled()) {
+  flex.QueuesStats.AggregatedQueuesDataTiles.Content.add(
+    <HideAgentTile key={'hide-agent-tile'} />,
+    { sortOrder: 6 },
+  );
+}
 
-  if (flex.QueuesStats.AggregatedQueuesDataTiles?.defaultProps) {
-    flex.QueuesStats.AggregatedQueuesDataTiles.defaultProps.dataTileFilter = (id: string) => {
-      // Always return false for agents-by-activity-chart-tile
-      return id !== 'agents-by-activity-chart-tile';
-    };
-  }
+  console.log('=== QUEUES VIEW DATA TILES =====', flex.QueuesStats);
 
   if (!isActiveTasksEnabled()) {
     flex.QueuesStats.AggregatedQueuesDataTiles.Content.remove('active-tasks-tile');
@@ -76,7 +78,10 @@ export const componentHook = function addDataTiles(flex: typeof Flex) {
   if (!isLongestWaitTimeEnabled()) {
     flex.QueuesStats.AggregatedQueuesDataTiles.Content.remove('longest-wait-time-tile');
   }
+  console.log('isAgentsByActivityEnabled', isAgentsByActivityEnabled());
+
   if (!isAgentsByActivityEnabled()) {
+    console.log('REMOVE agents-by-activity-chart-tile !isAgentsByActivityEnabled()', isAgentsByActivityEnabled())
     flex.QueuesStats.AggregatedQueuesDataTiles.Content.remove('agents-by-activity-chart-tile');
   }
 };
