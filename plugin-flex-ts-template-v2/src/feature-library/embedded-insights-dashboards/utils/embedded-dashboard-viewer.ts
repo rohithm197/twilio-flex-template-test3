@@ -8,15 +8,14 @@ export const canShowEmbeddedDashboardManager = (manager: Manager) => {
   const roles = getroles?.roles;
   console.log('roles----',roles);
   //return isFeatureEnabled() === true && (roles.indexOf('admin') >= 0 || roles.indexOf('supervisor') >= 0);// Limiting the
-  return isFeatureEnabled() === true && roles.indexOf('wfo.flex_dashboard_viewer') >= 0;// Limiting the view to only Supervisor
+  return isFeatureEnabled() === true && roles.indexOf('wfo.flex_dashboard_viewer') >= 0;// Limiting the view to only users with role - flex_dashboard_viewer
 };
 
 export const getDashboards = (manager: Manager) => {
-  const departmentName = getDepartmentName(manager);
 
+  const departmentName = getDepartmentName(manager);
   console.log('departmentName---'+departmentName);
 
-  //const dynamicCallerId = callerIdList[loggedInWorkerLocation].phoneNumber;
   const fqueuesList = queuesList[departmentName];
   console.log('fqueuesList---'+fqueuesList);
 
@@ -33,21 +32,31 @@ export const getDashboards = (manager: Manager) => {
     preventDefault: 'true',
   }).toString();
 
-  const filterParam = new URLSearchParams({
-    'label.conversations.handling_department_name': departmentName,
-  }).toString();
+  // const filterParam = new URLSearchParams({
+  //   'label.conversations.handling_department_name=vals=': departmentName === 'IB'? `,${departmentName}`: departmentName
+  // }).toString();
+
+  const filterParam = 'label.conversations.handling_department_name=vals='+( departmentName === 'IB'? `,${departmentName}`: departmentName);
 
   // Build the queue parameters - Sunil
-  const queueParams = fqueuesList
+  // const queueParams = fqueuesList
+  //   .map((queue: string) => `label.conversations.queue=${encodeURIComponent(queue)}`)
+  //   .join('&');
+  //   console.log('queueParams---',queueParams);
+
+  let queueParams = fqueuesList
     .map((queue: string) => `label.conversations.queue=${encodeURIComponent(queue)}`)
-    .join('&');
-    console.log('queueParams---',queueParams);
-    
-  return getCustomDashboards().map((dashboard) => ({
+     .join('&');
+     queueParams+='&label.conversations.queue='
+     console.log('queueParams---',queueParams);
+
+  
+
+  return getCustomDashboards().map((dashboard) => {return{
     name: dashboard.title,
     //url: `${baseUrl}?${params}&${filterParam}#workspace=${workspaceUri}&dashboard=${dashboard.dashboard_uri}`,
     url: `${baseUrl}?${params}&${filterParam}&${queueParams}#workspace=${workspaceUri}&dashboard=${dashboard.dashboard_uri}`,
-  }));
+  }});
 };
 
 const getDepartmentName = (manager: Manager) => {
