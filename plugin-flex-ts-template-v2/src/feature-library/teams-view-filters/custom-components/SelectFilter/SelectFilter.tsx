@@ -81,16 +81,16 @@ export const MultiSelectFilter = (props: OwnProps) => {
   }, [selectedQueue]);
 
     // # 001 - teams worker attributes
-    useEffect(() => {
-      const teams = getTeams();
-      const fetchWorkerData = () => {
-        if (props.name === 'teams') {
-          setSelectedItems(teams);
-        }
-      };
+    // useEffect(() => {
+    //   const teams = getTeams();
+    //   const fetchWorkerData = () => {
+    //     if (props.name === 'teams') {
+    //       setSelectedItems(teams);
+    //     }
+    //   };
   
-      fetchWorkerData();
-    }, [props.name]);
+    //   fetchWorkerData();
+    // }, [props.name]);
   
     // #001 - teams worker attributes
 
