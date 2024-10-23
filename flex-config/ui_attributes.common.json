@@ -109,7 +109,7 @@
           "queueSid": "WQd64b82aa23f9654c1a81682eccf745f3"
         },
         "UK": {
-          "phoneNumber": "+19412719861",
+          "phoneNumber": "+447883283812",
           "queueName": "UKI-Invisalign Queue",
           "queueSid": "WQ7f0cfbe115999b33c42c91dd8c417eac"
         }
@@ -542,6 +542,10 @@
           {
             "title": "IM-RAW",
             "dashboard_uri": "/gdc/md/cfwqkednqj571z1wa1aaxwh9nt6pz9l6/obj/2121256"
+          },
+          {
+            "title": "IM-EMEA Dashboard WFM",
+            "dashboard_uri": "/gdc/md/cfwqkednqj571z1wa1aaxwh9nt6pz9l6/obj/2163115"
           }
         ],
         "analytics_base_url": "https://analytics.ytica.com/dashboard.html"
