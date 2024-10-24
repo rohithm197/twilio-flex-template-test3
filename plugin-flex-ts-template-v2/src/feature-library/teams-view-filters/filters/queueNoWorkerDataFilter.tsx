@@ -28,18 +28,15 @@ import { getCommonFeatureDetails } from '../../caller-id/config';
 */
 
 export const queueNoWorkerDataFilter = async () => {
-  useEffect(() => {
-    const commonSettings = getCommonFeatureDetails();
-    const AVAILABLE_QUEUES = commonSettings.queuesStatsList;
+  // useEffect(() => {
+  //   const commonSettings = getCommonFeatureDetails();
+  //   const AVAILABLE_QUEUES = commonSettings.queuesStatsList;
 
-    Flex.QueuesStats.setFilter((queue) => {
-      return AVAILABLE_QUEUES.includes(queue.friendly_name);
-    });
+  //   Flex.QueuesStats.setFilter((queue) => {
+  //     return AVAILABLE_QUEUES.includes(queue.friendly_name);
+  //   });
 
-    Flex.QueuesStats.setSubscriptionFilter((queue) => {
-      return AVAILABLE_QUEUES.includes(queue.friendly_name);
-    });
-  }, []); // Empty dependency array to run only on mount
+  // }, []); // Empty dependency array to run only on mount
   let queueOptions;
 
   try {
