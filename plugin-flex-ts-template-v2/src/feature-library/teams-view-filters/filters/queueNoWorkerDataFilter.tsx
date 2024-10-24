@@ -49,7 +49,7 @@ export const queueNoWorkerDataFilter = async () => {
     ? queueOptions.map((queue: any) => ({
         value: queue.friendlyName,
         label: queue.friendlyName,
-        default: false,
+        default: true,
       }))
     : [];
 
