@@ -289,12 +289,13 @@ var appConfig = {
       },
       teams_view_filters: {
         enabled: true,
-        log_filters: false,
+        log_filters: true,
         applied_filters: {
           activities: true,
           email: false,
+          location:true,
           department: false,
-          queue_no_worker_data: false,
+          queue_no_worker_data: true,
           queue_worker_data: false,
           team: true,
           agent_skills: false,
@@ -414,7 +415,7 @@ var appConfig = {
         enabled_for_agents: false,
       },
       admin_ui: {
-        enabled: false,
+        enabled: true,
         enable_audit_logging: true,
       },
       localization: {

@@ -6,6 +6,9 @@ import SelectFilterLabel from '../custom-components/SelectFilterLabel';
 import TaskRouterService from '../../../utils/serverless/TaskRouter/TaskRouterService';
 import { StringTemplates } from '../flex-hooks/strings/TeamViewQueueFilter';
 import logger from '../../../utils/logger';
+import * as Flex from '@twilio/flex-ui';
+import { useEffect } from 'react';
+import { getCommonFeatureDetails } from '../../caller-id/config';
 
 /* 
     this filter works by injecting a temporary placeholder into the filters
@@ -25,6 +28,18 @@ import logger from '../../../utils/logger';
 */
 
 export const queueNoWorkerDataFilter = async () => {
+  useEffect(() => {
+    const commonSettings = getCommonFeatureDetails();
+    const AVAILABLE_QUEUES = commonSettings.queuesStatsList;
+
+    Flex.QueuesStats.setFilter((queue) => {
+      return AVAILABLE_QUEUES.includes(queue.friendly_name);
+    });
+
+    Flex.QueuesStats.setSubscriptionFilter((queue) => {
+      return AVAILABLE_QUEUES.includes(queue.friendly_name);
+    });
+  }, []); // Empty dependency array to run only on mount
   let queueOptions;
 
   try {
