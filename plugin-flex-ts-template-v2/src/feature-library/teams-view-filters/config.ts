@@ -63,3 +63,7 @@ export const getDepartmentOptions = () => {
 export const getTeamOptions = () => {
   return teams;
 };
+
+export const getCommonFeatureDetails = () => {
+  return getFeatureFlags().common || {};
+}

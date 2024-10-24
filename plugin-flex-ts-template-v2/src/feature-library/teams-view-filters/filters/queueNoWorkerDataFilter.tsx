@@ -6,9 +6,8 @@ import SelectFilterLabel from '../custom-components/SelectFilterLabel';
 import TaskRouterService from '../../../utils/serverless/TaskRouter/TaskRouterService';
 import { StringTemplates } from '../flex-hooks/strings/TeamViewQueueFilter';
 import logger from '../../../utils/logger';
-import * as Flex from '@twilio/flex-ui';
-import { useEffect } from 'react';
-import { getCommonFeatureDetails } from '../../caller-id/config';
+import { getCommonFeatureDetails } from '../config';
+
 
 /* 
     this filter works by injecting a temporary placeholder into the filters
@@ -28,17 +27,13 @@ import { getCommonFeatureDetails } from '../../caller-id/config';
 */
 
 export const queueNoWorkerDataFilter = async () => {
-  // useEffect(() => {
-  //   const commonSettings = getCommonFeatureDetails();
-  //   const AVAILABLE_QUEUES = commonSettings.queuesStatsList;
-
-  //   Flex.QueuesStats.setFilter((queue) => {
-  //     return AVAILABLE_QUEUES.includes(queue.friendly_name);
-  //   });
-
-  // }, []); // Empty dependency array to run only on mount
   let queueOptions;
+  const commonSettings = getCommonFeatureDetails();
 
+  //queuestatsfilters-author-rohithm
+  const AVAILABLE_QUEUES = commonSettings.queuesStatsList;
+
+  console.log({ commonSettings, AVAILABLE_QUEUES })
   try {
     queueOptions = await TaskRouterService.getQueues();
   } catch (error: any) {
@@ -46,13 +41,16 @@ export const queueNoWorkerDataFilter = async () => {
   }
 
   const options = queueOptions
-    ? queueOptions.map((queue: any) => ({
+    ? queueOptions
+      .map((queue: any) => ({
         value: queue.friendlyName,
         label: queue.friendlyName,
-        default: true,
+        default: false,
       }))
+      .filter(queue => AVAILABLE_QUEUES.includes(queue.value))
     : [];
 
+    console.log("--------------",{ options});
   return {
     id: 'queue-replacement',
     title: (Manager.getInstance().strings as any)[StringTemplates.QueueEligibility],
