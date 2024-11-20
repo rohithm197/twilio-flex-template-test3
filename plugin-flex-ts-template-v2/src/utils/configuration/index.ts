@@ -28,17 +28,27 @@ export const getFeatureFlags = () => {
   // Check if workerClient attributes exist
   if (manager.workerClient?.attributes) {
     const location = manager.workerClient.attributes.location?.toLowerCase();
+    const myWorkerRoles = manager.store.getState().flex?.worker?.worker?.attributes?.roles ?? [{roles: ''}];
+    console.log(myWorkerRoles);
+    
+    const isWorkerRoleAdmin = myWorkerRoles.includes('admin') ? true : false;
+    console.log(isWorkerRoleAdmin)
     // Access teamList and queuesList from mergedSettings
     const teamList = mergedSettings?.common.teamList || {};
     const queuesList = mergedSettings?.common.queuesList || {};
-
+    console.log("queuesList", queuesList)
     // Find the matching key in teamList and queuesList
     const selectedTeams = Object.keys(teamList).find((key) => key.toLowerCase() === location);
     const workerQueues = Object.keys(queuesList).find((key) => key.toLowerCase() === location);
 
     // Set teams and queuesStatsList based on found keys
-    teams = selectedTeams ? teamList[selectedTeams] : [];
-    queuesStatsList = workerQueues ? queuesList[workerQueues] : [];
+    if(isWorkerRoleAdmin){
+      teams =  Object.values(teamList).flat();
+      queuesStatsList = Object.values(queuesList).flat();
+    }else{
+      teams =  selectedTeams ? teamList[selectedTeams] : [];
+      queuesStatsList = workerQueues ? queuesList[workerQueues] : [];
+    }
   }
   // Update common.teams in mergedSettings
   mergedSettings.common.teams = teams;

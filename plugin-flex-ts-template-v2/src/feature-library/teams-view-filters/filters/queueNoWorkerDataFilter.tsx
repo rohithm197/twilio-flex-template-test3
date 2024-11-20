@@ -30,9 +30,14 @@ export const queueNoWorkerDataFilter = async () => {
   let queueOptions;
   const commonSettings = getCommonFeatureDetails();
 
+  const manager = Manager.getInstance();
+
   //queuestatsfilters-author-rohithm
   const AVAILABLE_QUEUES = commonSettings.queuesStatsList;
 
+  const myWorkerRoles = manager.store.getState().flex?.worker?.worker?.attributes?.roles ?? [{roles: ''}];
+  const isWorkerRoleAdmin = myWorkerRoles.includes('admin') ? true : false;
+  console.log(isWorkerRoleAdmin)
   console.log({ commonSettings, AVAILABLE_QUEUES })
   try {
     queueOptions = await TaskRouterService.getQueues();
@@ -40,14 +45,16 @@ export const queueNoWorkerDataFilter = async () => {
     logger.error('[teams-view-filters] Unable to get queues', error);
   }
 
-  const options = queueOptions
+  const options =  queueOptions
     ? queueOptions
       .map((queue: any) => ({
         value: queue.friendlyName,
         label: queue.friendlyName,
         default: false,
       }))
-      .filter(queue => AVAILABLE_QUEUES.includes(queue.value))
+      .filter((queue) => {
+        isWorkerRoleAdmin ? queue : AVAILABLE_QUEUES.includes(queue.value);
+      })
     : [];
 
     console.log("--------------",{ options});
