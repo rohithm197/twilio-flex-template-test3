@@ -32,11 +32,11 @@ export const queueNoWorkerDataFilter = async () => {
 
   const manager = Manager.getInstance();
 
-  //queuestatsfilters-author-rohithm
+  // queuestatsfilters-author-rohithm
   const AVAILABLE_QUEUES = commonSettings.queuesStatsList;
 
-  const myWorkerRoles = manager.store.getState().flex?.worker?.worker?.attributes?.roles ?? [{roles: ''}];
-  const isWorkerRoleAdmin = myWorkerRoles.includes('admin') ? true : false;
+  const myWorkerRoles = manager.store.getState().flex?.worker?.worker?.attributes?.roles ?? [{ roles: '' }];
+  const isWorkerRoleAdmin = myWorkerRoles.includes('admin') || false;
   console.log(isWorkerRoleAdmin)
   console.log({ commonSettings, AVAILABLE_QUEUES })
   try {
@@ -45,19 +45,22 @@ export const queueNoWorkerDataFilter = async () => {
     logger.error('[teams-view-filters] Unable to get queues', error);
   }
 
-  const options =  queueOptions
+  const options = queueOptions
     ? queueOptions
-      .map((queue: any) => ({
-        value: queue.friendlyName,
-        label: queue.friendlyName,
-        default: false,
-      }))
-      .filter((queue) => {
-        isWorkerRoleAdmin ? queue : AVAILABLE_QUEUES.includes(queue.value);
-      })
+        .map((queue: any) => ({
+          ...queue,
+          value: queue.friendlyName,
+          label: queue.friendlyName,
+          default: false,
+        }))
+        .filter((queue) => {
+          console.log('QUEUE IN QUEUE OPTIONS ', queue);
+          if (isWorkerRoleAdmin) return queue;
+          return AVAILABLE_QUEUES.includes(queue.value);
+        })
     : [];
 
-    console.log("--------------",{ options});
+  console.log('--------------', { options });
   return {
     id: 'queue-replacement',
     title: (Manager.getInstance().strings as any)[StringTemplates.QueueEligibility],

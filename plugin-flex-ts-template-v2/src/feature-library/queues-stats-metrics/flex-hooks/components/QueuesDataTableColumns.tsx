@@ -17,22 +17,31 @@ export const componentName = FlexComponent.QueueStats;
 export const componentHook = function addQueuesDataTableColumns(flex: typeof Flex, manager: Flex.Manager) {
   const commonSettings = getCommonFeatureDetails();
 
-  const myWorkerRoles = manager.store.getState().flex?.worker?.worker?.attributes?.roles ?? [{roles: ''}];
-  const isWorkerRoleAdmin = myWorkerRoles.includes('admin') ? true : false;
-//queuestatsfilters-author-rohithm
+  const myWorkerRoles = manager.store.getState().flex?.worker?.worker?.attributes?.roles ?? [{ roles: '' }];
+  const isWorkerRoleAdmin = myWorkerRoles.includes('admin') || false;
+
+  // queuestatsfilters-author-rohithm
+
   const AVAILABLE_QUEUES = commonSettings.queuesStatsList;
 
-  console.log("manager", manager.strings)
-  console.log("flex.QueuesStats", flex.QueuesStats)
+  console.log('-------------------------');
+  console.log('manager', manager.strings);
+  console.log('flex.QueuesStats', flex.QueuesStats);
+  console.log('AVAILABLE QUEUES', AVAILABLE_QUEUES);
+  console.log('isWorkerRoleAdmin', isWorkerRoleAdmin);
+  console.log('-------------------------');
 
-  Flex.QueuesStats.setFilter((queue: Flex.QueuesStats.WorkerQueue) => {
-    return isWorkerRoleAdmin? AVAILABLE_QUEUES: AVAILABLE_QUEUES.includes(queue.friendly_name);
-  });
+  if (!isWorkerRoleAdmin) {
+    Flex.QueuesStats.setFilter((queue: Flex.QueuesStats.WorkerQueue) => {
+      console.log('QUEUE NAME IN setFilter', queue);
+      return isWorkerRoleAdmin ? true : AVAILABLE_QUEUES.includes(queue.friendly_name);
+    });
+  }
 
   Flex.QueuesStats.setSubscriptionFilter((queue: { friendly_name: string; sid: string }) => {
-    return isWorkerRoleAdmin? AVAILABLE_QUEUES:  AVAILABLE_QUEUES.includes(queue.friendly_name);
+    console.log('QUEUE NAME IN setSubscriptionFilter', queue);
+    return true;
   });
-
 
   if (isAssignedTasksColumnEnabled()) {
     const props: any = {};
@@ -83,7 +92,8 @@ export const componentHook = function addQueuesDataTableColumns(flex: typeof Fle
         header={(manager.strings as any)[StringTemplates.AgentActivityHeader]}
         subHeader={manager.strings.QueuesStatsSubHeaderNow}
         content={(queue: WorkerQueue) => {
-          return <QueueActivityStats queueName={queue.friendly_name} activityStats={queue.activity_statistics} />;
+          console.log('QUEUE INSIDE QueuesDataTable', queue);
+          return <QueueActivityStats key={queue.key} queueName={queue.friendly_name} activityStats={queue.activity_statistics} />;
         }}
         {...props}
       />,
