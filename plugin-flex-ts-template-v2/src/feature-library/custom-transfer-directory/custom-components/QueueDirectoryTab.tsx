@@ -97,11 +97,16 @@ const QueueDirectoryTab = (props: OwnProps) => {
 
   // async function to retrieve the task queues from the tr sdk
   // this will trigger the useEffect for a fetchedQueues update
+   //Admin-role-author-rohithm
   const fetchSDKTaskQueues = async () => {
+    console.log('this ran fetchSDKTaskQueues');
     if (workspaceClient) {
       const queuesArray = Array.from((await workspaceClient.fetchTaskQueues({Ordering: 'DateUpdated:desc',})).values(),) as unknown as Array<IQueue>;
       setFetchedQueues(() => {
-        return queuesArray.filter(queue => AVAILABLE_QUEUES.includes(queue.name))
+        return queuesArray.filter((queue) => {
+          console.log('queue in fetchSDKTaskQueues', queue);
+          return AVAILABLE_QUEUES.includes(queue.name);
+        });
       });
     }
   };
@@ -246,12 +251,13 @@ const QueueDirectoryTab = (props: OwnProps) => {
       options: transferOptions,
     });
   };
-
+ //Admin-role-author-rohithm
   // initial render
   useEffect(() => {
     // fetch the queues from the taskrouter sdk on initial render
     fetchSDKTaskQueues().catch(logger.error);
 
+    console.log('QUEUE DIRECTORY TAB')
     // fetch the queues from the insights client on initial render
     fetchInsightsQueueData().catch(logger.error);
 

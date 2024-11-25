@@ -30,9 +30,15 @@ export const queueNoWorkerDataFilter = async () => {
   let queueOptions;
   const commonSettings = getCommonFeatureDetails();
 
-  //queuestatsfilters-author-rohithm
+  const manager = Manager.getInstance();
+
+  // queuestatsfilters-author-rohithm
   const AVAILABLE_QUEUES = commonSettings.queuesStatsList;
 
+  const myWorkerRoles = manager.store.getState().flex?.worker?.worker?.attributes?.roles ?? [{ roles: '' }];
+  const isWorkerRoleAdmin = myWorkerRoles.includes('admin') || false;
+  //Admin-role-author-rohithm
+  console.log(isWorkerRoleAdmin)
   console.log({ commonSettings, AVAILABLE_QUEUES })
   try {
     queueOptions = await TaskRouterService.getQueues();
@@ -42,15 +48,20 @@ export const queueNoWorkerDataFilter = async () => {
 
   const options = queueOptions
     ? queueOptions
-      .map((queue: any) => ({
-        value: queue.friendlyName,
-        label: queue.friendlyName,
-        default: false,
-      }))
-      .filter(queue => AVAILABLE_QUEUES.includes(queue.value))
+        .map((queue: any) => ({
+          ...queue,
+          value: queue.friendlyName,
+          label: queue.friendlyName,
+          default: false,
+        }))
+        .filter((queue) => {
+          console.log('QUEUE IN QUEUE OPTIONS ', queue);
+          if (isWorkerRoleAdmin) return queue;
+          return AVAILABLE_QUEUES.includes(queue.value);
+        })
     : [];
 
-    console.log("--------------",{ options});
+  console.log('--------------', { options });
   return {
     id: 'queue-replacement',
     title: (Manager.getInstance().strings as any)[StringTemplates.QueueEligibility],

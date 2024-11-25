@@ -29,13 +29,7 @@ var appConfig = {
           'IT-Credit & Collections',
           'IT-ISRs',
         ],
-        IB: [
-          'IB-Invisalign CS',
-          'IB-iTero CS',
-          'IB-Invisalign Sales Support',
-          'IB-Treat Team',
-          'IB-Tech Support'
-        ],
+        IB: ['IB-Invisalign CS', 'IB-iTero CS', 'IB-Invisalign Sales Support', 'IB-Treat Team', 'IB-Tech Support'],
         UK: [
           'UK-Invisalign CS',
           'UK-iTero CS',
@@ -293,7 +287,7 @@ var appConfig = {
         applied_filters: {
           activities: true,
           email: false,
-          location:true,
+          location: true,
           department: false,
           queue_no_worker_data: true,
           queue_worker_data: false,

@@ -5,7 +5,8 @@ import { isFeatureEnabled, getCustomDashboards, getWorkspaceUri, getAnalyticsBas
 
 export const canShowEmbeddedDashboardManager = (manager: Manager) => {
   const getroles = manager.workerClient?.attributes;
-  const roles = getroles?.roles;
+   //Admin-role-author-rohithm
+  const roles = getroles?.roles || [{roles:''}];
   console.log('roles----',roles);
   //return isFeatureEnabled() === true && (roles.indexOf('admin') >= 0 || roles.indexOf('supervisor') >= 0);// Limiting the
   return isFeatureEnabled() === true && roles.indexOf('wfo.flex_dashboard_viewer') >= 0;// Limiting the view to only users with role - flex_dashboard_viewer
