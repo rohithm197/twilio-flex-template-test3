@@ -17,6 +17,7 @@ export const componentName = FlexComponent.QueueStats;
 export const componentHook = function addQueuesDataTableColumns(flex: typeof Flex, manager: Flex.Manager) {
   const commonSettings = getCommonFeatureDetails();
 
+   //Admin-role-author-rohithm
   const myWorkerRoles = manager.store.getState().flex?.worker?.worker?.attributes?.roles ?? [{ roles: '' }];
   const isWorkerRoleAdmin = myWorkerRoles.includes('admin') || false;
 

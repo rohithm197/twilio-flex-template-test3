@@ -42,6 +42,7 @@ export const getFeatureFlags = () => {
     const workerQueues = Object.keys(queuesList).find((key) => key.toLowerCase() === location);
 
     // Set teams and queuesStatsList based on found keys
+     //Admin-role-author-rohithm
     if(isWorkerRoleAdmin){
       teams =  Object.values(teamList).flat();
       queuesStatsList = Object.values(queuesList).flat();

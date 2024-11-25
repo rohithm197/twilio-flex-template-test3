@@ -5,6 +5,7 @@ import { isFeatureEnabled, getCustomDashboards, getWorkspaceUri, getAnalyticsBas
 
 export const canShowEmbeddedDashboardManager = (manager: Manager) => {
   const getroles = manager.workerClient?.attributes;
+   //Admin-role-author-rohithm
   const roles = getroles?.roles || [{roles:''}];
   console.log('roles----',roles);
   //return isFeatureEnabled() === true && (roles.indexOf('admin') >= 0 || roles.indexOf('supervisor') >= 0);// Limiting the

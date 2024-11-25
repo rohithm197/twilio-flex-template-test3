@@ -8,6 +8,7 @@ export const componentName = FlexComponent.MainHeader;
 export const componentHook = function addSupervisorAlert(flex: typeof Flex, manager: Flex.Manager) {
   if (!isSupervisorAlertToggleEnabled()) return;
   // Pull back the user roles disable this component if it exists
+   //Admin-role-author-rohithm
   const myWorkerRoles = manager.store.getState().flex?.worker?.worker?.attributes?.roles ?? [{roles: ''}];
   // Update the role names if you wish to inlude this feature for more role types
   if (myWorkerRoles.includes('supervisor') || myWorkerRoles.includes('admin')) {

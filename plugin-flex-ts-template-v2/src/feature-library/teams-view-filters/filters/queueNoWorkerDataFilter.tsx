@@ -37,6 +37,7 @@ export const queueNoWorkerDataFilter = async () => {
 
   const myWorkerRoles = manager.store.getState().flex?.worker?.worker?.attributes?.roles ?? [{ roles: '' }];
   const isWorkerRoleAdmin = myWorkerRoles.includes('admin') || false;
+  //Admin-role-author-rohithm
   console.log(isWorkerRoleAdmin)
   console.log({ commonSettings, AVAILABLE_QUEUES })
   try {
