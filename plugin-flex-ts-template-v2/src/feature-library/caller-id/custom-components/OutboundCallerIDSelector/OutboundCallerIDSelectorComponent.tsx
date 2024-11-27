@@ -31,7 +31,7 @@ const OutboundCallerIDSelectorComponent = () => {
   useEffect(() => {
     //dispatch(Actions.getPhoneNumbers());
     //Fetch loggedIn workers location
-    const loggedInWorkerLocation = Manager.getInstance().workerClient?.attributes.location;
+    const loggedInWorkerLocation = Manager.getInstance().workerClient?.attributes.location || "IB";
     //console.log('dynamicCallerId****'+dynamicCallerId);
     //Define the callerId based on the workers location
     console.log('callerIdList****'+JSON.stringify(callerIdList));
