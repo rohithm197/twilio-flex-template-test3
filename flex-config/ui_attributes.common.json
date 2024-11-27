@@ -64,7 +64,12 @@
         ]
       },
       "queuesList": {
-        "IT": ["IT-Invisalign", "IT-General", "IT-Master Plan", "IT-iTero"],
+        "IT": [
+          "IT-Invisalign",
+          "IT-General",
+          "IT-Master Plan",
+          "IT-iTero"
+        ],
         "IB": [
           "CS-SP-Primary_Queue",
           "iTero-SP-Primary_Queue",
@@ -106,12 +111,14 @@
         "IB": {
           "phoneNumber": "+34911671923",
           "queueName": "Outbound",
-          "queueSid": "WQd64b82aa23f9654c1a81682eccf745f3"
+          "queueSid": "WQd64b82aa23f9654c1a81682eccf745f3",
+          "country_code":"ES"
         },
         "UK": {
           "phoneNumber": "+447883283812",
           "queueName": "UKI-Invisalign Queue",
-          "queueSid": "WQ7f0cfbe115999b33c42c91dd8c417eac"
+          "queueSid": "WQ7f0cfbe115999b33c42c91dd8c417eac",
+          "country_code":"GB"
         }
       }
     },
@@ -232,11 +239,11 @@
         "applied_filters": {
           "activities": true,
           "email": false,
-          "location": true,
+          "location": false,
           "department": false,
           "queue_no_worker_data": true,
           "queue_worker_data": false,
-          "team": true,
+          "team": false,
           "agent_skills": false
         }
       },
@@ -345,7 +352,10 @@
         "per_queue": {
           "exampleQueueName": {
             "require_disposition": true,
-            "dispositions": ["Promotional Sale", "Renewal"],
+            "dispositions": [
+              "Promotional Sale",
+              "Renewal"
+            ],
             "text_attributes": [],
             "select_attributes": []
           }
