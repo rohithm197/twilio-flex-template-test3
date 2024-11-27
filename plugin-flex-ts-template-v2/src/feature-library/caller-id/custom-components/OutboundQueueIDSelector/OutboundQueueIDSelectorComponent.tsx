@@ -31,12 +31,12 @@ const OutboundQueueIDSelectorComponent = () => {
   useEffect(() => {
     //dispatch(Actions.getPhoneNumbers());
     //Fetch loggedIn workers location
-    const loggedInWorkerLocation = Manager.getInstance().workerClient?.attributes.location;
+    const loggedInWorkerLocation = Manager.getInstance().workerClient?.attributes.location || "IB";
     //console.log('dynamicCallerId****'+dynamicCallerId);
     //Define the callerId based on the workers location
     console.log('callerIdList****'+JSON.stringify(callerIdList));
     //const dynamicCallerId = callerIdList[loggedInWorkerLocation].phoneNumber;
-    const dynamicQueueId = (callerIdList[loggedInWorkerLocation] || callerIdList.US1);
+    const dynamicQueueId = (callerIdList[loggedInWorkerLocation] || callerIdList.IB);
 
     
     setSelectOptions([{friendlyName:dynamicQueueId.queueName, phoneNumber: dynamicQueueId.queueSid}]);
