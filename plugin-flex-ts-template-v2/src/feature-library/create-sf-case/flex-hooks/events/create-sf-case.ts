@@ -16,6 +16,7 @@ import {
     createSfTask,
     screenPop,
     updateSfTicket,
+    createSfTicketmodified,
   } from '../../utils/salesforcehelper';
   
 export const eventName = FlexEvent.taskAccepted;
@@ -73,7 +74,7 @@ export const eventHook = async function createCaseAfterTaskAcceptance(
       screenPop(task.attributes.ticketId);
     } else if (task.attributes.sfcontactid) {
       console.log('No existing ticket. Creating a new one for SF Contact...');
-      const response = await createSfTicket(task);
+      const response = await createSfTicketmodified(task);
       console.log('create ticket response:', response);
       //if (response.success) {
       //  screenPop(response.ticketId || task.attributes.sfcontactid);
