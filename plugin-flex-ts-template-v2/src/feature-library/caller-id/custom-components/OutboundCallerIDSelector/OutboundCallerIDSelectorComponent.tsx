@@ -27,8 +27,6 @@ const OutboundCallerIDSelectorComponent = () => {
     //Fetch loggedIn workers location
     const loggedInWorkerLocation = Manager.getInstance().workerClient?.attributes.location || "IB";
 
-    console.log('callerIdList**calleridSelection**'+JSON.stringify(callerIdList));
-    
     //Define the callerId based on the workers location
     //const dynamicCallerId = callerIdList[loggedInWorkerLocation].phoneNumber;
     const dynamicCallerId = (callerIdList[loggedInWorkerLocation]).phoneNumber;
