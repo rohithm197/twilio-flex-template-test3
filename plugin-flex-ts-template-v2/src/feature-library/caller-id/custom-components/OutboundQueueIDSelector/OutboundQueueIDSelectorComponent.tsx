@@ -18,29 +18,19 @@ import { friendlyName } from '@twilio/flex-ui/src/components/LiveCommsBar/LiveCo
 const OutboundQueueIDSelectorComponent = () => {
   const dispatch = useDispatch();
 
-  //const { isFetchingPhoneNumbers, fetchingPhoneNumbersFailed, phoneNumbers, selectedCallerId } = useSelector(
-  //  (state: AppState) => state[reduxNamespace].outboundCallerIdSelector as OutboundCallerIDSelectorState,
-  //);
- // const {selectedCallerId} = useSelector(
- //     (state: AppState) => state[reduxNamespace].outboundCallerIdSelector as OutboundCallerIDSelectorState,
- // );
-
-  //const [helpText, setHelpText] = useState(templates[StringTemplates.Loading]());
   const [selectOptions, setSelectOptions] = useState([] as PhoneNumberItem[]);
 
   useEffect(() => {
-    //dispatch(Actions.getPhoneNumbers());
-    //Fetch loggedIn workers location
-    const loggedInWorkerLocation = Manager.getInstance().workerClient?.attributes.location || "IB";
-    //console.log('dynamicCallerId****'+dynamicCallerId);
-    //Define the callerId based on the workers location
-    console.log('callerIdList****'+JSON.stringify(callerIdList));
-    //const dynamicCallerId = callerIdList[loggedInWorkerLocation].phoneNumber;
-    const dynamicQueueId = (callerIdList[loggedInWorkerLocation] || callerIdList.IB);
-
     
+    //Fetch loggedIn workers location
+    const loggedInWorkerLocation = Manager.getInstance().workerClient?.attributes.location || "IB";   
+    
+    console.log('callerIdList**callerqueueSelection**'+JSON.stringify(callerIdList));
+
+    //Define the callerId based on the workers location
+    const dynamicQueueId = (callerIdList[loggedInWorkerLocation]);    
     setSelectOptions([{friendlyName:dynamicQueueId.queueName, phoneNumber: dynamicQueueId.queueSid}]);
-    //dispatch(Actions.setCallerId(dynamicQueueId));
+    
   }, []);
 
 
