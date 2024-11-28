@@ -194,10 +194,64 @@ const screenPop = function (sfcontactid) {
   }
 }
 
+const createSfTicketmodified = function (task) {//Sunil - updated to better handle the ticket creation and to avoid multiple/duplicate tickets creation
+  console.log('API Call for createSfTicket initiated for taskSid:', task.taskSid);
+
+  if (task.attributes.ticketCreationInProgress) {
+    console.log('Ticket creation already in progress for taskSid:', task.taskSid);
+    return;
+  }
+
+  task.attributes.ticketCreationInProgress = true;
+
+  if (window.sforce) {
+    window.sforce.opencti.saveLog({
+      value: {
+        entityApiName: 'Case',
+        Subject: `${task.attributes.direction} Call from ${task.attributes.caller} ${task.dateCreated}`,
+        Origin: 'Call',
+        RecordtypeId: '012i00000019r5uAAA',
+        ContactId: task.attributes.sfcontactid,
+        Description: `callType:Inbound \n Caller:${task.attributes.caller}`,
+      },
+      callback: (response) => {
+        console.log('createSfTicket response:', JSON.stringify(response));
+
+        if (response.success && response.returnValue.recordId) {
+          const ticketId = response.returnValue.recordId;
+          console.log('Ticket created successfully with ID:', ticketId);
+
+          window.sforce.opencti.screenPop({
+            type: sforce.opencti.SCREENPOP_TYPE.SOBJECT,
+            params: { recordId: ticketId },
+          });
+
+          try {
+            updateTaskAttributesWithCaseId(task.taskSid, ticketId);
+            console.log('TaskAttributes updated successfully for taskSid:', task.taskSid);
+          } catch (error) {
+            console.error('Failed to update TaskAttributes:', error);
+          }
+        } else {
+          console.error('Failed to create ticket:', response.errors);
+        }
+
+        // Reset the flag regardless of success or failure
+        task.attributes.ticketCreationInProgress = false;
+      },
+    });
+  } else {
+    console.error('Salesforce OpenCTI is not available.');
+    task.attributes.ticketCreationInProgress = false;
+  }
+};
+
+
 export {
   searchAndScreenPop,
   createSfTicket,
   createSfTask,
   screenPop,
   updateSfTicket,
+  createSfTicketmodified,
 }
