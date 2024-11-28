@@ -194,7 +194,9 @@ const screenPop = function (sfcontactid) {
   }
 }
 
-const createSfTicketmodified = function (task) {//Sunil - updated to better handle the ticket creation and to avoid multiple/duplicate tickets creation
+//Sunil - updated to better handle the ticket creation and to avoid multiple/duplicate tickets creation
+// test and replace the exising createSfTicket method
+const createSfTicketmodified = function (task) {
   console.log('API Call for createSfTicket initiated for taskSid:', task.taskSid);
 
   if (task.attributes.ticketCreationInProgress) {
@@ -253,5 +255,4 @@ export {
   createSfTask,
   screenPop,
   updateSfTicket,
-  createSfTicketmodified,
 }
