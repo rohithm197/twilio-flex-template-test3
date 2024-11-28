@@ -22,7 +22,7 @@ const OutboundQueueIDSelectorComponent = () => {
 
   useEffect(() => {
     
-    //Fetch loggedIn workers location
+    //Fetch loggedIn workers location from worker attributes
     const loggedInWorkerLocation = Manager.getInstance().workerClient?.attributes.location || "IB";   
     
     console.log('callerIdList**callerqueueSelection**'+JSON.stringify(callerIdList));
