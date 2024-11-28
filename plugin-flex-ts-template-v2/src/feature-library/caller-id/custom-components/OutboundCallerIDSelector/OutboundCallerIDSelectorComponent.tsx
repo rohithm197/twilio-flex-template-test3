@@ -18,25 +18,18 @@ import { friendlyName } from '@twilio/flex-ui/src/components/LiveCommsBar/LiveCo
 const OutboundCallerIDSelectorComponent = () => {
   const dispatch = useDispatch();
 
-  //const { isFetchingPhoneNumbers, fetchingPhoneNumbersFailed, phoneNumbers, selectedCallerId } = useSelector(
-  //  (state: AppState) => state[reduxNamespace].outboundCallerIdSelector as OutboundCallerIDSelectorState,
-  //);
   const {selectedCallerId} = useSelector(
       (state: AppState) => state[reduxNamespace].outboundCallerIdSelector as OutboundCallerIDSelectorState,
   );
-
-  //const [helpText, setHelpText] = useState(templates[StringTemplates.Loading]());
   const [selectOptions, setSelectOptions] = useState([] as PhoneNumberItem[]);
 
   useEffect(() => {
-    //dispatch(Actions.getPhoneNumbers());
     //Fetch loggedIn workers location
     const loggedInWorkerLocation = Manager.getInstance().workerClient?.attributes.location || "IB";
-    //console.log('dynamicCallerId****'+dynamicCallerId);
+
     //Define the callerId based on the workers location
-    console.log('callerIdList****'+JSON.stringify(callerIdList));
     //const dynamicCallerId = callerIdList[loggedInWorkerLocation].phoneNumber;
-    const dynamicCallerId = (callerIdList[loggedInWorkerLocation] || callerIdList.US1).phoneNumber;
+    const dynamicCallerId = (callerIdList[loggedInWorkerLocation]).phoneNumber;
     
     setSelectOptions([{friendlyName:dynamicCallerId, phoneNumber: dynamicCallerId}]);
     dispatch(Actions.setCallerId(dynamicCallerId));
