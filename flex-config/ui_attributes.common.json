@@ -43,13 +43,9 @@
         "PL": [
           "PL-Invisalign CS",
           "PL-iTero CS",
-          "PL-Tech Support",
-          "PL-iTero Onboarding",
-          "PL-iTero Training",
-          "PL-Clinical Support",
-          "PL-Treat",
-          "PL-Credit & Collections",
-          "PL-ISRs"
+          "PL-Treat Team",
+          "PL-iTero Tech Support",
+          "PL-iTero Onboarding"
         ],
         "FR": [
           "FR-Invisalign CS",
@@ -94,6 +90,13 @@
           "UKI-iTero Queue",
           "UKI-Tech support",
           "UKI-CS-General Queue"
+        ],
+        "PL": [
+          "PL-CS-Invisalign Queue",
+          "PL-CS-iTero Queue",
+          "PL-Treat-Hotline Queue",
+          "PL-iTero TechSupport Queue",
+          "PL-iTero Onboarding Queue"
         ]
       },
       "departments": [

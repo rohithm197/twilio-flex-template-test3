@@ -63,6 +63,13 @@ var appConfig = {
           'FR-Credit & Collections',
           'FR-ISRs',
         ],
+        PL: [
+          'PL-Invisalign CS',
+          'PL-iTero CS',
+          'PL-Treat Team',
+          'PL-iTero Tech Support',
+          'PL-iTero Onboarding'
+        ]
       },
       queuesList: {
         IT: [
@@ -82,15 +89,11 @@ var appConfig = {
           'UKI-CS-General Queue',
         ],
         PL: [
-          'PL-Invisalign',
-          'PL-iTero',
-          'PL-Tech Support',
-          'PL-iTero Onboarding',
-          'PL-iTero Training',
-          'PL-Clinical Support',
-          'PL-Treat',
-          'PL-Credit & Collections',
-          'PL-ISRs',
+          'PL-CS-Invisalign Queue',
+          'PL-CS-iTero Queue',
+          'PL-Treat-Hotline Queue',
+          'PL-iTero TechSupport Queue',
+          'PL-iTero Onboarding Queue'
         ],
         FR: [
           'FR-Invisalign',
