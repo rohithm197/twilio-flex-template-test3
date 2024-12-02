@@ -15,7 +15,6 @@ const PauseRecordingButton = (props: OwnProps) => {
   const [paused, setPaused] = useState(false);
   const [waiting, setWaiting] = useState(false);
 
-  console.log('PROPS DETAILS IN SIDE PAUSE RECORDING', props);
   const { pausedRecordings } = useSelector(
     (state: AppState) => state[reduxNamespace].pauseRecording as PauseRecordingState,
   );
