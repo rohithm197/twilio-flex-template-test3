@@ -59,10 +59,8 @@ const AgentActivityTile = (props: ComponentProps) => {
   // Flex.QueuesStats.AggregatedQueuesDataTiles.defaultProps.dataTileFilter
 
   useEffect(() => {
-    console.log('USEEFFECT called');
     Flex.QueuesStats.AggregatedQueuesDataTiles.Content.remove('agents-by-activity-chart-tile');
     if (Flex.QueuesStats.AggregatedQueuesDataTiles?.defaultProps) {
-      console.log('AGENT ACtivity Tile === QUEUES VIEW DATA TILES ===', true);
       Flex.QueuesStats.AggregatedQueuesDataTiles.defaultProps.dataTileFilter = (id: string) => {
         if (id === 'agents-by-activity-chart-tile') {
           return false;

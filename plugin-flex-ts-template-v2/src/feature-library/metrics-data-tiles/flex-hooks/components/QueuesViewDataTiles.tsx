@@ -67,8 +67,6 @@ export const componentHook = function addDataTiles(flex: typeof Flex) {
   );
 }
 
-  console.log('=== QUEUES VIEW DATA TILES =====', flex.QueuesStats);
-
   if (!isActiveTasksEnabled()) {
     flex.QueuesStats.AggregatedQueuesDataTiles.Content.remove('active-tasks-tile');
   }

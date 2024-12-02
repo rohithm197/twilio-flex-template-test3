@@ -25,22 +25,15 @@ export const componentHook = function addQueuesDataTableColumns(flex: typeof Fle
 
   const AVAILABLE_QUEUES = commonSettings.queuesStatsList;
 
-  console.log('-------------------------');
-  console.log('manager', manager.strings);
-  console.log('flex.QueuesStats', flex.QueuesStats);
-  console.log('AVAILABLE QUEUES', AVAILABLE_QUEUES);
-  console.log('isWorkerRoleAdmin', isWorkerRoleAdmin);
-  console.log('-------------------------');
 
   if (!isWorkerRoleAdmin) {
     Flex.QueuesStats.setFilter((queue: Flex.QueuesStats.WorkerQueue) => {
-      console.log('QUEUE NAME IN setFilter', queue);
+
       return isWorkerRoleAdmin ? true : AVAILABLE_QUEUES.includes(queue.friendly_name);
     });
   }
 
   Flex.QueuesStats.setSubscriptionFilter((queue: { friendly_name: string; sid: string }) => {
-    console.log('QUEUE NAME IN setSubscriptionFilter', queue);
     return true;
   });
 
@@ -93,7 +86,6 @@ export const componentHook = function addQueuesDataTableColumns(flex: typeof Fle
         header={(manager.strings as any)[StringTemplates.AgentActivityHeader]}
         subHeader={manager.strings.QueuesStatsSubHeaderNow}
         content={(queue: WorkerQueue) => {
-          console.log('QUEUE INSIDE QueuesDataTable', queue);
           return <QueueActivityStats key={queue.key} queueName={queue.friendly_name} activityStats={queue.activity_statistics} />;
         }}
         {...props}
