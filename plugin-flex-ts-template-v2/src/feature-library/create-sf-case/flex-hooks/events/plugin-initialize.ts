@@ -21,7 +21,7 @@ export const eventHook = async function initializeSalesforceOpenCtiscript(
     callChannel.templates.TaskListItem.firstLine = (task) =>
       task.attributes.direction === 'inbound'
        // ? `${task.attributes.doctorname}: ${task.attributes.name} : \n Call SID - ${task.attributes.call_sid}`
-        ? `${task.attributes.country}--${task.attributes.doctorname}: ${task.attributes.name} : \n Call SID - ${task.attributes.call_sid}`
+        ? `${task.attributes.country}--${task.attributes.doctorname}: ${task.attributes.name} : <br /> Call SID - ${task.attributes.call_sid}`
         : task.attributes.outbound_to
   }
   /*if(callChannel?.templates?.TaskCanvasHeader){
@@ -33,9 +33,9 @@ export const eventHook = async function initializeSalesforceOpenCtiscript(
   if (callChannel?.templates?.TaskCanvasHeader) {
     callChannel.templates.TaskCanvasHeader.title = (task) =>
       task.attributes.direction === 'inbound'
-        ? `${task.attributes.country}--${task.attributes.doctorname}: ${task.attributes.name} : \n Call SID - ${task.attributes.call_sid}`
+      ? `${task.attributes.country}--${task.attributes.doctorname}: ${task.attributes.name} <br> Call SID - ${task.attributes.call_sid}`
         : task.attributes.outbound_to;
-  }
+  }  
 
   if(callChannel?.templates?.CallCanvas){
     callChannel.templates.CallCanvas.firstLine = (task) =>
