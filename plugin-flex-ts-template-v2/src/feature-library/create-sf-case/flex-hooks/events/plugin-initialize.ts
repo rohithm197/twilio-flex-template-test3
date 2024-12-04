@@ -14,15 +14,14 @@ export const eventHook = async function initializeSalesforceOpenCtiscript(
   // your code here
   const sfdcBaseUrl = window.location.ancestorOrigins[0]
   console.log('create-sf-case initialize called - sfdcBaseUrl'+sfdcBaseUrl);
-  //const callChannel = flex.DefaultTaskChannels.Call
   console.log('create-sf-case initialize called - CallChannel'+JSON.stringify(flex.DefaultTaskChannels.Call));
-  //console.log('create-sf-case initialize called - task'+JSON.stringify(task)); 
 
   const callChannel = flex.DefaultTaskChannels.Call
   if (callChannel?.templates?.TaskListItem) {
     callChannel.templates.TaskListItem.firstLine = (task) =>
       task.attributes.direction === 'inbound'
-        ? `${task.attributes.doctorname}: ${task.attributes.name} : \n Call SID - ${task.attributes.call_sid}`
+       // ? `${task.attributes.doctorname}: ${task.attributes.name} : \n Call SID - ${task.attributes.call_sid}`
+        ? `${task.attributes.country}--${task.attributes.doctorname}: ${task.attributes.name} : \n Call SID - ${task.attributes.call_sid}`
         : task.attributes.outbound_to
   }
   /*if(callChannel?.templates?.TaskCanvasHeader){
@@ -34,14 +33,14 @@ export const eventHook = async function initializeSalesforceOpenCtiscript(
   if (callChannel?.templates?.TaskCanvasHeader) {
     callChannel.templates.TaskCanvasHeader.title = (task) =>
       task.attributes.direction === 'inbound'
-        ? `${task.attributes.doctorname}: ${task.attributes.name} : \n Call SID - ${task.attributes.call_sid}`
+        ? `${task.attributes.country}--${task.attributes.doctorname}: ${task.attributes.name} : \n Call SID - ${task.attributes.call_sid}`
         : task.attributes.outbound_to;
   }
 
   if(callChannel?.templates?.CallCanvas){
     callChannel.templates.CallCanvas.firstLine = (task) =>
   task.attributes.direction === 'inbound'
-    ? `${task.attributes.doctorname}: ${task.attributes.name}`
+    ? `${task.attributes.country}--${task.attributes.doctorname}: ${task.attributes.name}`
     : task.attributes.outbound_to
   }
   flex.TaskChannels.register(callChannel)
