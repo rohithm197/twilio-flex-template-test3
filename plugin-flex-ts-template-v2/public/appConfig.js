@@ -63,13 +63,7 @@ var appConfig = {
           'FR-Credit & Collections',
           'FR-ISRs',
         ],
-        PL: [
-          'PL-Invisalign CS',
-          'PL-iTero CS',
-          'PL-Treat Team',
-          'PL-iTero Tech Support',
-          'PL-iTero Onboarding'
-        ]
+        PL: ['PL-Invisalign CS', 'PL-iTero CS', 'PL-Treat Team', 'PL-iTero Tech Support', 'PL-iTero Onboarding'],
       },
       queuesList: {
         IT: [
@@ -82,18 +76,13 @@ var appConfig = {
           'IT-Credit & Collections',
           'IT-ISRs',
         ],
-        UK: [
-          'UKI-Invisalign Queue',
-          'UKI-iTero Queue',
-          'UKI-Tech support',
-          'UKI-CS-General Queue',
-        ],
+        UK: ['UKI-Invisalign Queue', 'UKI-iTero Queue', 'UKI-Tech support', 'UKI-CS-General Queue'],
         PL: [
           'PL-CS-Invisalign Queue',
           'PL-CS-iTero Queue',
           'PL-Treat-Hotline Queue',
           'PL-iTero TechSupport Queue',
-          'PL-iTero Onboarding Queue'
+          'PL-iTero Onboarding Queue',
         ],
         FR: [
           'FR-Invisalign',
@@ -117,7 +106,7 @@ var appConfig = {
           'FR-Credit & Collections',
           'FR-ISRs',
         ],
-        IB:[
+        IB: [
           'CS-SP-Primary_Queue',
           'iTero-SP-Primary_Queue',
           'iTero-SP-Secondary_Queue',
@@ -134,8 +123,22 @@ var appConfig = {
           'IBERIA iTero Sales Support',
           'IBERIA Invisalign Sales Support',
           'IBERIA PT iTero Sales Support',
-          'IBERIA PT Invisalign Sales Support'
-        ]
+          'IBERIA PT Invisalign Sales Support',
+        ],
+        callerIddata: {
+          IB: {
+            phoneNumber: '+34911671923',
+            queueName: 'Outbound',
+            queueSid: 'WQd64b82aa23f9654c1a81682eccf745f3',
+            country_code: 'ES',
+          },
+          UK: {
+            phoneNumber: '+447883283812',
+            queueName: 'UKI-Invisalign Queue',
+            queueSid: 'WQ7f0cfbe115999b33c42c91dd8c417eac',
+            country_code: 'GB',
+          },
+        },
       },
       departments: [
         'General Management',
