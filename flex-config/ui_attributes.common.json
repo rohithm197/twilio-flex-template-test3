@@ -85,8 +85,8 @@
       "callerIddata": {
         "PL": {
           "phoneNumber": "+48732070515",
-          "queueName": "PL-CS-Invisalign Queue",
-          "queueSid": "WQf4224c250a8ee9735db0f05694744718",
+          "queueName": "PL-General Queue",
+          "queueSid": "WQ7c4b1df6a46b4b780e19ce3eaf373b08",
           "country_code": "PL"
         },
         "IB": {
