@@ -83,17 +83,23 @@
         "Recruiting"
       ],
       "callerIddata": {
+        "PL": {
+          "phoneNumber": "+48732070515",
+          "queueName": "PL-CS-Invisalign Queue",
+          "queueSid": "WQf4224c250a8ee9735db0f05694744718",
+          "country_code": "PL"
+        },
         "IB": {
           "phoneNumber": "+34911671923",
           "queueName": "Outbound",
           "queueSid": "WQd64b82aa23f9654c1a81682eccf745f3",
-          "country_code":"ES"
+          "country_code": "ES"
         },
         "UK": {
           "phoneNumber": "+447883283812",
           "queueName": "UKI-Invisalign Queue",
           "queueSid": "WQ7f0cfbe115999b33c42c91dd8c417eac",
-          "country_code":"GB"
+          "country_code": "GB"
         }
       }
     },
@@ -327,10 +333,7 @@
         "per_queue": {
           "exampleQueueName": {
             "require_disposition": true,
-            "dispositions": [
-              "Promotional Sale",
-              "Renewal"
-            ],
+            "dispositions": ["Promotional Sale", "Renewal"],
             "text_attributes": [],
             "select_attributes": []
           }

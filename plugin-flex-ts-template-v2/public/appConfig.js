@@ -126,6 +126,12 @@ var appConfig = {
           'IBERIA PT Invisalign Sales Support',
         ],
         callerIddata: {
+          PL: {
+            phoneNumber: '+48732070515',
+            queueName: 'PL-CS-Invisalign Queue',
+            queueSid: 'WQf4224c250a8ee9735db0f05694744718',
+            country_code: 'PL',
+          },
           IB: {
             phoneNumber: '+34911671923',
             queueName: 'Outbound',
