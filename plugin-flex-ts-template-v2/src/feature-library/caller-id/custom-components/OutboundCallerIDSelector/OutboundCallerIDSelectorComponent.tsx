@@ -26,7 +26,7 @@ const OutboundCallerIDSelectorComponent = () => {
     const loggedInWorkerLocation = manager.workerClient?.attributes.location || "IB";  // Default to "IB" if location is not found
     
     // Now use loggedInWorkerLocation to get the dynamic caller_id
-    const dynamicCallerId = manager.workerClient?.attributes[loggedInWorkerLocation]?.caller_id;
+    const dynamicCallerId = manager.workerClient?.attributes.caller_id;
 
     if (dynamicCallerId) {
       // Set the select options based on the dynamicCallerId
