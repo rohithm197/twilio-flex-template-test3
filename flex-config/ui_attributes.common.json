@@ -103,89 +103,177 @@
         }
       },
       "callerIdPLCountry": {
-        "NL": {
-          "phoneNumber": "+318003510027",
-          "queueName": "",
-          "queueSid": "",
-          "country_code": "NL"
+        "PlDistributor": {
+          "NL": {
+            "phoneNumber": "+318003510027",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "NL"
+          },
+          "SE": {
+            "phoneNumber": "+4620881600",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "SE"
+          },
+          "DK": {
+            "phoneNumber": "+4580820210",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "DK"
+          },
+          "FI": {
+            "phoneNumber": "+358800552070",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "FI"
+          },
+          "GB": {
+            "phoneNumber": "+448001017037",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "GB"
+          },
+          "PL": {
+            "phoneNumber": "+48717166016",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "PL"
+          },
+          "SI": {
+            "phoneNumber": "+38680755700",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "SI"
+          },
+          "NO": {
+            "phoneNumber": "+4780022673",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "NO"
+          },
+          "RS": {
+            "phoneNumber": "+381800300163",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "RS"
+          },
+          "KE": {
+            "phoneNumber": "+254207640139",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "KE"
+          },
+          "TN": {
+            "phoneNumber": "+21631365940",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "TN"
+          },
+          "DZ": {
+            "phoneNumber": "+213982404628",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "DZ"
+          },
+          "NG": {
+            "phoneNumber": "+23413438880",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "NG"
+          },
+          "RU": {
+            "phoneNumber": "+78006000472",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "RU"
+          }
         },
-        "SE": {
-          "phoneNumber": "+4620881600",
-          "queueName": "",
-          "queueSid": "",
-          "country_code": "SE"
-        },
-        "DK": {
-          "phoneNumber": "+4580820210",
-          "queueName": "",
-          "queueSid": "",
-          "country_code": "DK"
-        },
-        "FI": {
-          "phoneNumber": "+358800552070",
-          "queueName": "",
-          "queueSid": "",
-          "country_code": "FI"
-        },
-        "GB": {
-          "phoneNumber": "+448001017037",
-          "queueName": "",
-          "queueSid": "",
-          "country_code": "GB"
-        },
-        "PL": {
-          "phoneNumber": "+48717166016",
-          "queueName": "",
-          "queueSid": "",
-          "country_code": "PL"
-        },
-        "SI": {
-          "phoneNumber": "+38680755700",
-          "queueName": "",
-          "queueSid": "",
-          "country_code": "SI"
-        },
-        "NO": {
-          "phoneNumber": "+4780022673",
-          "queueName": "",
-          "queueSid": "",
-          "country_code": "NO"
-        },
-        "RS": {
-          "phoneNumber": "+381800300163",
-          "queueName": "",
-          "queueSid": "",
-          "country_code": "RS"
-        },
-        "KE": {
-          "phoneNumber": "+254207640139",
-          "queueName": "",
-          "queueSid": "",
-          "country_code": "KE"
-        },
-        "TN": {
-          "phoneNumber": "+21631365940",
-          "queueName": "",
-          "queueSid": "",
-          "country_code": "TN"
-        },
-        "DZ": {
-          "phoneNumber": "+213982404628",
-          "queueName": "",
-          "queueSid": "",
-          "country_code": "DZ"
-        },
-        "NG": {
-          "phoneNumber": "+23413438880",
-          "queueName": "",
-          "queueSid": "",
-          "country_code": "NG"
-        },
-        "RU": {
-          "phoneNumber": "+78006000472",
-          "queueName": "",
-          "queueSid": "",
-          "country_code": "RU"
+        "PLTechOnboarding": {
+          "HR": {
+            "phoneNumber": "+385800200553",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "HR"
+          },
+          "CZ": {
+            "phoneNumber": "+420800022564",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "CZ"
+          },
+          "EE": {
+            "phoneNumber": "+3728000353005",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "EE"
+          },
+          "HU": {
+            "phoneNumber": "+3680088144",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "HU"
+          },
+          "LT": {
+            "phoneNumber": "+37080000365",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "LT"
+          },
+          "SK": {
+            "phoneNumber": "+421800601044",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "SK"
+          },
+          "SI": {
+            "phoneNumber": "+38617774115",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "SI"
+          },
+          "RO": {
+            "phoneNumber": "+40800630067",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "RO"
+          },
+          "RS": {
+            "phoneNumber": "+381800300135",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "RS"
+          },
+          "DK": {
+            "phoneNumber": "+4580820033",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "DK"
+          },
+          "FI": {
+            "phoneNumber": "+358800550148",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "FI"
+          },
+          "NO": {
+            "phoneNumber": "+4780012172",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "NO"
+          },
+          "SE": {
+            "phoneNumber": "+4620889227",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "SE"
+          },
+          "IS": {
+            "phoneNumber": "+3548007643",
+            "queueName": "",
+            "queueSid": "",
+            "country_code": "IS"
+          }
         }
       }
     },
