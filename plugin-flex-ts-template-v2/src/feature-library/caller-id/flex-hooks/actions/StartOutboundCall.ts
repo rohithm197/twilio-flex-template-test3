@@ -43,28 +43,27 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
       }
     }
 
+    // Handle Poland-specific logic for caller ID
     if (loggedInWorkerLocation.includes('PL')) {
-      // Check if location is PL
-      // Get caller ID info for PL regions from the config
       const callerIdPLCountry = getCallerIdPLCountry();
-      let allowedPhoneNumbers = [];
-      const validTeamNames = ['PL-iTero Onboarding', 'PL-iTero TechSupport'];
+      let allowedPhoneNumbers: string[] = [];
 
-      // Check the team and get the allowed phone numbers based on region
-      if (workerTeamName === 'PL-distributor' && callerIdPLCountry['PlDistributor']) {
+      // Handle specific team logic for Poland-based teams
+      if (workerTeamName === 'PL-Distributor Support' && callerIdPLCountry['PlDistributor']) {
         allowedPhoneNumbers = Object.values(callerIdPLCountry['PlDistributor']).map(
           (region: any) => region.phoneNumber,
         );
-      } else if (validTeamNames.includes(workerTeamName) && callerIdPLCountry['PLTechOnboarding']) {
-        allowedPhoneNumbers = Object.values(callerIdPLCountry['PLTechOnboarding']).map(
+      } else if (workerTeamName === 'PL-iTero TechSupport' && callerIdPLCountry['PLIteroTechSupport']) {
+        allowedPhoneNumbers = Object.values(callerIdPLCountry['PLIteroTechSupport']).map(
           (region: any) => region.phoneNumber,
         );
-      } else {
-        console.warn('Unknown or missing team name:', workerTeamName);
+      } else if (workerTeamName === 'PL-iTero Onboarding' && callerIdPLCountry['PLIteroTechOnboarding']) {
+        allowedPhoneNumbers = Object.values(callerIdPLCountry['PLIteroTechOnboarding']).map(
+          (region: any) => region.phoneNumber,
+        );
       }
 
       const destinationPhoneNumber = parsePhoneNumber(payload.destination);
-
       const destinationCountryCode = destinationPhoneNumber?.country;
       const destinationPhoneNumberFormatted = destinationPhoneNumber?.formatInternational();
 
@@ -81,7 +80,6 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
         // Default the callerId to Poland (PL)
         const polandData = callerIdList.PL; // Access the PL data from callerIdList
 
-        // Set the callerId and queueSid to Poland's values
         if (polandData) {
           payload.callerId = polandData.phoneNumber; // Default to Poland's phone number
           payload.queueSid = polandData.queueSid; // Default to Poland's queueSid
@@ -89,31 +87,28 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
         }
       }
 
-      if (workerTeamName === 'PL-distributor') {
+      // Set team name based on region
+      if (workerTeamName === 'PL-Distributor Support') {
         console.log('Setting team name to PL-distributor.');
-        // Dynamically access the country-specific entry for PlDistributor
         if (callerIdPLCountry?.PlDistributor?.country_code) {
           payload.teamname = callerIdPLCountry?.PlDistributor?.country_code;
         }
-      } else {
-        // Check if the team name matches either PL-iTero Onboarding or PL-iTero TechSupport
-        if (validTeamNames.includes(workerTeamName)) {
-          console.log(`Worker's team is ${workerTeamName}, proceeding with this team.`);
-          // Dynamically access the country-specific entry for PLTechOnboarding
-          if (callerIdPLCountry?.PLTechOnboarding?.country_code) {
-            payload.teamname = callerIdPLCountry?.PLTechOnboarding?.country_code;
-          }
-        } else {
-          console.warn('Worker team is neither PL-distributor nor PL-iTero teams, using default fallback.');
+      } else if (workerTeamName === 'PL-iTero TechSupport') {
+        if (callerIdPLCountry?.PLIteroTechSupport?.country_code) {
+          payload.teamname = callerIdPLCountry?.PLIteroTechSupport?.country_code;
+        }
+      } else if (workerTeamName === 'PL-iTero Onboarding') {
+        if (callerIdPLCountry?.PLIteroTechOnboarding?.country_code) {
+          payload.teamname = callerIdPLCountry?.PLIteroTechOnboarding?.country_code;
         }
       }
 
       // Log available caller IDs for reference (can be removed in production)
       Object.values(callerIdPLCountry).forEach((teamData: any) => {
         Object.values(teamData).forEach((regionData: any) => {
-          console.log(
-            `Available Caller ID - Phone Number: ${regionData.phoneNumber}, Country Code: ${regionData.country_code}`,
-          );
+          // console.log(
+          //   `Available Caller ID - Phone Number: ${regionData.phoneNumber}, Country Code: ${regionData.country_code}`,
+          // );
         });
       });
     } else {
