@@ -29,7 +29,14 @@ var appConfig = {
           'IT-Credit & Collections',
           'IT-ISRs',
         ],
-        IB: ['IB-Invisalign CS', 'IB-iTero CS', 'IB-Invisalign Sales Support', 'IB-Treat Team', 'IB-Tech Support'],
+        IB: [
+          'IB-Invisalign CS',
+          'IB-iTero CS',
+          'IB-Invisalign Sales Support',
+          'IB-Treat Team',
+          'IB-Tech Support',
+          'IB-Clinical Commercial',
+        ],
         UK: [
           'UK-Invisalign CS',
           'UK-iTero CS',
@@ -127,6 +134,7 @@ var appConfig = {
           'IBERIA Invisalign Sales Support',
           'IBERIA PT iTero Sales Support',
           'IBERIA PT Invisalign Sales Support',
+          'IB-Clinical Commercial',
         ],
       },
       callerIddata: {
