@@ -134,7 +134,7 @@ var appConfig = {
           'IBERIA Invisalign Sales Support',
           'IBERIA PT iTero Sales Support',
           'IBERIA PT Invisalign Sales Support',
-          'IB-Clinical Commercial',
+          'IB-Clinical Outbound Queue',
         ],
       },
       callerIddata: {
