@@ -488,7 +488,7 @@
           "department": false,
           "queue_no_worker_data": true,
           "queue_worker_data": false,
-          "team": false,
+          "team": true,
           "agent_skills": false
         }
       },
@@ -515,7 +515,7 @@
             "channel": "voice",
             "auto_accept": true,
             "auto_select": true,
-            "auto_wrapup": false,
+            "auto_wrapup": true,
             "required_attributes": [],
             "required_worker_attributes": [],
             "wrapup_time": 30000,
