@@ -721,7 +721,7 @@ var appConfig = {
         },
       },
       ring_notification: {
-        enabled: false,
+        enabled: true,
       },
       send_audio_rec_file: {
         enabled: true,

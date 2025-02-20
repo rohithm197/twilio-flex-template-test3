@@ -10,7 +10,6 @@ export const stringHook = () => ({
   'en-US': {
     [StringTemplates.ExtendWrapup]: 'Extend Wrap Up',
     [StringTemplates.WrapupSecondsRemaining]:
-    
       'Wrap up | {{seconds}} {{#if singular}}second{{else}}seconds{{/if}} remaining',
   },
   'pt-BR': ptBR,
