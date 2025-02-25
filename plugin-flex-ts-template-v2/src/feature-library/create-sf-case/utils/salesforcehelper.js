@@ -15,6 +15,8 @@ import updateTaskAttributesWithCaseId from './twilio-helper';
 const createSfTicket = function (task) {
   console.log('API Call for createSfTicket called ')
   if (window.sforce) {
+    console.log( task.attributes.call_sid,'callers_name');
+    console.log( Caller_s_Name__c ,'callers_name_convention');
     window.sforce.opencti.saveLog({
       value: {
         entityApiName: 'Case',
@@ -26,6 +28,7 @@ const createSfTicket = function (task) {
           task.dateCreated,
         Origin: 'Call',
         RecordtypeId: '012i00000019r5uAAA',
+        Caller_s_Name__c:task.attributes.call_sid,
         ContactId: task.attributes.sfcontactid,Description:
           'callType:Inbound \n Caller:' +
           task.attributes.caller,
