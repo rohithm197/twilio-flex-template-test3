@@ -58,7 +58,7 @@
           "IBERIA Invisalign Sales Support",
           "IBERIA PT iTero Sales Support",
           "IBERIA PT Invisalign Sales Support",
-         "IB-Clinical Outbound Queue"
+          "IB-Clinical Outbound Queue"
         ],
         "UK": [
           "UKI-Invisalign Queue",
@@ -110,86 +110,86 @@
         "PlDistributor": {
           "NL": {
             "phoneNumber": "+318003510027",
-            "queueName": "PL-Distributor-Support Queue",
-            "queueSid": "WQ66f77cf4f66e9e83bc516b453729bcda",
+            "queueName": "PL-Distributor-Outbound Queue",
+            "queueSid": "WQ408df40a0c92d105a18cf86d51cd695f",
             "country_code": "NL"
           },
           "SE": {
             "phoneNumber": "+4620881600",
-            "queueName": "PL-Distributor-Support Queue",
-            "queueSid": "WQ66f77cf4f66e9e83bc516b453729bcda",
+            "queueName": "PL-Distributor-Outbound Queue",
+            "queueSid": "WQ408df40a0c92d105a18cf86d51cd695f",
             "country_code": "SE"
           },
           "DK": {
             "phoneNumber": "+4580820210",
-            "queueName": "PL-Distributor-Support Queue",
-            "queueSid": "WQ66f77cf4f66e9e83bc516b453729bcda",
+            "queueName": "PL-Distributor-Outbound Queue",
+            "queueSid": "WQ408df40a0c92d105a18cf86d51cd695f",
             "country_code": "DK"
           },
           "FI": {
             "phoneNumber": "+358800552070",
-            "queueName": "PL-Distributor-Support Queue",
-            "queueSid": "WQ66f77cf4f66e9e83bc516b453729bcda",
+            "queueName": "PL-Distributor-Outbound Queue",
+            "queueSid": "WQ408df40a0c92d105a18cf86d51cd695f",
             "country_code": "FI"
           },
           "GB": {
             "phoneNumber": "+448001017037",
-            "queueName": "PL-Distributor-Support Queue",
-            "queueSid": "WQ66f77cf4f66e9e83bc516b453729bcda",
+            "queueName": "PL-Distributor-Outbound Queue",
+            "queueSid": "WQ408df40a0c92d105a18cf86d51cd695f",
             "country_code": "GB"
           },
           "PL": {
             "phoneNumber": "+48717166016",
-            "queueName": "PL-Distributor-Support Queue",
-            "queueSid": "WQ66f77cf4f66e9e83bc516b453729bcda",
+            "queueName": "PL-Distributor-Outbound Queue",
+            "queueSid": "WQ408df40a0c92d105a18cf86d51cd695f",
             "country_code": "PL"
           },
           "SI": {
             "phoneNumber": "+38680755700",
-            "queueName": "PL-Distributor-Support Queue",
-            "queueSid": "WQ66f77cf4f66e9e83bc516b453729bcda",
+            "queueName": "PL-Distributor-Outbound Queue",
+            "queueSid": "WQ408df40a0c92d105a18cf86d51cd695f",
             "country_code": "SI"
           },
           "NO": {
             "phoneNumber": "+4780022673",
-            "queueName": "PL-Distributor-Support Queue",
-            "queueSid": "WQ66f77cf4f66e9e83bc516b453729bcda",
+            "queueName": "PL-Distributor-Outbound Queue",
+            "queueSid": "WQ408df40a0c92d105a18cf86d51cd695f",
             "country_code": "NO"
           },
           "RS": {
             "phoneNumber": "+381800300163",
-            "queueName": "PL-Distributor-Support Queue",
-            "queueSid": "WQ66f77cf4f66e9e83bc516b453729bcda",
+            "queueName": "PL-Distributor-Outbound Queue",
+            "queueSid": "WQ408df40a0c92d105a18cf86d51cd695f",
             "country_code": "RS"
           },
           "KE": {
             "phoneNumber": "+254207640139",
-            "queueName": "PL-Distributor-Support Queue",
-            "queueSid": "WQ66f77cf4f66e9e83bc516b453729bcda",
+            "queueName": "PL-Distributor-Outbound Queue",
+            "queueSid": "WQ408df40a0c92d105a18cf86d51cd695f",
             "country_code": "KE"
           },
           "TN": {
             "phoneNumber": "+21631365940",
-            "queueName": "PL-Distributor-Support Queue",
-            "queueSid": "WQ66f77cf4f66e9e83bc516b453729bcda",
+            "queueName": "PL-Distributor-Outbound Queue",
+            "queueSid": "WQ408df40a0c92d105a18cf86d51cd695f",
             "country_code": "TN"
           },
           "DZ": {
             "phoneNumber": "+213982404628",
-            "queueName": "PL-Distributor-Support Queue",
-            "queueSid": "WQ66f77cf4f66e9e83bc516b453729bcda",
+            "queueName": "PL-Distributor-Outbound Queue",
+            "queueSid": "WQ408df40a0c92d105a18cf86d51cd695f",
             "country_code": "DZ"
           },
           "NG": {
             "phoneNumber": "+23413438880",
-            "queueName": "PL-Distributor-Support Queue",
-            "queueSid": "WQ66f77cf4f66e9e83bc516b453729bcda",
+            "queueName": "PL-Distributor-Outbound Queue",
+            "queueSid": "WQ408df40a0c92d105a18cf86d51cd695f",
             "country_code": "NG"
           },
           "RU": {
             "phoneNumber": "+78006000472",
-            "queueName": "PL-Distributor-Support Queue",
-            "queueSid": "WQ66f77cf4f66e9e83bc516b453729bcda",
+            "queueName": "PL-Distributor-Outbound Queue",
+            "queueSid": "WQ408df40a0c92d105a18cf86d51cd695f",
             "country_code": "RU"
           }
         },
