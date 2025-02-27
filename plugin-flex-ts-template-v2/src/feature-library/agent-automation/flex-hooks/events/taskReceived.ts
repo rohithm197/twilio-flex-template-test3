@@ -24,18 +24,18 @@ async function selectAndAcceptTask(task: ITask, taskConfig: TaskQualificationCon
     logger.error('[agent-automation] Unable to auto select task', error);
   }
   try {
+    // if (taskConfig.auto_accept) await Flex.Actions.invokeAction('AcceptTask', { sid });// SUNIL Commented and added below to pay bell auto answer
 
-   // if (taskConfig.auto_accept) await Flex.Actions.invokeAction('AcceptTask', { sid });// SUNIL Commented and added below to pay bell auto answer
-
-   // Auto Answer the calls with bell ring tone - SUNIL 
-    if (taskConfig.auto_accept) {
-      Flex.Actions.invokeAction('AcceptTask', { sid });
-      Flex.AudioPlayerManager.play({
-        url: 'https://studio-calls-functions-8100.twil.io/bell_autoanswer.mp3',
-        repeatable: false,
-      });
-    }
-
+    // Auto Answer the calls with bell ring tone - SUNIL
+    setTimeout(() => {
+      if (taskConfig.auto_accept) {
+        Flex.Actions.invokeAction('AcceptTask', { sid });
+        Flex.AudioPlayerManager.play({
+          url: 'https://studio-calls-functions-8100.twil.io/bell_autoanswer.mp3',
+          repeatable: false,
+        });
+      }
+    }, 15000);
   } catch (error: any) {
     logger.error('[agent-automation] Unable to auto accept task', error);
   }
