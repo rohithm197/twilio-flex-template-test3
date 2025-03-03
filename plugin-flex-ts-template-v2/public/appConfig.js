@@ -601,15 +601,14 @@ var appConfig = {
           {
             channel: 'voice',
             auto_accept: true,
-            auto_select: true,
+            auto_select: false,
             auto_wrapup: true,
             required_attributes: [],
             required_worker_attributes: [],
-            wrapup_time: 30000,
+            wrapup_time: 90000,
             allow_extended_wrapup: false,
             extended_wrapup_time: 0,
             default_outcome: 'Automatically completed',
-            auto_accept_location_list: ['uk', 'us', 'in'],
           },
           {
             channel: 'chat',
