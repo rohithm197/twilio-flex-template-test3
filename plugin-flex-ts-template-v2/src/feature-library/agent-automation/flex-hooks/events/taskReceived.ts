@@ -27,7 +27,6 @@ async function selectAndAcceptTask(task: ITask, taskConfig: TaskQualificationCon
     // if (taskConfig.auto_accept) await Flex.Actions.invokeAction('AcceptTask', { sid });// SUNIL Commented and added below to pay bell auto answer
 
     // Auto Answer the calls with bell ring tone - SUNIL
-    setTimeout(() => {
       if (taskConfig.auto_accept) {
         Flex.Actions.invokeAction('AcceptTask', { sid });
         Flex.AudioPlayerManager.play({
@@ -35,7 +34,8 @@ async function selectAndAcceptTask(task: ITask, taskConfig: TaskQualificationCon
           repeatable: false,
         });
       }
-    }, 15000);
+
+    
   } catch (error: any) {
     logger.error('[agent-automation] Unable to auto accept task', error);
   }
