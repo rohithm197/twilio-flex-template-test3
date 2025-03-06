@@ -29,11 +29,13 @@ async function selectAndAcceptTask(task: ITask, taskConfig: TaskQualificationCon
     // Auto Answer the calls with bell ring tone - SUNIL
 
     if (taskConfig.auto_accept) {
-      Flex.Actions.invokeAction('AcceptTask', { sid });
-      Flex.AudioPlayerManager.play({
-        url: 'https://studio-calls-functions-8100.twil.io/bell_autoanswer.mp3',
-        repeatable: false,
-      });
+      setTimeout(() => {
+        Flex.Actions.invokeAction('AcceptTask', { sid });
+        Flex.AudioPlayerManager.play({
+          url: 'https://studio-calls-functions-8100.twil.io/bell_autoanswer.mp3',
+          repeatable: false,
+        });
+      }, 2000); // 2000 milliseconds delay
     }
   } catch (error: any) {
     logger.error('[agent-automation] Unable to auto accept task', error);
