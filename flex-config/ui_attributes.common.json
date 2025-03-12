@@ -37,7 +37,8 @@
           "PL-iTero Tech Support",
           "PL-iTero Onboarding",
           "PL-Distributor Support"
-        ]
+        ],
+        "PLHUB": ["EMEA Hub Team"]
       },
       "queuesList": {
         "IB": [
@@ -73,6 +74,18 @@
           "PL-iTero TechSupport Queue",
           "PL-iTero Onboarding Queue",
           "PL-Distributor-Support Queue"
+        ],
+        "PLHUB": [
+          "iTero-SP-Primary_Queue",
+          "iTero-SP-Secondary_Queue",
+          "iTero-PT-Primary_Queue",
+          "iTero-PT-Secondary_Queue",
+          "UKI-iTero Queue",
+          "UKI-Tech support",
+          "Outbound",
+          "UKI-CS-General Queue",
+          "Tech Support",
+          "Finnish Secondary Queue"
         ]
       },
       "departments": [
