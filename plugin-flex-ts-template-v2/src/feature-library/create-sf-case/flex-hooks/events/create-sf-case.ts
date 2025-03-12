@@ -26,7 +26,7 @@ export const eventHook = function createCaseAfterTaskAcceptance(
 ) {
   // your code here
  console.log('task attributes--'+JSON.stringify(task.attributes));
- console.log('Task accepted-agent answered call worker attributes----'+JSON.stringify(manager.workerClient?.attributes));
+//  console.log('Task accepted-agent answered call worker attributes----'+JSON.stringify(manager.workerClient?.attributes));
  if(task.taskChannelUniqueName === 'voice' && task.attributes.direction && task.attributes.direction === 'inbound'){
     if (task.attributes.sfcontactid && task.attributes.sfcontactid !== ''  ) {
       if (task.attributes.ticketId && task.attributes.ticketId !== '') {

@@ -73,6 +73,7 @@ var appConfig = {
           'FR-Credit & Collections',
           'FR-ISRs',
         ],
+        PLHUB: ['EMEA Hub Team'],
       },
       queuesList: {
         IT: [
@@ -135,6 +136,18 @@ var appConfig = {
           'IBERIA PT iTero Sales Support',
           'IBERIA PT Invisalign Sales Support',
           'IB-Clinical Outbound Queue',
+        ],
+        PLHUB: [
+          'iTero-SP-Primary_Queue',
+          'iTero-SP-Secondary_Queue',
+          'iTero-PT-Primary_Queue',
+          'iTero-PT-Secondary_Queue',
+          'UKI-iTero Queue',
+          'UKI-Tech support',
+          'Outbound',
+          'UKI-CS-General Queue',
+          'Tech Support',
+          'Finnish Secondary Queue',
         ],
       },
       callerIddata: {
