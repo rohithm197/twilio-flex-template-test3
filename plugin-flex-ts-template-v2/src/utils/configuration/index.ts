@@ -36,7 +36,7 @@ export const getFeatureFlags = () => {
     // Access teamList and queuesList from mergedSettings
     const teamList = mergedSettings?.common.teamList || {};
     const queuesList = mergedSettings?.common.queuesList || {};
-    console.log("queuesList", queuesList)
+    // console.log("queuesList", queuesList)
     // Find the matching key in teamList and queuesList
     const selectedTeams = Object.keys(teamList).find((key) => key.toLowerCase() === location);
     const workerQueues = Object.keys(queuesList).find((key) => key.toLowerCase() === location);

@@ -58,18 +58,15 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
       // Logic PolandHUB-based worker locations
       if (workerLocationPLHUB && workerTeamNamePLHUB) {
         let callerIdData = null;
-        // Set callerIdData based on team name
-        if (workerTeamNamePLHUB) {
-          if (callerIdData) {
-            callerIdData = callerIdData['PLHUB'];
-          }
-        }
         console.log('Worker is part of EMEA Hub Team and logged in from PLHUB');
         // Only allow calls to UK, Spain (ES), or Portugal (PT)
         if (destinationCountryCode === 'GB' || destinationCountryCode === 'ES' || destinationCountryCode === 'PT') {
           console.log(`Destination country PLHUB code is valid: ${destinationCountryCode}`);
 
-          const countryKey = destinationCountryCode === 'GB' ? 'UK' : destinationCountryCode === 'ES' ? 'SP' : 'PT';
+          const countryKey = destinationCountryCode === 'GB' ? 'UK'
+              : (destinationCountryCode === 'ES' || destinationCountryCode === 'PT')
+              ? 'IB'
+              : destinationCountryCode;
           console.log(`Assigned PLHUB countryKey: ${countryKey}`);
 
           // Fetch callerIdData based on the country key from callerIdList
@@ -96,7 +93,7 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
           }
         }
       } else {
-        // For other regions
+        // For other PL regions
         if (dynamicCallerId && dynamicQueueSid) {
           payload.callerId = dynamicCallerId; // Override the caller ID in the payload
           payload.queueSid = dynamicQueueSid; // Override the QueueSid in the payload
