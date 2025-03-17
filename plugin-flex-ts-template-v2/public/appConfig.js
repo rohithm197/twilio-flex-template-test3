@@ -146,8 +146,7 @@ var appConfig = {
           'UKI-Tech support',
           'Outbound',
           'UKI-CS-General Queue',
-          'Tech Support',
-          'Finnish Secondary Queue',
+          'Tech Support'
         ],
       },
       callerIddata: {
