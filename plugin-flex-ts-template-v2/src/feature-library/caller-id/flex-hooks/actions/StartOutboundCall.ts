@@ -28,6 +28,12 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
     const workerLocationPLHUB = loggedInWorkerLocation?.includes('PLHUB');
     const callerIdFallback = callerIdList[loggedInWorkerLocation];
     const workerTeamNamePLHUB = workerTeamName === 'EMEA Hub Team';
+    
+    console.log('Logged-in Worker:', loggedInWorkerLocation);
+    console.log('Is Worker in Poland (PL)?', workerLocationPoland);
+    console.log('Is Worker in PLHUB?', workerLocationPLHUB);
+    console.log('Caller ID Fallback:', callerIdFallback);
+    console.log('Is Worker part of EMEA Hub Team?', workerTeamNamePLHUB);
 
     if (workerLocationPoland) {
       // Logic for Poland-based worker locations
@@ -70,9 +76,13 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
           console.log(`Assigned PLHUB countryKey: ${countryKey}`);
 
           // Fetch callerIdData based on the country key from callerIdList
-          callerIdData = callerIdList[countryKey];
+          callerIdData = callerIdList?.[countryKey];
           console.log(`Fetched callerIdData PLHUB for countryKey ${countryKey}:`, callerIdData);
-
+          if (!callerIdData) {
+            console.error(`No callerIdData found for countryKey: ${countryKey}`);
+            return; // Exit or handle gracefully
+          }
+      
           if (callerIdData?.[destinationCountryCode]) {
             console.log(`CallerId data PLHUB found for ${countryKey}. Assigning callerId and queueSid.`);
             // Set callerId and queueSid from callerIdData
