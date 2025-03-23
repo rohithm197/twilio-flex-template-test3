@@ -23,19 +23,20 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
 
     console.log('Destination phone number:', destinationPhoneNumber?.formatInternational());
     console.log('Destination country code:', destinationCountryCode);
-
-    const workerLocationPoland = loggedInWorkerLocation?.includes('PL');
-    const workerLocationPLHUB = loggedInWorkerLocation?.includes('PLHUB');
+    // const workerLocationPoland = loggedInWorkerLocation?.includes('PL');
+    // const workerLocationPLHUB = loggedInWorkerLocation?.includes('PLHUB');
+    const workerLocationPoland = loggedInWorkerLocation == 'PL';
+    const workerLocationPLHUB = loggedInWorkerLocation == 'PLHUB';
     const callerIdFallback = callerIdList[loggedInWorkerLocation];
     const workerTeamNamePLHUB = workerTeamName === 'EMEA Hub Team';
-    
+
     console.log('Logged-in Worker:', loggedInWorkerLocation);
     console.log('Is Worker in Poland (PL)?', workerLocationPoland);
     console.log('Is Worker in PLHUB?', workerLocationPLHUB);
     console.log('Caller ID Fallback:', callerIdFallback);
     console.log('Is Worker part of EMEA Hub Team?', workerTeamNamePLHUB);
 
-    if (workerLocationPoland) {
+    if (workerLocationPoland && workerTeamName !== 'EMEA Hub Team') {
       // Logic for Poland-based worker locations
       const callerIdPLCountry = getCallerIdPLCountry();
       let callerIdData = null;
@@ -69,8 +70,10 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
         if (destinationCountryCode === 'GB' || destinationCountryCode === 'ES' || destinationCountryCode === 'PT') {
           console.log(`Destination country PLHUB code is valid: ${destinationCountryCode}`);
 
-          const countryKey = destinationCountryCode === 'GB' ? 'UK'
-              : (destinationCountryCode === 'ES' || destinationCountryCode === 'PT')
+          const countryKey =
+            destinationCountryCode === 'GB'
+              ? 'UK'
+              : destinationCountryCode === 'ES' || destinationCountryCode === 'PT'
               ? 'IB'
               : destinationCountryCode;
           console.log(`Assigned PLHUB countryKey: ${countryKey}`);
@@ -82,7 +85,7 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
             console.error(`No callerIdData found for countryKey: ${countryKey}`);
             return; // Exit or handle gracefully
           }
-      
+
           if (callerIdData?.[destinationCountryCode]) {
             console.log(`CallerId data PLHUB found for ${countryKey}. Assigning callerId and queueSid.`);
             // Set callerId and queueSid from callerIdData
