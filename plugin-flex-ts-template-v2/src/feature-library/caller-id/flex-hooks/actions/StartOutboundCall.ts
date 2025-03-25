@@ -30,10 +30,7 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
     const callerIdFallback = callerIdList[loggedInWorkerLocation];
     const workerTeamNamePLHUB = workerTeamName === 'EMEA Hub Team';
 
-    console.log('Logged-in Worker:', loggedInWorkerLocation);
-    console.log('Is Worker in Poland (PL)?', workerLocationPoland);
     console.log('Is Worker in PLHUB?', workerLocationPLHUB);
-    console.log('Caller ID Fallback:', callerIdFallback);
     console.log('Is Worker part of EMEA Hub Team?', workerTeamNamePLHUB);
 
     if (workerLocationPoland && workerTeamName !== 'EMEA Hub Team') {
@@ -65,45 +62,43 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
       // Logic PolandHUB-based worker locations
       if (workerLocationPLHUB && workerTeamNamePLHUB) {
         let callerIdData = null;
-        console.log('Worker is part of EMEA Hub Team and logged in from PLHUB');
         // Only allow calls to UK, Spain (ES), or Portugal (PT)
         if (destinationCountryCode === 'GB' || destinationCountryCode === 'ES' || destinationCountryCode === 'PT') {
           console.log(`Destination country PLHUB code is valid: ${destinationCountryCode}`);
 
-          const countryKey =
+          let countryKey =
             destinationCountryCode === 'GB'
               ? 'UK'
               : destinationCountryCode === 'ES' || destinationCountryCode === 'PT'
               ? 'IB'
               : destinationCountryCode;
-          console.log(`Assigned PLHUB countryKey: ${countryKey}`);
-
           // Fetch callerIdData based on the country key from callerIdList
-          callerIdData = callerIdList?.[countryKey];
-          console.log(`Fetched callerIdData PLHUB for countryKey ${countryKey}:`, callerIdData);
+          callerIdData = callerIdList;
           if (!callerIdData) {
             console.error(`No callerIdData found for countryKey: ${countryKey}`);
             return; // Exit or handle gracefully
           }
 
-          if (callerIdData?.[destinationCountryCode]) {
-            console.log(`CallerId data PLHUB found for ${countryKey}. Assigning callerId and queueSid.`);
-            // Set callerId and queueSid from callerIdData
-            payload.callerId = callerIdData[destinationCountryCode]?.phoneNumber;
-            payload.queueSid = callerIdData[destinationCountryCode]?.queueSid;
-
+          if (callerIdData && countryKey) {
+            const countryData = callerIdData[countryKey];
+            payload.callerId = countryData.phoneNumber;
+            payload.queueSid = countryData.queueSid;
             console.log(
               `Assigned callerId PLHUB for ${countryKey}: ${payload.callerId}, queueSid: ${payload.queueSid}`,
             );
-          } else {
-            // Fallback to default callerId if no data is found
-            const DefaultPLHUBLocation = callerIdList['PL']; // Fallback data for Poland
-            payload.callerId = DefaultPLHUBLocation?.phoneNumber || dynamicCallerId;
-            payload.queueSid = DefaultPLHUBLocation?.queueSid || dynamicQueueSid;
-            console.log(
-              `Caller ID region PLHUB fallback to default-PL: ${payload.callerId}, queueSid: ${payload.queueSid}`,
-            );
           }
+        } else {
+          // Handle case for other country codes which care not listed from destination country code(IN,US,CAD etc.)
+          console.log(
+            `Destination country code ${destinationCountryCode} is not in the allowed PLHUB list. Assigning PL location.`,
+          );
+          // Fallback to PL location
+          const DefaultPLLocation = callerIdList['PL']; // Default fallback to Poland location
+          payload.callerId = DefaultPLLocation?.phoneNumber || dynamicCallerId;
+          payload.queueSid = DefaultPLLocation?.queueSid || dynamicQueueSid;
+          console.log(
+            ` FROM PLHUB Assigned fallback callerId and queueSid for PL location: ${payload.callerId}, queueSid: ${payload.queueSid}`,
+          );
         }
       } else {
         // For other PL regions
