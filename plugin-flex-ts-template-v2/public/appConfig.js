@@ -694,7 +694,7 @@ var appConfig = {
         enabled: true,
         worker: {
           enabled: true,
-          show_only_available_workers: false,
+          show_only_available_workers: true,
         },
         queue: {
           enabled: true,

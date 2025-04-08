@@ -40,24 +40,51 @@ const QueueDirectoryTab = (props: OwnProps) => {
 
   // async function to retrieve the workers from the tr sdk
   // this will trigger the useEffect for a fetchedWorkers update
-const fetchSDKWorkers = async () => {
-  if (!workspaceClient) {
-    return;
-  }
+  const fetchSDKWorkers = async () => {
+    if (!workspaceClient) {
+      console.log('Workspace client PLHUB is not available');
+      return;
+    }
 
-  // Fetch the list of workers from workspaceClient
-  const workerArray = Array.from((await workspaceClient.fetchWorkers()).values()) as unknown as Array<Worker>;
+    console.log('Fetching workers from PLHUB workspace client...');
+    // Fetch the list of workers from workspaceClient
+    const workerArray = Array.from((await workspaceClient.fetchWorkers()).values()) as unknown as Array<Worker>;
 
-  // Filter workers by location, handling case insensitivity
-  setFetchedWorkers(() => {
-    return workerArray.filter(worker => {
-      const workerAttrLocation = worker?.attributes?.location?.toString().toLowerCase();
-      const normalizedWorkerLocation = workerLocation?.toString().toLowerCase();
-      return workerAttrLocation === normalizedWorkerLocation;
+    console.log('Workers fetched:', workerArray);
+
+    // Get the worker's location from their attributes
+    const workerLocation = workerClient?.attributes?.location?.toLowerCase();
+    console.log("Logged-in worker's PLHUB location:", workerLocation);
+
+    // Check if the logged-in worker is from the PLHUB location
+    const isPLHUBWorker = workerLocation === 'plhub';
+    console.log('Is the worker from PLHUB?', isPLHUBWorker);
+
+    // Filter workers by location, handling case insensitivity
+    setFetchedWorkers(() => {
+      console.log('Starting to PLHUB filter workers...');
+      const filteredWorkers = workerArray.filter((worker) => {
+        const workerAttrLocation = worker?.attributes?.location?.toString().toLowerCase();
+        console.log(`Checking worker with location PLHUB: ${workerAttrLocation}`);
+
+        const normalizedWorkerLocation = workerLocation?.toString().toLowerCase();
+        console.log('Normalized worker location (logged-in worker) PLHUBs:', normalizedWorkerLocation);
+
+        // If worker is from PLHUB, display workers from both UK and PL locations
+        if (isPLHUBWorker) {
+          console.log('Filtering for PLHUB worker, showing workers from UK,IB and PLHUB.');
+          return workerAttrLocation === 'uk' || workerAttrLocation === 'ib' || workerAttrLocation === 'plhub';
+        }
+
+        // Otherwise, filter by the current worker's location
+        console.log('Filtering for non-PLHUB worker, showing workers from the same location.');
+        return workerAttrLocation === normalizedWorkerLocation;
+      });
+
+      console.log('Filtered workers PLHUB:', filteredWorkers);
+      return filteredWorkers;
     });
-  });
-};
-
+  };
 
   // function to filter the generatedQueueList and trigger a re-render
   const filterWorkers = () => {
