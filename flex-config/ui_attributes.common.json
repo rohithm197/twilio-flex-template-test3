@@ -96,7 +96,8 @@
           "UKI-CS-Invisalign",
           "UKI-CS-iTero",
           "UKI-TechSupport-iTero",
-          "UKI-CS-Outbound"
+          "UKI-CS-Outbound",
+          "UKI-Onboarding-iTero"
         ],
         "PL": [
           "PL-CS-Invisalign",
@@ -104,7 +105,8 @@
           "PL-Treat-Hotline",
           "PL-TechSupport-iTero",
           "PL-Onboarding-iTero",
-          "PL-DistributorSupport-Outbound"
+          "PL-DistributorSupport-Outbound",
+          "PL-Treat-Outbound"
         ],
         "PLHUB": [
           "IB-CS-iTero-Primary-ES",

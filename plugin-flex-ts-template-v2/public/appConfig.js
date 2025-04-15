@@ -85,7 +85,7 @@ var appConfig = {
         ],
       },
       queuesList: {
-        UK: ['UKI-CS-Invisalign', 'UKI-CS-iTero', 'UKI-TechSupport-iTero', 'UKI-CS-Outbound'],
+        UK: ['UKI-CS-Invisalign', 'UKI-CS-iTero', 'UKI-TechSupport-iTero', 'UKI-CS-Outbound', 'UKI-Onboarding-iTero'],
         PL: [
           'PL-CS-Invisalign',
           'PL-CS-iTero',
@@ -93,6 +93,7 @@ var appConfig = {
           'PL-TechSupport-iTero',
           'PL-Onboarding-iTero',
           'PL-DistributorSupport-Outbound',
+          'PL-Treat-Outbound',
         ],
         FR: [
           'FR-Invisalign',
@@ -131,6 +132,7 @@ var appConfig = {
           'IB-CS-iTero-Primary-PT',
           'IB-CS-iTero-Secondary-PT',
           'UKI-CS-iTero',
+
           'UKI-TechSupport-iTero',
           'IB-CS-Outbound',
           'UKI-CS-Outbound',
