@@ -26,4 +26,8 @@ export const getCallerIdPLCountry = () => {
   return getFeatureFlags()?.common?.callerIdPLCountry || {};
 };
 
+export const getCallerIdDACHCountry = () => {
+  return getFeatureFlags()?.common?.callerIdDACHCountry || {};
+};
+
 export { callerIdList };
