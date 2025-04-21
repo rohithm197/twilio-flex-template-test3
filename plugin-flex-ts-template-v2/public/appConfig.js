@@ -71,17 +71,19 @@ var appConfig = {
         ],
         DACH: [
           'DACH-Invisalign CS',
-          'DACH-iTero CS(front)',
-          'DACH-iTero Tech Support(Back)',
+          'DACH-iTero CS',
+          'DACH-iTero Tech Support',
           'DACH-iTero Onboarding',
           'DACH-iTero Training',
           'DACH-Invisalign Sales Support',
           'DACH-iTero Sales Support',
           'DACH-Clinical Commercial',
-          'DACH-Treat',
+          'DACH-Treat Team',
           'DACH-IPP',
           'DACH-Credit Collections',
           'DACH-ISR',
+          'DACH-iTero TechSupport onboarding',
+          'DACH-Clinical Commercial'
         ],
       },
       queuesList: {
@@ -173,6 +175,7 @@ var appConfig = {
           'DACH-Credit Collections',
           'DACH-iTero-TechSupport',
           'DACH-iTero-Onboarding',
+          'DACH-Clinical Commercial'
         ],
       },
       callerIddata: {
@@ -193,6 +196,24 @@ var appConfig = {
           queueName: 'UKI-CS-Invisalign',
           queueSid: 'WQ7f0cfbe115999b33c42c91dd8c417eac',
           country_code: 'GB',
+        },
+        AT: {
+          phoneNumber: '+43800802048',
+          queueName: 'DACH-CS-Outbound',
+          queueSid: 'WQ0d0233f449763882d57e89e9f697131e',
+          country_code: 'AT',
+        },
+        DE: {
+          phoneNumber: '+498002524990',
+          queueName: 'DACH-CS-Outbound',
+          queueSid: 'WQ0d0233f449763882d57e89e9f697131e',
+          country_code: 'DE',
+        },
+        CH: {
+          phoneNumber: '+41800225116',
+          queueName: 'DACH-CS-Outbound',
+          queueSid: 'WQ0d0233f449763882d57e89e9f697131e',
+          country_code: 'CH',
         },
       },
       callerIdPLCountry: {
@@ -453,6 +474,88 @@ var appConfig = {
             queueName: 'PL-Onboarding-iTero',
             queueSid: 'WQdbb2c9b47750893e07e7d98477e07518',
             country_code: 'IS',
+          },
+        },
+      },
+      callerIdDACHCountry: {
+        DACHInvisalignCS: {
+          AT: {
+            phoneNumber: '+43800802048',
+            queueName: 'DACH-CS-Outbound',
+            queueSid: 'WQ0d0233f449763882d57e89e9f697131e',
+            country_code: 'AT',
+          },
+          DE: {
+            phoneNumber: '+498002524990',
+            queueName: 'DACH-CS-Outbound',
+            queueSid: 'WQ0d0233f449763882d57e89e9f697131e',
+            country_code: 'DE',
+          },
+          CH: {
+            phoneNumber: '+41800225116',
+            queueName: 'DACH-CS-Outbound',
+            queueSid: 'WQ0d0233f449763882d57e89e9f697131e',
+            country_code: 'CH',
+          },
+        },
+        DACHTreatTeam: {
+          AT: {
+            phoneNumber: '+43800070797',
+            queueName: ' DACH-Treat-Outbound',
+            queueSid: 'WQ8303b8ecbcc507d2363d0029d87fd725',
+            country_code: 'AT',
+          },
+          DE: {
+            phoneNumber: '+498000009731',
+            queueName: ' DACH-Treat-Outbound',
+            queueSid: 'WQ8303b8ecbcc507d2363d0029d87fd725',
+            country_code: 'DE',
+          },
+          CH: {
+            phoneNumber: '+41800321003',
+            queueName: ' DACH-Treat-Outbound',
+            queueSid: 'WQ8303b8ecbcc507d2363d0029d87fd725',
+            country_code: 'CH',
+          },
+        },
+        iTeroTechSupport: {
+          AT: {
+            phoneNumber: '+43800802048',
+            queueName: ' DACH-iTero-TechSupport',
+            queueSid: ' WQc2afd0ee9d4af2477abcec55a6240a25',
+            country_code: 'AT',
+          },
+          DE: {
+            phoneNumber: '+498002524990',
+            queueName: ' DACH-iTero-TechSupport',
+            queueSid: ' WQc2afd0ee9d4af2477abcec55a6240a25',
+            country_code: 'DE',
+          },
+          CH: {
+            phoneNumber: '+41800225116',
+            queueName: ' DACH-iTero-TechSupport',
+            queueSid: ' WQc2afd0ee9d4af2477abcec55a6240a25',
+            country_code: 'CH',
+          },
+        },
+        DACHClinicalCommercial: {
+          AT: {
+            phoneNumber: '+43800802048',
+            queueName: 'DACH-Clinical Commercial',
+            queueSid: 'WQ0d0233f449763882d57e89e9f697131e',
+            country_code: 'AT',
+          },
+          DE: {
+            phoneNumber: '+498002524990',
+            queueName: 'DACH-Clinical Commercial',
+            queueSid: 'WQ0d0233f449763882d57e89e9f697131e',
+            country_code: 'DE',
+          },
+          CH: {
+            phoneNumber: '+41800225116',
+            queueName: 'DACH-Clinical Commercial',
+            queueSid: 'WQ0d0233f449763882d57e89e9f697131e',
+            country_code: 'CH',
           },
         },
       },

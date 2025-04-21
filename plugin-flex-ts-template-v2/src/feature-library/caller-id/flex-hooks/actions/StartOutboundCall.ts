@@ -2,7 +2,7 @@ import * as Flex from '@twilio/flex-ui';
 import parsePhoneNumber from 'libphonenumber-js';
 
 import { FlexActionEvent, FlexAction } from '../../../../types/feature-loader';
-import { callerIdList, getCallerIdPLCountry } from '../../config';
+import { callerIdList, getCallerIdDACHCountry, getCallerIdPLCountry } from '../../config';
 
 export const actionEvent = FlexActionEvent.before;
 export const actionName = FlexAction.StartOutboundCall;
@@ -27,6 +27,7 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
     // const workerLocationPLHUB = loggedInWorkerLocation?.includes('PLHUB');
     const workerLocationPoland = loggedInWorkerLocation == 'PL';
     const workerLocationPLHUB = loggedInWorkerLocation == 'PLHUB';
+    const workerLocationDACH = loggedInWorkerLocation == 'DACH';
     const callerIdFallback = callerIdList[loggedInWorkerLocation];
     const workerTeamNamePLHUB = workerTeamName === 'EMEA Hub Team';
 
@@ -57,6 +58,40 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
         payload.callerId = callerIdFallback?.phoneNumber || dynamicCallerId;
         payload.queueSid = callerIdFallback?.queueSid || dynamicQueueSid;
         console.log('Falling back to default callerId and queueSid.');
+      }
+    } else if (workerLocationDACH) {
+      // Logic for DACH-based worker locations
+      const callerIdDACHCountry = getCallerIdDACHCountry();
+      let callerIdDACHData = null;
+
+      // Set callerIdData based on team name
+      if (workerTeamName === 'DACH-Treat Team') {
+        callerIdDACHData = callerIdDACHCountry['DACHTreatTeam'];
+      } else if (
+        workerTeamName === 'DACH-iTero Tech Support' ||
+        workerTeamName === 'DACH-iTero Onboarding' ||
+        workerTeamName === 'DACH-iTero TechSupport onboarding'
+      ) {
+        callerIdDACHData = callerIdDACHCountry['iTeroTechSupport'];
+      } else if (workerTeamName === 'DACH-Invisalign CS') {
+        callerIdDACHData = callerIdDACHCountry['DACHInvisalignCS'];
+      } else if (workerTeamName === 'DACH-Clinical Commercial') {
+        callerIdDACHData = callerIdDACHCountry['DACHClinicalCommercial'];
+      }
+
+      if (callerIdDACHData && destinationCountryCode && callerIdDACHData[destinationCountryCode]) {
+        // Assign caller ID and queue SID based on the destination country code
+        payload.callerId = callerIdDACHData[destinationCountryCode]?.phoneNumber;
+        payload.queueSid = callerIdDACHData[destinationCountryCode]?.queueSid;
+        console.log(`DACH Assigned callerId: ${payload.callerId}, queueSid: ${payload.queueSid}`);
+      } else {
+        // Fallback to DACH location
+        const DefaultDACHLocation = callerIdList['CH']; // Default fallback to Switzerland location
+        payload.callerId = DefaultDACHLocation?.phoneNumber || dynamicCallerId;
+        payload.queueSid = DefaultDACHLocation?.queueSid || dynamicQueueSid;
+        console.log(
+          ` FROM DACH Assigned fallback callerId and queueSid for CH location: ${payload.callerId}, queueSid: ${payload.queueSid}`,
+        );
       }
     } else {
       // Logic PolandHUB-based worker locations
