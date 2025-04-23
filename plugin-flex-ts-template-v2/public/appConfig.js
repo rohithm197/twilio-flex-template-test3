@@ -83,7 +83,7 @@ var appConfig = {
           'DACH-Credit Collections',
           'DACH-ISR',
           'DACH-iTero TechSupport onboarding',
-          'DACH-Clinical Commercial'
+          'DACH-Clinical Commercial',
         ],
       },
       queuesList: {
@@ -175,7 +175,7 @@ var appConfig = {
           'DACH-Credit Collections',
           'DACH-iTero-TechSupport',
           'DACH-iTero-Onboarding',
-          'DACH-Clinical Commercial'
+          'DACH-Clinical Commercial',
         ],
       },
       callerIddata: {
@@ -501,40 +501,40 @@ var appConfig = {
         DACHTreatTeam: {
           AT: {
             phoneNumber: '+43800070797',
-            queueName: ' DACH-Treat-Outbound',
+            queueName: 'DACH-Treat-Outbound',
             queueSid: 'WQ8303b8ecbcc507d2363d0029d87fd725',
             country_code: 'AT',
           },
           DE: {
             phoneNumber: '+498000009731',
-            queueName: ' DACH-Treat-Outbound',
+            queueName: 'DACH-Treat-Outbound',
             queueSid: 'WQ8303b8ecbcc507d2363d0029d87fd725',
             country_code: 'DE',
           },
           CH: {
             phoneNumber: '+41800321003',
-            queueName: ' DACH-Treat-Outbound',
+            queueName: 'DACH-Treat-Outbound',
             queueSid: 'WQ8303b8ecbcc507d2363d0029d87fd725',
             country_code: 'CH',
           },
         },
-        iTeroTechSupport: {
+        DACHiTeroTechSupport: {
           AT: {
             phoneNumber: '+43800802048',
-            queueName: ' DACH-iTero-TechSupport',
-            queueSid: ' WQc2afd0ee9d4af2477abcec55a6240a25',
+            queueName: 'DACH-iTero-TechSupport',
+            queueSid: 'WQc2afd0ee9d4af2477abcec55a6240a25',
             country_code: 'AT',
           },
           DE: {
             phoneNumber: '+498002524990',
-            queueName: ' DACH-iTero-TechSupport',
-            queueSid: ' WQc2afd0ee9d4af2477abcec55a6240a25',
+            queueName: 'DACH-iTero-TechSupport',
+            queueSid: 'WQc2afd0ee9d4af2477abcec55a6240a25',
             country_code: 'DE',
           },
           CH: {
             phoneNumber: '+41800225116',
-            queueName: ' DACH-iTero-TechSupport',
-            queueSid: ' WQc2afd0ee9d4af2477abcec55a6240a25',
+            queueName: 'DACH-iTero-TechSupport',
+            queueSid: 'WQc2afd0ee9d4af2477abcec55a6240a25',
             country_code: 'CH',
           },
         },

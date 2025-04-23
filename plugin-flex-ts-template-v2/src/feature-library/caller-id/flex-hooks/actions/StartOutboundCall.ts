@@ -72,7 +72,7 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
         workerTeamName === 'DACH-iTero Onboarding' ||
         workerTeamName === 'DACH-iTero TechSupport onboarding'
       ) {
-        callerIdDACHData = callerIdDACHCountry['iTeroTechSupport'];
+        callerIdDACHData = callerIdDACHCountry['DACHiTeroTechSupport'];
       } else if (workerTeamName === 'DACH-Invisalign CS') {
         callerIdDACHData = callerIdDACHCountry['DACHInvisalignCS'];
       } else if (workerTeamName === 'DACH-Clinical Commercial') {
