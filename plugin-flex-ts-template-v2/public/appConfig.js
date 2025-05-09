@@ -85,6 +85,16 @@ var appConfig = {
           'DACH-iTero TechSupport onboarding',
           'DACH-Clinical Commercial',
         ],
+
+        CEBI: [
+          'CEBI-Customer Support',
+          'CEBI-Customer Support',
+          'CEBI-Customer Support',
+          'CEBI-Customer Support',
+          'CEBI-Invisalign CS',
+          'CEBI-iTero CS',
+          'CEBI-iTero Tech Support',
+        ],
       },
       queuesList: {
         UK: ['UKI-CS-Invisalign', 'UKI-CS-iTero', 'UKI-TechSupport-iTero', 'UKI-CS-Outbound', 'UKI-Onboarding-iTero'],
@@ -177,6 +187,14 @@ var appConfig = {
           'DACH-iTero-Onboarding',
           'DACH-Clinical Commercial',
         ],
+        CEBI: [
+          'CEBI-CS-Outbound',
+          'CEBI-iTero-TechSupport-Outbound',
+          'CEBI-CS-IL-Invisalign',
+          'CEBI-CS-IL-iTero',
+          'CEBI-iTero-TechSupport-IL',
+          'CEBI-iTero-Onboarding-IL',
+        ],
       },
       callerIddata: {
         PL: {
@@ -214,6 +232,12 @@ var appConfig = {
           queueName: 'DACH-CS-Outbound',
           queueSid: 'WQ0d0233f449763882d57e89e9f697131e',
           country_code: 'CH',
+        },
+        IL: {
+          phoneNumber: '+41800225116',
+          queueName: 'CEBI-CS-Outbound',
+          queueSid: 'WQ0d0233f449763882d57e89e9f697131e',
+          country_code: 'IL',
         },
       },
       callerIdPLCountry: {
@@ -554,6 +578,88 @@ var appConfig = {
           CH: {
             phoneNumber: '+41800225116',
             queueName: 'DACH-Clinical Commercial',
+            queueSid: 'WQ0d0233f449763882d57e89e9f697131e',
+            country_code: 'CH',
+          },
+        },
+      },
+      callerIdDCEBICountry: {
+        CEBIInvisalignCS: {
+          AT: {
+            phoneNumber: '+43800802048',
+            queueName: 'CEBI-CS-Outbound',
+            queueSid: 'WQ0d0233f449763882d57e89e9f697131e',
+            country_code: 'AT',
+          },
+          DE: {
+            phoneNumber: '+498002524990',
+            queueName: 'CEBI-CS-Outbound',
+            queueSid: 'WQ0d0233f449763882d57e89e9f697131e',
+            country_code: 'DE',
+          },
+          CH: {
+            phoneNumber: '+41800225116',
+            queueName: 'CEBI-CS-Outbound',
+            queueSid: 'WQ0d0233f449763882d57e89e9f697131e',
+            country_code: 'CH',
+          },
+        },
+        CEBITreatTeam: {
+          AT: {
+            phoneNumber: '+43800070797',
+            queueName: 'CEBI-Treat-Outbound',
+            queueSid: 'WQ8303b8ecbcc507d2363d0029d87fd725',
+            country_code: 'AT',
+          },
+          DE: {
+            phoneNumber: '+498000009731',
+            queueName: 'CEBI-Treat-Outbound',
+            queueSid: 'WQ8303b8ecbcc507d2363d0029d87fd725',
+            country_code: 'DE',
+          },
+          CH: {
+            phoneNumber: '+41800321003',
+            queueName: 'CEBI-Treat-Outbound',
+            queueSid: 'WQ8303b8ecbcc507d2363d0029d87fd725',
+            country_code: 'CH',
+          },
+        },
+        CEBIiTeroTechSupport: {
+          AT: {
+            phoneNumber: '+43800802048',
+            queueName: 'CEBI-iTero-TechSupport',
+            queueSid: 'WQc2afd0ee9d4af2477abcec55a6240a25',
+            country_code: 'AT',
+          },
+          DE: {
+            phoneNumber: '+498002524990',
+            queueName: 'CEBI-iTero-TechSupport',
+            queueSid: 'WQc2afd0ee9d4af2477abcec55a6240a25',
+            country_code: 'DE',
+          },
+          CH: {
+            phoneNumber: '+41800225116',
+            queueName: 'CEBI-iTero-TechSupport',
+            queueSid: 'WQc2afd0ee9d4af2477abcec55a6240a25',
+            country_code: 'CH',
+          },
+        },
+        CEBIClinicalCommercial: {
+          AT: {
+            phoneNumber: '+43800802048',
+            queueName: 'CEBI-Clinical Commercial',
+            queueSid: 'WQ0d0233f449763882d57e89e9f697131e',
+            country_code: 'AT',
+          },
+          DE: {
+            phoneNumber: '+498002524990',
+            queueName: 'CEBI-Clinical Commercial',
+            queueSid: 'WQ0d0233f449763882d57e89e9f697131e',
+            country_code: 'DE',
+          },
+          CH: {
+            phoneNumber: '+41800225116',
+            queueName: 'CEBI-Clinical Commercial',
             queueSid: 'WQ0d0233f449763882d57e89e9f697131e',
             country_code: 'CH',
           },
