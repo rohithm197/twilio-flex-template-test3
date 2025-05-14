@@ -70,13 +70,16 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
       } else if (
         workerTeamName === 'DACH-iTero Tech Support' ||
         workerTeamName === 'DACH-iTero Onboarding' ||
-        workerTeamName === 'DACH-iTero TechSupport onboarding'
+        workerTeamName === 'DACH-iTero TechSupport onboarding' ||
+  workerTeamName === 'DACH-iTero TechSupport onboarding'
       ) {
         callerIdDACHData = callerIdDACHCountry['DACHiTeroTechSupport'];
       } else if (workerTeamName === 'DACH-Invisalign CS') {
         callerIdDACHData = callerIdDACHCountry['DACHInvisalignCS'];
       } else if (workerTeamName === 'DACH-Clinical Commercial') {
         callerIdDACHData = callerIdDACHCountry['DACHClinicalCommercial'];
+      }else if (workerTeamName === 'DACH-CreditCollections') {
+        callerIdDACHData = callerIdDACHCountry['DACHCreditCollections'];
       }
 
       if (callerIdDACHData && destinationCountryCode && callerIdDACHData[destinationCountryCode]) {

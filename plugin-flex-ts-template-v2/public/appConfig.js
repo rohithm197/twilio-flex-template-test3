@@ -558,6 +558,26 @@ var appConfig = {
             country_code: 'CH',
           },
         },
+        DACHCreditCollections: {
+          AT: {
+            phoneNumber: '+43800802048',
+            queueName: 'DACH-Credit Collections',
+            queueSid: 'WQa83aac2833a758907ddcaa19905ac7be',
+            country_code: 'AT',
+          },
+          DE: {
+            phoneNumber: '+498002524990',
+            queueName: 'DACH-Credit Collections',
+            queueSid: 'WQa83aac2833a758907ddcaa19905ac7be',
+            country_code: 'DE',
+          },
+          CH: {
+            phoneNumber: '+41800225116',
+            queueName: 'DACH-Credit Collections',
+            queueSid: 'WQa83aac2833a758907ddcaa19905ac7be',
+            country_code: 'CH',
+          },
+        },
       },
       departments: [
         'General Management',
