@@ -77,7 +77,7 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
         callerIdDACHData = callerIdDACHCountry['DACHInvisalignCS'];
       } else if (workerTeamName === 'DACH-Clinical Commercial') {
         callerIdDACHData = callerIdDACHCountry['DACHClinicalCommercial'];
-      } else if (workerTeamName === 'DACH-CreditCollections') {
+      } else if (workerTeamName === 'DACH-Credit Collections') {
         callerIdDACHData = callerIdDACHCountry['DACHCreditCollections'];
       }
 
