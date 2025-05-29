@@ -85,6 +85,7 @@ var appConfig = {
           'DACH-iTero TechSupport onboarding',
           'DACH-Clinical Commercial',
         ],
+        CEBIIL: ['CEBI-IL-Customer Support', 'CEBI-IL-Tech Support'],
       },
       queuesList: {
         UK: ['UKI-CS-Invisalign', 'UKI-CS-iTero', 'UKI-TechSupport-iTero', 'UKI-CS-Outbound', 'UKI-Onboarding-iTero'],
@@ -177,6 +178,14 @@ var appConfig = {
           'DACH-iTero-Onboarding',
           'DACH-Clinical Commercial',
         ],
+        CEBIIL: [
+          'CEBI-CS-Outbound',
+          'CEBI-iTero-TechSupport-Outbound',
+          'CEBI-CS-IL-Invisalign',
+          'CEBI-CS-IL-iTero',
+          'CEBI-iTero-TechSupport-IL',
+          'CEBI-iTero-Onboarding-IL',
+        ],
       },
       callerIddata: {
         PL: {
@@ -214,6 +223,12 @@ var appConfig = {
           queueName: 'DACH-CS-Outbound',
           queueSid: 'WQ0d0233f449763882d57e89e9f697131e',
           country_code: 'CH',
+        },
+        IL: {
+          phoneNumber: '+97233726186',
+          queueName: 'CEBI-CS-Outbound',
+          queueSid: 'WQ83629cebd641c50d37baa49fae8b01dd',
+          country_code: 'IL',
         },
       },
       callerIdPLCountry: {
@@ -542,19 +557,19 @@ var appConfig = {
           AT: {
             phoneNumber: '+43800802048',
             queueName: 'DACH-Clinical Commercial',
-            queueSid: 'WQ0d0233f449763882d57e89e9f697131e',
+            queueSid: 'WQe8422c3ecd7a7d0bcb30381c565c5953',
             country_code: 'AT',
           },
           DE: {
             phoneNumber: '+498002524990',
             queueName: 'DACH-Clinical Commercial',
-            queueSid: 'WQ0d0233f449763882d57e89e9f697131e',
+            queueSid: 'WQe8422c3ecd7a7d0bcb30381c565c5953',
             country_code: 'DE',
           },
           CH: {
             phoneNumber: '+41800225116',
             queueName: 'DACH-Clinical Commercial',
-            queueSid: 'WQ0d0233f449763882d57e89e9f697131e',
+            queueSid: 'WQe8422c3ecd7a7d0bcb30381c565c5953',
             country_code: 'CH',
           },
         },
@@ -576,6 +591,24 @@ var appConfig = {
             queueName: 'DACH-Credit Collections',
             queueSid: 'WQa83aac2833a758907ddcaa19905ac7be',
             country_code: 'CH',
+          },
+        },
+      },
+      callerIdCEBIILCountry: {
+        CEBIILCustomerSupport: {
+          IL: {
+            phoneNumber: '+97233726186',
+            queueName: 'CEBI-CS-Outbound',
+            queueSid: 'WQ83629cebd641c50d37baa49fae8b01dd',
+            country_code: 'IL',
+          },
+        },
+        CEBIILTechSupport: {
+          IL: {
+            phoneNumber: '+97233726186',
+            queueName: 'CEBI-iTero-TechSupport-Outbound',
+            queueSid: 'WQd377edbaf7dfb247171b6dbe731cfbce',
+            country_code: 'IL',
           },
         },
       },
