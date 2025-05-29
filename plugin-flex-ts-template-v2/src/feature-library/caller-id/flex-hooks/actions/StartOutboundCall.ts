@@ -2,7 +2,7 @@ import * as Flex from '@twilio/flex-ui';
 import parsePhoneNumber from 'libphonenumber-js';
 
 import { FlexActionEvent, FlexAction } from '../../../../types/feature-loader';
-import { callerIdList, getCallerIdDACHCountry, getCallerIdPLCountry } from '../../config';
+import { callerIdList, getCallerIdDACHCountry, getCallerIdCEBIILCountry, getCallerIdPLCountry } from '../../config';
 
 export const actionEvent = FlexActionEvent.before;
 export const actionName = FlexAction.StartOutboundCall;
@@ -28,6 +28,7 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
     const workerLocationPoland = loggedInWorkerLocation == 'PL';
     const workerLocationPLHUB = loggedInWorkerLocation == 'PLHUB';
     const workerLocationDACH = loggedInWorkerLocation == 'DACH';
+    const workerLocationCEBIIL = loggedInWorkerLocation == 'CEBIIL';
     const callerIdFallback = callerIdList[loggedInWorkerLocation];
     const workerTeamNamePLHUB = workerTeamName === 'EMEA Hub Team';
 
@@ -95,6 +96,28 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
           ` FROM DACH Assigned fallback callerId and queueSid for CH location: ${payload.callerId}, queueSid: ${payload.queueSid}`,
         );
       }
+    } else if (workerLocationCEBIIL) {
+      const callerIdCEBIIsraelCountry = getCallerIdCEBIILCountry();
+      let callerIdCEBIData = null;
+
+      if (workerTeamName === 'CEBI-IL-Customer Support') {
+        callerIdCEBIData = callerIdCEBIIsraelCountry['CEBIILCustomerSupport'];
+      } else if (workerTeamName === 'CEBI-IL-Tech Support') {
+        callerIdCEBIData = callerIdCEBIIsraelCountry['CEBIILTechSupport'];
+      }
+
+      if (callerIdCEBIData && destinationCountryCode && callerIdCEBIData[destinationCountryCode]) {
+        payload.callerId = callerIdCEBIData[destinationCountryCode].phoneNumber;
+        payload.queueSid = callerIdCEBIData[destinationCountryCode].queueSid;
+        console.log(`CEBI assigned callerId: ${payload.callerId}, queueSid: ${payload.queueSid}`);
+        return;
+      }
+
+      const defaultCEBI = callerIdList['IL'];
+      payload.callerId = defaultCEBI?.phoneNumber || dynamicCallerId;
+      payload.queueSid = defaultCEBI?.queueSid || dynamicQueueSid;
+      console.log(`CEBI fallback to IL: ${payload.callerId}, ${payload.queueSid}`);
+      return;
     } else {
       // Logic PolandHUB-based worker locations
       if (workerLocationPLHUB && workerTeamNamePLHUB) {
@@ -138,7 +161,7 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
           );
         }
       } else {
-        // For other PL regions
+        // For all other  regions
         if (dynamicCallerId && dynamicQueueSid) {
           payload.callerId = dynamicCallerId; // Override the caller ID in the payload
           payload.queueSid = dynamicQueueSid; // Override the QueueSid in the payload

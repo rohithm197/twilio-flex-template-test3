@@ -9,7 +9,13 @@ export const eventHook = function initializeCallerIdCountry(flex: typeof Flex, m
   const loggedInWorkerLocation = manager.workerClient?.attributes.location?.trim() || 'IB';
 
   // If the location contains 'PLHUB', map it to 'PL', otherwise keep the original location
-  const workerLocationPLHUB = loggedInWorkerLocation.includes('PLHUB') ? 'IB' : loggedInWorkerLocation;
+  let workerLocationPLHUB =  loggedInWorkerLocation;
+
+  if(loggedInWorkerLocation.includes('PLHUB')){
+    workerLocationPLHUB = 'IB'
+  } else if(loggedInWorkerLocation.includes('CEBIIL')){
+    workerLocationPLHUB = 'IL'
+  }
 
   // Get the dynamic country code based on the worker's location
   // Use either loggedInWorkerLocation or workerLocationPLHUB (which will be 'IB' if the location is 'PLHUB')
