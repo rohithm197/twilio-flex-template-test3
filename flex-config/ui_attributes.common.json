@@ -215,6 +215,12 @@
           "queueName": "DACH-CS-Outbound",
           "queueSid": "WQ0d0233f449763882d57e89e9f697131e",
           "country_code": "CH"
+        },
+        "IL": {
+          "phoneNumber": "+97233726186",
+          "queueName": "CEBI-CS-Outbound",
+          "queueSid": "WQ83629cebd641c50d37baa49fae8b01dd",
+          "country_code": "IL"
         }
       },
       "callerIdPLCountry": {
