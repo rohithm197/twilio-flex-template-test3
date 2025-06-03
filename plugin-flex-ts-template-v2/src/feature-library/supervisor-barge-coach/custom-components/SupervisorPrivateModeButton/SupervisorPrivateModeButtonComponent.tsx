@@ -95,7 +95,7 @@ export const SupervisorPrivateToggle = ({ task }: SupervisorPrivateToggleProps) 
 
   return (
     <Flex hAlignContent="center" vertical padding="space30">
-      <Stack orientation="horizontal" spacing="space30" element="SUPERVISOR_PRIVATE_BUTTON_BOX">
+     {privateMode && <Stack orientation="horizontal" spacing="space30" element="SUPERVISOR_PRIVATE_BUTTON_BOX">
         <IconButton
           icon={privateMode ? 'EyeBold' : 'Eye'}
           disabled={!isLiveCall}
@@ -104,7 +104,7 @@ export const SupervisorPrivateToggle = ({ task }: SupervisorPrivateToggleProps) 
           variant="secondary"
         />
         {privateMode ? templates[StringTemplates.PrivacyOn]() : templates[StringTemplates.PrivacyOff]()}
-      </Stack>
+      </Stack>}
     </Flex>
   );
 };
