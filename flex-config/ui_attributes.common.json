@@ -194,8 +194,8 @@
         },
         "UK": {
           "phoneNumber": "+447883283812",
-          "queueName": "UKI-CS-Outbound",
-          "queueSid": "WQ225572910cf50ef518e7ec23b1420f7b",
+          "queueName":"UKI-CS-Outbound",
+          "queueSid":"WQ225572910cf50ef518e7ec23b1420f7b",
           "country_code": "GB"
         },
         "AT": {
@@ -605,16 +605,6 @@
             "phoneNumber": "+97233726186",
             "queueName": "CEBI-iTero-TechSupport-Outbound",
             "queueSid": "WQd377edbaf7dfb247171b6dbe731cfbce",
-            "country_code": "IL"
-          }
-        }
-      },
-      "callerIdCEBITEST": {
-        "CEBIILCustomerSupport": {
-          "IL": {
-            "phoneNumber": "+97233726186",
-            "queueName": "CEBI-CS-Outbound",
-            "queueSid": "WQ83629cebd641c50d37baa49fae8b01dd",
             "country_code": "IL"
           }
         }
