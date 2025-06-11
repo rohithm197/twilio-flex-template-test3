@@ -612,7 +612,7 @@
     },
     "features": {
       "activity_skill_filter": {
-        "enabled": true,
+        "enabled": false,
         "rules": {
           "On a Task": {
             "required_skill": "system_activities",

@@ -653,7 +653,7 @@ var appConfig = {
         analytics_base_url: 'https://analytics.ytica.com/dashboard.html',
       },
       activity_skill_filter: {
-        enabled: true,
+        enabled: false,
         rules: {
           'On a Task': {
             required_skill: 'system_activities',
