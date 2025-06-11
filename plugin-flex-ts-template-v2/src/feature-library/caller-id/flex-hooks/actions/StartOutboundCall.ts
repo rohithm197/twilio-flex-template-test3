@@ -74,7 +74,7 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
         workerTeamName === 'DACH-iTero TechSupport onboarding'
       ) {
         callerIdDACHData = callerIdDACHCountry['DACHiTeroTechSupport'];
-      } else if (workerTeamName === 'DACH-Invisalign CS') {
+      } else if (workerTeamName === 'DACH-Invisalign CS' || workerTeamName === 'DACH-Invisalign Sales Support') {
         callerIdDACHData = callerIdDACHCountry['DACHInvisalignCS'];
       } else if (workerTeamName === 'DACH-Clinical Commercial') {
         callerIdDACHData = callerIdDACHCountry['DACHClinicalCommercial'];
