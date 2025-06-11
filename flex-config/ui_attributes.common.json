@@ -608,6 +608,16 @@
             "country_code": "IL"
           }
         }
+      },
+      "callerIdCEBITEST": {
+        "CEBIILCustomerSupport": {
+          "IL": {
+            "phoneNumber": "+97233726186",
+            "queueName": "CEBI-CS-Outbound",
+            "queueSid": "WQ83629cebd641c50d37baa49fae8b01dd",
+            "country_code": "IL"
+          }
+        }
       }
     },
     "features": {
