@@ -194,8 +194,8 @@
         },
         "UK": {
           "phoneNumber": "+447883283812",
-          "queueName": "UKI-CS-Invisalign",
-          "queueSid": "WQ7f0cfbe115999b33c42c91dd8c417eac",
+          "queueName": "UKI-CS-Outbound",
+          "queueSid": "WQ225572910cf50ef518e7ec23b1420f7b",
           "country_code": "GB"
         },
         "AT": {
