@@ -28,9 +28,14 @@ function WorkerProfileInfo(props: Props) {
   const activities = AgentActivities.getEligibleActivities(worker);
   const currentActivity = activities.find((activity) => activity.name === worker.activityName);
 
+  const manager = Flex.Manager.getInstance();
+
+  const managerRoles = manager?.workerClient?.attributes?.roles ?? [{ roles: '' }];
+  const isManagerRoleSupervisor = managerRoles.includes('supervisor');
+
   return (
     <Flex.FlexBoxColumn>
-      <Box marginTop="space30" marginRight="space50">
+      <Box marginTop="space30" marginRight="space50" style={isManagerRoleSupervisor ? { pointerEvents: 'none', userSelect: 'none', opacity: 0.6 } : {}}>
         <Stack orientation="vertical" spacing="space50">
           <Heading as="div" variant="heading50">
             {worker.fullName}
