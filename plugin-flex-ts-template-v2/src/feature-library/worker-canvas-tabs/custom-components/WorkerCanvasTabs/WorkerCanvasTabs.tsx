@@ -3,6 +3,7 @@ import { Tabs, Tab, TabList, TabPanel, TabPanels, useTabState } from '@twilio-pa
 import { useUID } from '@twilio-paste/core/uid-library';
 import { IWorker, Template, templates, ContentFragmentProps, WorkerSkills, Actions } from '@twilio/flex-ui';
 import React from 'react';
+import * as Flex from '@twilio/flex-ui';
 
 import { StringTemplates } from '../../flex-hooks/strings';
 
@@ -40,9 +41,19 @@ const handleClose = () => {
 const WorkerCanvasTabs = ({ worker, fragments }: Props) => {
   const randomId = useUID();
   const { ...tabState } = useTabState();
+  const manager = Flex.Manager.getInstance();
+
+  const managerRoles = manager?.workerClient?.attributes?.roles ?? [{ roles: '' }];
+  const isManagerRoleSupervisor = managerRoles.length === 1 && managerRoles[0] === 'supervisor';
 
   return (
-    <Box height="100%" borderLeftStyle="solid" borderColor="colorBorderWeak" borderWidth="borderWidth10">
+    <Box
+      height="100%"
+      borderLeftStyle="solid"
+      borderColor="colorBorderWeak"
+      borderWidth="borderWidth10"
+      style={isManagerRoleSupervisor ? { pointerEvents: 'none', userSelect: 'none', opacity: 0.6 } : {}}
+    >
       <Tabs selectedId={randomId} baseId="options" state={tabState}>
         <TabList aria-label="Worker tabs" element="WORKER_CANVAS_TAB_LIST">
           <Tab id={randomId} element="WORKER_CANVAS_TAB">
