@@ -31,11 +31,16 @@ function WorkerProfileInfo(props: Props) {
   const manager = Flex.Manager.getInstance();
 
   const managerRoles = manager?.workerClient?.attributes?.roles ?? [{ roles: '' }];
-  const isManagerRoleSupervisor = managerRoles.includes('supervisor');
+
+  const isManagerRoleSupervisor = managerRoles.length === 1 && managerRoles[0] === 'supervisor';
 
   return (
     <Flex.FlexBoxColumn>
-      <Box marginTop="space30" marginRight="space50" style={isManagerRoleSupervisor ? { pointerEvents: 'none', userSelect: 'none', opacity: 0.6 } : {}}>
+      <Box
+        marginTop="space30"
+        marginRight="space50"
+        style={isManagerRoleSupervisor ? { pointerEvents: 'none', userSelect: 'none', opacity: 0.6 } : {}}
+      >
         <Stack orientation="vertical" spacing="space50">
           <Heading as="div" variant="heading50">
             {worker.fullName}
