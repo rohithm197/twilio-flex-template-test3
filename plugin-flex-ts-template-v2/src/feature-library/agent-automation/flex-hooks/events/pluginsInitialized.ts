@@ -11,6 +11,10 @@ export const eventHook = async function registerExtendWrapUpActionAndAutoWrapOnI
   manager: Flex.Manager,
 ) {
   registerExtendWrapUpAction();
+  // === Add your listener here ===
+  Flex.Actions.addListener('beforeSetActivity', (payload: any) => {
+    payload.options.rejectPendingReservations = false;
+  });
 
   // Set wrapup timer for pre-existing wrapping tasks
   const { tasks } = manager.store.getState().flex.worker;
