@@ -100,7 +100,9 @@
           "UKI-CS-iTero",
           "UKI-TechSupport-iTero",
           "UKI-CS-Outbound",
-          "UKI-Onboarding-iTero"
+          "UKI-Onboarding-iTero",
+          "UKI-VIP-CS-Invisalign",
+          "UKI-VIP-CS-iTero"
         ],
         "PL": [
           "PL-CS-Invisalign",
@@ -182,8 +184,8 @@
       "callerIddata": {
         "PL": {
           "phoneNumber": "+48732070515",
-          "queueName": "PL-CS-Invisalign",
-          "queueSid": "WQf4224c250a8ee9735db0f05694744718",
+          "queueName": "PL-CS-Outbound",
+          "queueSid": "WQ7c4b1df6a46b4b780e19ce3eaf373b08",
           "country_code": "PL"
         },
         "IB": {
@@ -194,8 +196,8 @@
         },
         "UK": {
           "phoneNumber": "+447883283812",
-          "queueName":"UKI-CS-Outbound",
-          "queueSid":"WQ225572910cf50ef518e7ec23b1420f7b",
+          "queueName": "UKI-CS-Outbound",
+          "queueSid": "WQ225572910cf50ef518e7ec23b1420f7b",
           "country_code": "GB"
         },
         "AT": {
@@ -480,6 +482,14 @@
             "queueName": "PL-Onboarding-iTero",
             "queueSid": "WQdbb2c9b47750893e07e7d98477e07518",
             "country_code": "IS"
+          }
+        },
+        "PLTreatTeam": {
+          "PL": {
+            "phoneNumber": "+48732070515",
+            "queueName": "PL-Treat-Outbound",
+            "queueSid": "WQadec06513fb65c64ca8305fe5ba9ed4a",
+            "country_code": "PL"
           }
         }
       },

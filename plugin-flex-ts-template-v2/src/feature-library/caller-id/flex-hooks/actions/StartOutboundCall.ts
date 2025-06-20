@@ -19,7 +19,7 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
     console.log('Worker location:', loggedInWorkerLocation);
 
     const destinationPhoneNumber = parsePhoneNumber(payload.destination);
-    const destinationCountryCode = destinationPhoneNumber?.country;
+    let destinationCountryCode = destinationPhoneNumber?.country;
 
     console.log('Destination phone number:', destinationPhoneNumber?.formatInternational());
     console.log('Destination country code:', destinationCountryCode);
@@ -47,7 +47,10 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
         callerIdData = callerIdPLCountry['PLIteroTechSupport'];
       } else if (workerTeamName === 'PL-iTero Onboarding') {
         callerIdData = callerIdPLCountry['PLIteroTechOnboarding'];
-      }
+      } else if (workerTeamName === 'PL-Treat Team') {
+        callerIdData = callerIdPLCountry['PLTreatTeam'];
+        destinationCountryCode = 'PL'
+      } 
 
       if (callerIdData && destinationCountryCode && callerIdData[destinationCountryCode]) {
         // Assign caller ID and queue SID based on the destination country code

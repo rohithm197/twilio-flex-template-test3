@@ -44,7 +44,7 @@ var appConfig = {
           'PL-iTero Onboarding',
           'PL-iTero Training',
           'PL-Clinical Support',
-          'PL-Treat',
+          'PL-Treat Team',
           'PL-Credit & Collections',
           'PL-ISRs',
           'PL-iTero Tech Support',
@@ -88,7 +88,15 @@ var appConfig = {
         CEBIIL: ['CEBI-IL-Customer Support', 'CEBI-IL-Tech Support'],
       },
       queuesList: {
-        UK: ['UKI-CS-Invisalign', 'UKI-CS-iTero', 'UKI-TechSupport-iTero', 'UKI-CS-Outbound', 'UKI-Onboarding-iTero'],
+        UK: [
+          'UKI-CS-Invisalign',
+          'UKI-CS-iTero',
+          'UKI-TechSupport-iTero',
+          'UKI-CS-Outbound',
+          'UKI-Onboarding-iTero',
+          'UKI-VIP-CS-Invisalign',
+          'UKI-VIP-CS-iTero',
+        ],
         PL: [
           'PL-CS-Invisalign',
           'PL-CS-iTero',
@@ -135,7 +143,6 @@ var appConfig = {
           'IB-CS-iTero-Primary-PT',
           'IB-CS-iTero-Secondary-PT',
           'UKI-CS-iTero',
-
           'UKI-TechSupport-iTero',
           'IB-CS-Outbound',
           'UKI-CS-Outbound',
@@ -190,8 +197,8 @@ var appConfig = {
       callerIddata: {
         PL: {
           phoneNumber: '+48732070515',
-          queueName: 'PL-CS-Invisalign',
-          queueSid: 'WQf4224c250a8ee9735db0f05694744718',
+          queueName: 'PL-CS-Outbound',
+          queueSid: 'WQ7c4b1df6a46b4b780e19ce3eaf373b08',
           country_code: 'PL',
         },
         IB: {
@@ -489,6 +496,14 @@ var appConfig = {
             queueName: 'PL-Onboarding-iTero',
             queueSid: 'WQdbb2c9b47750893e07e7d98477e07518',
             country_code: 'IS',
+          },
+        },
+        PLTreatTeam: {
+          PL: {
+            phoneNumber: '+48732070515',
+            queueName: 'PL-Treat-Outbound',
+            queueSid: 'WQadec06513fb65c64ca8305fe5ba9ed4a',
+            country_code: 'PL',
           },
         },
       },
