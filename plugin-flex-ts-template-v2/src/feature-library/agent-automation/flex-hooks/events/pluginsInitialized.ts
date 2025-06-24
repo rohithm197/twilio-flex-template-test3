@@ -11,25 +11,6 @@ export const eventHook = async function registerExtendWrapUpActionAndAutoWrapOnI
   manager: Flex.Manager,
 ) {
   registerExtendWrapUpAction();
-  // === Add your listener here version23 ===
-   // === Add your listener here version23 ===
-  console.log('[agent-automation] Initializing beforeSetActivity listener...');
-  console.log('[agent-automation] Received payload data for pluginsInitialized:', {
-    flex,
-    managerState: manager.store.getState(),
-  });
-  
-  Flex.Actions.addListener('beforeSetActivity', (payload: any) => {
-    console.log('[agent-automation] beforeSetActivity event triggered');
-    console.log('[agent-automation] Payload before modification:', JSON.stringify(payload, null, 2));
-  
-    // Modify payload
-    payload.options.rejectPendingReservations = false;
-  
-    console.log('[agent-automation] Payload after modification:', JSON.stringify(payload, null, 2));
-  });
-  
-  console.log('[agent-automation] beforeSetActivity listener registered successfully.');
 
   // Set wrapup timer for pre-existing wrapping tasks
   const { tasks } = manager.store.getState().flex.worker;
