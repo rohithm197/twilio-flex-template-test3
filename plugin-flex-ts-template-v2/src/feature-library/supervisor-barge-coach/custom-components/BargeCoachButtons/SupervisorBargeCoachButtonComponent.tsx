@@ -13,6 +13,7 @@ import { isAgentCoachingPanelEnabled } from '../../config';
 import { StringTemplates } from '../../flex-hooks/strings/BargeCoachAssist';
 // Used for Sync Docs
 import { SyncDoc } from '../../utils/sync/Sync';
+import { useEffect } from 'react';
 
 type SupervisorBargeCoachProps = {
   task: ITask;
@@ -40,6 +41,7 @@ export const SupervisorBargeCoachButtons = ({ task }: SupervisorBargeCoachProps)
     localStorage.setItem('agentWorkerSID', agentWorkerSID);
   }
 
+   
   // On click we will be pulling the conference SID and supervisorSID
   // to trigger Mute / Unmute respectively for that user - muted comes from the redux store
   // We've built in resiliency if the supervisor refreshes their browser
@@ -234,9 +236,16 @@ export const SupervisorBargeCoachButtons = ({ task }: SupervisorBargeCoachProps)
     }
   };
 
+  
+// If the supervisor is monitoring the call, we want to enable the coach button automatically
+
+
   // Return the coach and barge-in buttons, disable if the call isn't live or
   // if the supervisor isn't monitoring the call, toggle the icon based on coach and barge-in status
   const isLiveCall = TaskHelper.isLiveCall(task);
+  useEffect(() => {
+    isLiveCall && enableCoachButton && coachHandleClick();
+  }, [isLiveCall, enableCoachButton]);
 
   return (
     <Flex hAlignContent="center" vertical>
