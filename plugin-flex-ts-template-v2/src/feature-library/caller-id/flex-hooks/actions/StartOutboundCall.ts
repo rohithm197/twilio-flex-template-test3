@@ -2,7 +2,13 @@ import * as Flex from '@twilio/flex-ui';
 import parsePhoneNumber from 'libphonenumber-js';
 
 import { FlexActionEvent, FlexAction } from '../../../../types/feature-loader';
-import { callerIdList, getCallerIdDACHCountry, getCallerIdCEBIILCountry, getCallerIdPLCountry } from '../../config';
+import {
+  callerIdList,
+  getCallerIdDACHCountry,
+  getCallerIdCEBIILCountry,
+  getCallerIdCEBICountry,
+  getCallerIdPLCountry,
+} from '../../config';
 
 export const actionEvent = FlexActionEvent.before;
 export const actionName = FlexAction.StartOutboundCall;
@@ -29,6 +35,7 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
     const workerLocationPLHUB = loggedInWorkerLocation == 'PLHUB';
     const workerLocationDACH = loggedInWorkerLocation == 'DACH';
     const workerLocationCEBIIL = loggedInWorkerLocation == 'CEBIIL';
+    const workerLocationCEBI = loggedInWorkerLocation == 'CEBI';
     const callerIdFallback = callerIdList[loggedInWorkerLocation];
     const workerTeamNamePLHUB = workerTeamName === 'EMEA Hub Team';
 
@@ -49,8 +56,8 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
         callerIdData = callerIdPLCountry['PLIteroTechOnboarding'];
       } else if (workerTeamName === 'PL-Treat Team') {
         callerIdData = callerIdPLCountry['PLTreatTeam'];
-        destinationCountryCode = 'PL'
-      } 
+        destinationCountryCode = 'PL';
+      }
 
       if (callerIdData && destinationCountryCode && callerIdData[destinationCountryCode]) {
         // Assign caller ID and queue SID based on the destination country code
@@ -120,6 +127,34 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
       payload.callerId = defaultCEBI?.phoneNumber || dynamicCallerId;
       payload.queueSid = defaultCEBI?.queueSid || dynamicQueueSid;
       console.log(`CEBI fallback to IL: ${payload.callerId}, ${payload.queueSid}`);
+      return;
+    } else if (workerLocationCEBI) {
+      const callerIdCEBICountry = getCallerIdCEBICountry();
+      let callerIdCEBIData = null;
+
+      if (workerTeamName === 'CEBI-Customer Support') {
+        callerIdCEBIData = callerIdCEBICountry['CEBICustomerSupport'];
+      } else if (workerTeamName === 'CEBI-Clinical Commercial') {
+        callerIdCEBIData = callerIdCEBICountry['CEBIClinicalCommercial'];
+      } else if (workerTeamName === 'CEBI-Treat Team') {
+        callerIdCEBIData = callerIdCEBICountry['CEBITreatTeam'];
+      } else if (workerTeamName === 'CEBI-iTero Tech Support') {
+        callerIdCEBIData = callerIdCEBICountry['CEBIiTeroTechSupport'];
+      } else if (workerTeamName === 'CEBI-iTero Onboarding') {
+        callerIdCEBIData = callerIdCEBICountry['CEBIiTeroOnbooarding'];
+      }
+
+      if (callerIdCEBIData && destinationCountryCode && callerIdCEBIData[destinationCountryCode]) {
+        payload.callerId = callerIdCEBIData[destinationCountryCode].phoneNumber;
+        payload.queueSid = callerIdCEBIData[destinationCountryCode].queueSid;
+        console.log(`CEBI assigned callerId: ${payload.callerId}, queueSid: ${payload.queueSid}`);
+        return;
+      }
+
+      const defaultCEBI = callerIdList['PL']; //
+      payload.callerId = defaultCEBI?.phoneNumber || dynamicCallerId;
+      payload.queueSid = defaultCEBI?.queueSid || dynamicQueueSid;
+      console.log(`CEBI fallback to PL: ${payload.callerId}, ${payload.queueSid}`);
       return;
     } else {
       // Logic PolandHUB-based worker locations
