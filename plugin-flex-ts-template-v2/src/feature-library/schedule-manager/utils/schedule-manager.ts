@@ -19,11 +19,10 @@ const delay = async (ms: number): Promise<void> => {
 };
 
 export const canShowScheduleManager = (manager: Manager) => {
-  const { roles } = manager.user;
-  const allowedRoles = ['admin', 'wfo.team_leader']; // Sunil - Added to enable Schedule manager for other roles
-  return isFeatureEnabled() === true && roles?.some(role => allowedRoles.includes(role)); // Sunil - Modified to enable Schedule manager for other roles
+  const { roles } = manager?.workerClient?.attributes || {};
+  const allowedRoles = ['admin', 'wfo.team_leader'];
+  return isFeatureEnabled() === true && roles?.some((role: string) => allowedRoles.includes(role));
 };
-
 
 export const loadScheduleData = async (): Promise<ScheduleManagerConfig | null> => {
   const listSchedulesResponse = await ScheduleManagerService.list();
