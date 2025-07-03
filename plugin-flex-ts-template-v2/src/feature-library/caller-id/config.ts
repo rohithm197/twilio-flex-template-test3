@@ -33,4 +33,8 @@ export const getCallerIdCEBIILCountry = () => {
   return getFeatureFlags()?.common?.callerIdCEBIILCountry || {};
 };
 
+export const getCallerIdCEBICountry = () => {
+  return getFeatureFlags()?.common?.callerIdCEBICountry || {};
+};
+
 export { callerIdList };
