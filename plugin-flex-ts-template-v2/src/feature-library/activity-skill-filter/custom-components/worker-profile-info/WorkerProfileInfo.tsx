@@ -47,7 +47,7 @@ function WorkerProfileInfo(props: Props) {
           <Select id="workerProfileSelect" value={currentActivity?.sid} onChange={handleChange}>
             {activities.map((activity: Activity) => (
               <Option value={activity.sid} key={activity.sid}>
-                {activity.name}  
+                {activity.name}
               </Option>
             ))}
           </Select>

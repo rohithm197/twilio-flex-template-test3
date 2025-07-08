@@ -55,13 +55,6 @@ export const componentHook = function addWorkerCanvasTabs(flex: typeof Flex, _ma
       }
     });
 
-    fragments.forEach((fragment) => {
-      if (fragments?.props?.children && (fragment.props.children as React.ReactElement).key) {
-        const key = (fragment.props.children as React.ReactElement).key as string;
-        flex.WorkerCanvas.Content.remove(key);
-      }
-    });
-
     return (
       <>
         <Box>

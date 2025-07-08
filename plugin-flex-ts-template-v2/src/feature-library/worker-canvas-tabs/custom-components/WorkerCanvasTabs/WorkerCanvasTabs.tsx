@@ -44,7 +44,7 @@ const WorkerCanvasTabs = ({ worker, fragments }: Props) => {
   const manager = Flex.Manager.getInstance();
   // version23 ( page2)
   const managerRoles = manager?.workerClient?.attributes?.roles ?? [{ roles: '' }];
-  const isManagerRoleSupervisor = managerRoles.some((role: string) => role === 'supervisor');
+  const isManagerRoleSupervisor = managerRoles.length === 1 && managerRoles[0] === 'supervisor';
 
   return (
     <Box
@@ -52,7 +52,7 @@ const WorkerCanvasTabs = ({ worker, fragments }: Props) => {
       borderLeftStyle="solid"
       borderColor="colorBorderWeak"
       borderWidth="borderWidth10"
-     style={isManagerRoleSupervisor ? { pointerEvents: 'none', userSelect: 'none', opacity: 0.6 } : {}}
+      style={isManagerRoleSupervisor ? { pointerEvents: 'none', userSelect: 'none', opacity: 0.6 } : {}}
     >
       <Tabs selectedId={randomId} baseId="options" state={tabState}>
         <TabList aria-label="Worker tabs" element="WORKER_CANVAS_TAB_LIST">
