@@ -21,9 +21,27 @@ export const componentHook = function addWorkerCanvasTabs(flex: typeof Flex, _ma
     } else {
       workerLocation = null;
     }
+
+    // version23 supervisor disabled changes
+    const manager = Flex.Manager.getInstance();
+    const managerRoles = manager?.workerClient?.attributes?.roles ?? [{ roles: '' }];
+    const isManagerRoleSupervisor = managerRoles.length === 1 && managerRoles[0] === 'supervisor';
+
     useEffect(() => {
       getWorkerLocation();
     }, [originalProps.worker.attributes]);
+
+    // version23 supervisor disabled changes
+    useEffect(() => {
+      const profileDiv = document.querySelector('.Twilio-WorkerCanvasProfile');
+      if (profileDiv && isManagerRoleSupervisor) {
+        Array.from(profileDiv.children).forEach((child) => {
+          (child as HTMLElement).style.pointerEvents = 'none';
+          (child as HTMLElement).style.userSelect = 'none';
+          (child as HTMLElement).style.opacity = '0.6';
+        });
+      }
+    }, [isManagerRoleSupervisor]);
     // preserve the fragments from the WorkerCanvas
     const fragments = flex.WorkerCanvas.Content.fragments
       .concat([])
@@ -32,6 +50,13 @@ export const componentHook = function addWorkerCanvasTabs(flex: typeof Flex, _ma
     // remove the fragments from the WorkerCanvas to prevent vertical rendering
     fragments.forEach((fragment) => {
       if (fragment?.props?.children && (fragment.props.children as React.ReactElement).key) {
+        const key = (fragment.props.children as React.ReactElement).key as string;
+        flex.WorkerCanvas.Content.remove(key);
+      }
+    });
+
+    fragments.forEach((fragment) => {
+      if (fragments?.props?.children && (fragment.props.children as React.ReactElement).key) {
         const key = (fragment.props.children as React.ReactElement).key as string;
         flex.WorkerCanvas.Content.remove(key);
       }
