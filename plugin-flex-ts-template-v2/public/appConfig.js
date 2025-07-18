@@ -863,6 +863,12 @@ var appConfig = {
             queueSid: 'WQc3dbd5cda7001bbae85ec00c9609318a',
             country_code: 'GR',
           },
+          IL: {
+            phoneNumber: '+97233822548',
+            queueName: 'CEBI-iTero-TechSupport-CEB',
+            queueSid: 'WQ96659a71a5662236e9c78f8a14a8f19a',
+            country_code: 'IL',
+          },
         },
         CEBIiTeroTechSupport: {
           EE: {
