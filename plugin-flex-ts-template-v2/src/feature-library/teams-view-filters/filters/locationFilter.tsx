@@ -29,5 +29,5 @@ export const locationFilter = () =>
       field: <SelectFilter IsMulti={true} hide={true} />,
       label: <SelectFilterLabel />,
     },
-    condition: 'CONTAINS',
+    condition: 'EQ',
   } as FilterDefinition);
