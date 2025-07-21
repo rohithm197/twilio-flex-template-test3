@@ -1139,7 +1139,7 @@
         "applied_filters": {
           "activities": true,
           "email": false,
-          "location": false,
+          "location": true,
           "department": false,
           "queue_no_worker_data": true,
           "queue_worker_data": false,
