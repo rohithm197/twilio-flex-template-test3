@@ -8,6 +8,7 @@ import {
   getCallerIdCEBIILCountry,
   getCallerIdCEBICountry,
   getCallerIdPLCountry,
+  getCallerIdAFCountry,
 } from '../../config';
 
 export const actionEvent = FlexActionEvent.before;
@@ -36,6 +37,9 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
     const workerLocationDACH = loggedInWorkerLocation == 'DACH';
     const workerLocationCEBIIL = loggedInWorkerLocation == 'CEBIIL';
     const workerLocationCEBI = loggedInWorkerLocation == 'CEBI';
+    const workerLocationAF =
+      loggedInWorkerLocation == 'GH' || loggedInWorkerLocation == 'MA' || loggedInWorkerLocation == 'ZA';
+
     const callerIdFallback = callerIdList[loggedInWorkerLocation];
     const workerTeamNamePLHUB = workerTeamName === 'EMEA Hub Team';
 
@@ -155,6 +159,40 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
       payload.callerId = defaultCEBI?.phoneNumber || dynamicCallerId;
       payload.queueSid = defaultCEBI?.queueSid || dynamicQueueSid;
       console.log(`CEBI fallback to PL: ${payload.callerId}, ${payload.queueSid}`);
+      return;
+    } else if (workerLocationAF) {
+      const callerIdAFCountry = getCallerIdAFCountry();
+      let callerIdAFData = null;
+
+      if (workerTeamName === 'AFRICA-GH-Customer Support') {
+        callerIdAFData = callerIdAFCountry['AFRICAGHCustomerSupport'];
+      } else if (workerTeamName === 'AFRICA-GH-Tech Support') {
+        callerIdAFData = callerIdAFCountry['AFRICAGHTechSupport'];
+      } else if (workerTeamName === 'AFRICA-SSA-Clinical Commercial') {
+        callerIdAFData = callerIdAFCountry['AFRICASSAClinicalCommercial'];
+      } else if (workerTeamName === 'AFRICA-ZA-ISR') {
+        callerIdAFData = callerIdAFCountry['AFRICAZAISR'];
+      } else if (workerTeamName === 'AFRICA-GH-ISR') {
+        callerIdAFData = callerIdAFCountry['AFRICAGHISR'];
+      } else if (workerTeamName === 'AFRICA-MA-Customer Support') {
+        callerIdAFData = callerIdAFCountry['AFRICAMACustomerSupport'];
+      } else if (workerTeamName === 'AFRICA-MA-Clinical Commercial') {
+        callerIdAFData = callerIdAFCountry['AFRICAMAClinicalCommercial'];
+      } else if (workerTeamName === 'AFRICA-MA-ISR') {
+        callerIdAFData = callerIdAFCountry['AFRICAMAISR'];
+      }
+
+      if (callerIdAFData && destinationCountryCode && callerIdAFData[destinationCountryCode]) {
+        payload.callerId = callerIdAFData[destinationCountryCode].phoneNumber;
+        payload.queueSid = callerIdAFData[destinationCountryCode].queueSid;
+        console.log(`Africa assigned callerId: ${payload.callerId}, queueSid: ${payload.queueSid}`);
+        return;
+      }
+
+      const defaultAfrica = callerIdList['GH'];
+      payload.callerId = defaultAfrica?.phoneNumber || dynamicCallerId;
+      payload.queueSid = defaultAfrica?.queueSid || dynamicQueueSid;
+      console.log(`Africa fallback to GH: ${payload.callerId}, ${payload.queueSid}`);
       return;
     } else {
       // Logic PolandHUB-based worker locations

@@ -93,6 +93,16 @@ var appConfig = {
           'CEBI-iTero Tech Support',
           'CEBI-iTero Onboarding',
         ],
+        AF: [
+          'AFRICA-GH-Customer Support',
+          'AFRICA-GH-Tech Support',
+          'AFRICA-ZA-ISR',
+          'AFRICA-GH-ISR',
+          'AFRICA-SSA-Clinical Commercial',
+          'AFRICA-MA-Customer Support',
+          'AFRICA-MA-Clinical Commercial',
+          'AFRICA-MA-ISR',
+        ],
       },
       queuesList: {
         UK: [
@@ -217,8 +227,38 @@ var appConfig = {
           'CEBI-CS-CEB-Invisalign-BG-CY-GR',
           'CEBI-CS-CEB-iTero-BG-CY-GR',
         ],
+        AF: [
+          'AFRICA-CS-Outbound',
+          'AFRICA-ClinicalCommercial-Outbound',
+          'AFRICA-CS-invisalign-MA',
+          'AFRICA-CS-iTero-MA',
+          'AFRICA-CS-invisalign-GH',
+          'AFRICA-CS-iTero-GH',
+          'AFRICA-CS-invisalign-ZA',
+          'AFRICA-CS-iTero-ZA',
+          'AFRICA-iTero-TechSupport-Outbound',
+          'AFRICA-ISR-Outbound',
+        ],
       },
       callerIddata: {
+        ZA: {
+          phoneNumber: '+27800984049',
+          queueName: 'AFRICA-CS-Outbound',
+          queueSid: 'WQ9f46fd8ac44563f9154fe601573fcdcc',
+          country_code: 'ZA',
+        },
+        GH: {
+          phoneNumber: '+233242426153',
+          queueName: 'AFRICA-CS-Outbound',
+          queueSid: 'WQ9f46fd8ac44563f9154fe601573fcdcc',
+          country_code: 'GH',
+        },
+        MA: {
+          phoneNumber: '+212530203012',
+          queueName: 'AFRICA-CS-Outbound',
+          queueSid: 'WQ9f46fd8ac44563f9154fe601573fcdcc',
+          country_code: 'MA',
+        },
         PL: {
           phoneNumber: '+48732070515',
           queueName: 'PL-CS-Outbound',
@@ -1026,6 +1066,138 @@ var appConfig = {
             queueName: 'CEBI-iTero-Onboarding-CEB',
             queueSid: 'WQe8fb8a4b3cb74153165d42630aea300e',
             country_code: 'GR',
+          },
+        },
+      },
+      callerIdAFCountry: {
+        AFRICAGHCustomerSupport: {
+          ZA: {
+            phoneNumber: '+27800984049',
+            queueName: 'AFRICA-CS-Outbound',
+            queueSid: 'WQ9f46fd8ac44563f9154fe601573fcdcc',
+            country_code: 'ZA',
+          },
+          GH: {
+            phoneNumber: '+233242426153',
+            queueName: 'AFRICA-CS-Outbound',
+            queueSid: 'WQ9f46fd8ac44563f9154fe601573fcdcc',
+            country_code: 'GH',
+          },
+        },
+        AFRICAGHTechSupport: {
+          ZA: {
+            phoneNumber: '+27800984049',
+            queueName: 'AFRICA-iTero-TechSupport-Outbound',
+            queueSid: 'WQ4e1e4c254a7b9529bef97c626720a02e',
+            country_code: 'ZA',
+          },
+          GH: {
+            phoneNumber: '+233242426153',
+            queueName: 'AFRICA-iTero-TechSupport-Outbound',
+            queueSid: 'WQ4e1e4c254a7b9529bef97c626720a02e',
+            country_code: 'GH',
+          },
+        },
+        AFRICAZAISR: {
+          ZA: {
+            phoneNumber: '+27800984049',
+            queueName: 'AFRICA-ISR-Outbound',
+            queueSid: 'WQ4aedd7d960d2e4f42e8c326a16227a8d',
+            country_code: 'ZA',
+          },
+        },
+        AFRICAGHISR: {
+          GH: {
+            phoneNumber: '+233242426153',
+            queueName: 'AFRICA-ISR-Outbound',
+            queueSid: 'WQ4aedd7d960d2e4f42e8c326a16227a8d',
+            country_code: 'GH',
+          },
+        },
+        AFRICASSAClinicalCommercial: {
+          ZA: {
+            phoneNumber: '+27800984049',
+            queueName: 'AFRICA-ClinicalCommercial-Outbound',
+            queueSid: 'WQ1d73b77b0964180dced727f5bc54d21f',
+            country_code: 'ZA',
+          },
+          GH: {
+            phoneNumber: '+233242426153',
+            queueName: 'AFRICA-ClinicalCommercial-Outbound',
+            queueSid: 'WQ1d73b77b0964180dced727f5bc54d21f',
+            country_code: 'GH',
+          },
+        },
+        AFRICAMACustomerSupport: {
+          MA: {
+            phoneNumber: '+212530203012',
+            queueName: 'AFRICA-CS-Outbound',
+            queueSid: 'WQ9f46fd8ac44563f9154fe601573fcdcc',
+            country_code: 'MA',
+          },
+          NG: {
+            phoneNumber: '+233242426652',
+            queueName: 'AFRICA-CS-Outbound',
+            queueSid: 'WQ9f46fd8ac44563f9154fe601573fcdcc',
+            country_code: 'NG',
+          },
+          KE: {
+            phoneNumber: '+233242426652',
+            queueName: 'AFRICA-CS-Outbound',
+            queueSid: 'WQ9f46fd8ac44563f9154fe601573fcdcc',
+            country_code: 'KE',
+          },
+          CH: {
+            phoneNumber: '+41800225116',
+            queueName: 'AFRICA-CS-Outbound',
+            queueSid: 'WQ9f46fd8ac44563f9154fe601573fcdcc',
+            country_code: 'CH',
+          },
+          BE: {
+            phoneNumber: '+3280015384',
+            queueName: 'AFRICA-CS-Outbound',
+            queueSid: 'WQ9f46fd8ac44563f9154fe601573fcdcc',
+            country_code: 'BE',
+          },
+        },
+        AFRICAMAClinicalCommercial: {
+          MA: {
+            phoneNumber: '+212530203012',
+            queueName: 'AFRICA-ClinicalCommercial-Outbound',
+            queueSid: 'WQ1d73b77b0964180dced727f5bc54d21f',
+            country_code: 'MA',
+          },
+          NG: {
+            phoneNumber: '+233242426652',
+            queueName: 'AFRICA-ClinicalCommercial-Outbound',
+            queueSid: 'WQ1d73b77b0964180dced727f5bc54d21f',
+            country_code: 'NG',
+          },
+          KE: {
+            phoneNumber: '+233242426652',
+            queueName: 'AFRICA-ClinicalCommercial-Outbound',
+            queueSid: 'WQ1d73b77b0964180dced727f5bc54d21f',
+            country_code: 'KE',
+          },
+          CH: {
+            phoneNumber: '+41800225116',
+            queueName: 'AFRICA-ClinicalCommercial-Outbound',
+            queueSid: 'WQ1d73b77b0964180dced727f5bc54d21f',
+            country_code: 'CH',
+          },
+          BE: {
+            phoneNumber: '+3280015384',
+            queueName: 'AFRICA-ClinicalCommercial-Outbound',
+            queueSid: 'WQ1d73b77b0964180dced727f5bc54d21f',
+            country_code: 'BE',
+          },
+        },
+        AFRICAMAISR: {
+          MA: {
+            phoneNumber: '+212530203012',
+            queueName: 'AFRICA-ISR-Outbound',
+            queueSid: 'WQ4aedd7d960d2e4f42e8c326a16227a8d',
+            country_code: 'MA',
           },
         },
       },
