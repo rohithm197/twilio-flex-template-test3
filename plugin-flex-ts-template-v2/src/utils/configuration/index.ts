@@ -35,7 +35,7 @@ export const getFeatureFlags = () => {
     console.log(isWorkerRoleAdmin);
     // Access teamList and queuesList from mergedSettings
     const teamList = mergedSettings?.common.teamList || {};
-    console.log( teamList, 'teamList model')
+    console.log(teamList, 'teamList model');
     const queuesList = mergedSettings?.common.queuesList || {};
     // console.log("queuesList", queuesList)
     // Find the matching key in teamList and queuesList
@@ -54,6 +54,12 @@ export const getFeatureFlags = () => {
           ? [...(queuesList?.IB || []), ...(queuesList?.UK || [])]
           : queuesList[workerQueues]
         : [];
+    }
+
+    const africaLocations = ['gh', 'ma', 'za'];
+    if (africaLocations.includes(location)) {
+      teams = [...(teamList?.AF || [])];
+      queuesStatsList = [...(queuesList?.AF || [])];
     }
   }
   // Update common.teams in mergedSettings
