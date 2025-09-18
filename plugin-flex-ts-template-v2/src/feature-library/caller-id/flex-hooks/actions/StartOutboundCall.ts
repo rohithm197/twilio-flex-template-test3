@@ -9,6 +9,7 @@ import {
   getCallerIdCEBICountry,
   getCallerIdPLCountry,
   getCallerIdAFCountry,
+  getCallerIdBENELUXCountry
 } from '../../config';
 
 export const actionEvent = FlexActionEvent.before;
@@ -37,6 +38,7 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
     const workerLocationDACH = loggedInWorkerLocation == 'DACH';
     const workerLocationCEBIIL = loggedInWorkerLocation == 'CEBIIL';
     const workerLocationCEBI = loggedInWorkerLocation == 'CEBI';
+    const workerLocationBENELUX = loggedInWorkerLocation == 'BENELUX';
     const workerLocationAF =
       loggedInWorkerLocation == 'GH' || loggedInWorkerLocation == 'MA' || loggedInWorkerLocation == 'ZA';
 
@@ -194,7 +196,36 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
       payload.queueSid = defaultAfrica?.queueSid || dynamicQueueSid;
       console.log(`Africa fallback to GH: ${payload.callerId}, ${payload.queueSid}`);
       return;
-    } else {
+    } else if (workerLocationBENELUX) {
+      const callerIdBENELUXCountry = getCallerIdBENELUXCountry();
+      let callerIdBENELUXData = null;
+  
+
+      if (workerTeamName === 'BENELUX-Customer Support') {
+        callerIdBENELUXData = callerIdBENELUXCountry['BeneluxCustomerSupport'];
+      } else if (workerTeamName === 'BENELUX-Tech Support') {
+        callerIdBENELUXData = callerIdBENELUXCountry['BeneluxTechSupport'];
+      } else if (workerTeamName === 'BENELUX-Clinical Commercial') {
+        callerIdBENELUXData = callerIdBENELUXCountry['BeneluxClinicalCommercial'];
+      }else if (workerTeamName === 'Benelux-CS-Sales Support') {
+        callerIdBENELUXData = callerIdBENELUXCountry['BeneluxCSSalesSupport'];
+      }
+
+      if (callerIdBENELUXData && destinationCountryCode && callerIdBENELUXData[destinationCountryCode]) {
+        payload.callerId = callerIdBENELUXData[destinationCountryCode].phoneNumber;
+        payload.queueSid = callerIdBENELUXData[destinationCountryCode].queueSid;
+        console.log(`BENELUX assigned callerId: ${payload.callerId}, queueSid: ${payload.queueSid}`);
+        return;
+      }
+
+      const defaultBENELUX = callerIdList['NL']; // Default fallback to NL location
+      payload.callerId = defaultBENELUX?.phoneNumber || dynamicCallerId;
+      payload.queueSid = defaultBENELUX?.queueSid || dynamicQueueSid;
+      console.log(`BENELUX fallback to NL: ${payload.callerId}, ${payload.queueSid}`);
+      return;
+    }
+    
+    else {
       // Logic PolandHUB-based worker locations
       if (workerLocationPLHUB && workerTeamNamePLHUB) {
         let callerIdData = null;
