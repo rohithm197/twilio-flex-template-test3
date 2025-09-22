@@ -6,6 +6,7 @@
   },
   "custom_data": {
     "serverless_functions_domain": "<YOUR_SERVERLESS_DOMAIN>",
+    "externalConfigUrl":"",
     "common": {
       "log_level": "info",
       "audit_log_ttl": 1209600,
