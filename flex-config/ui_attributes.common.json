@@ -238,17 +238,6 @@
           "BENELUX-CS-SalesSupport-Outbound"
         ]
       },
-      "departments": [
-        "General Management",
-        "Marketing",
-        "Operations",
-        "Finance",
-        "Sales",
-        "Human Resources",
-        "Purchasing",
-        "Customer Service",
-        "Recruiting"
-      ],
       "callerIddata": {
         "ZA": {
           "phoneNumber": "+27800984049",
