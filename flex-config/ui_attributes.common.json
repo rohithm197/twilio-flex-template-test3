@@ -69,8 +69,7 @@
           "DACH-IPP",
           "DACH-Credit Collections",
           "DACH-ISR",
-          "DACH-iTero TechSupport onboarding",
-          "DACH-Clinical Commercial"
+          "DACH-iTero TechSupport onboarding"
         ],
         "CEBIIL": ["CEBI-IL-Customer Support", "CEBI-IL-Tech Support"],
         "CEBI": [
@@ -220,8 +219,7 @@
           "AFRICA-CS-invisalign-ZA",
           "AFRICA-CS-iTero-ZA",
           "AFRICA-iTero-TechSupport-Outbound",
-          "AFRICA-ISR-Outbound",
-           "AFRICA-ISR-Outbound Support"
+          "AFRICA-ISR-Outbound"
         ],
         "BENELUX": [
           "BENELUX-CS-Outbound",
@@ -1204,88 +1202,7 @@
           }
         }
       },
-      "callerIdBeneluxCountry": {
-        "BeneluxCustomerSupport": {
-          "NL": {
-            "phoneNumber": "+318002800299",
-            "queueName": "BENELUX-CS-Outbound",
-            "queueSid": "WQ817f3ef86b8586d7979e357c53eedc9c",
-            "country_code": "NL"
-          },
-          "BE": {
-            "phoneNumber": "+3280015384",
-            "queueName": "BENELUX-CS-Outbound",
-            "queueSid": "WQ817f3ef86b8586d7979e357c53eedc9c",
-            "country_code": "BE"
-          },
-          "LU": {
-            "phoneNumber": "+35280026858",
-            "queueName": "BENELUX-CS-Outbound",
-            "queueSid": "WQ817f3ef86b8586d7979e357c53eedc9c",
-            "country_code": "LU"
-          }
-        },
-        "BeneluxTechSupport": {
-          "NL": {
-            "phoneNumber": "+318002800299",
-            "queueName": "BENELUX-iTero-TechSupport-Outbound",
-            "queueSid": "WQ505b6b4c2918f51f54039802a330bc31",
-            "country_code": "NL"
-          },
-          "BE": {
-            "phoneNumber": "+3280015384",
-            "queueName": "BENELUX-iTero-TechSupport-Outbound",
-            "queueSid": "WQ505b6b4c2918f51f54039802a330bc31",
-            "country_code": "BE"
-          },
-          "LU": {
-            "phoneNumber": "+35280026858",
-            "queueName": "BENELUX-iTero-TechSupport-Outbound",
-            "queueSid": "WQ505b6b4c2918f51f54039802a330bc31",
-            "country_code": "LU"
-          }
-        },
-        "BeneluxClinicalCommercial": {
-          "NL": {
-            "phoneNumber": "+318000202781",
-            "queueName": "BENELUX-ClinicalCommercial-Outbound",
-            "queueSid": "WQ515da9f933a59d90e895e4eeb54c04ec",
-            "country_code": "NL"
-          },
-          "BE": {
-            "phoneNumber": "+3280071318",
-            "queueName": "BENELUX-ClinicalCommercial-Outbound",
-            "queueSid": "WQ515da9f933a59d90e895e4eeb54c04ec",
-            "country_code": "BE"
-          },
-          "LU": {
-            "phoneNumber": "+35280080971",
-            "queueName": "BENELUX-ClinicalCommercial-Outbound",
-            "queueSid": "WQ515da9f933a59d90e895e4eeb54c04ec",
-            "country_code": "LU"
-          }
-        },
-        "BeneluxCSSalesSupport": {
-          "NL": {
-            "phoneNumber": "+318002800299",
-            "queueName": "BENELUX-CS-SalesSupport-Outbound",
-            "queueSid": "WQ7c037620fde092fbe5504f12932e2bc5",
-            "country_code": "NL"
-          },
-          "BE": {
-            "phoneNumber": "+3280015384",
-            "queueName": "BENELUX-CS-SalesSupport-Outbound",
-            "queueSid": "WQ7c037620fde092fbe5504f12932e2bc5",
-            "country_code": "BE"
-          },
-          "LU": {
-            "phoneNumber": "+35280026858",
-            "queueName": "BENELUX-CS-SalesSupport-Outbound",
-            "queueSid": "WQ7c037620fde092fbe5504f12932e2bc5",
-            "country_code": "LU"
-          }
-        }
-      }
+      "callerIdBeneluxCountry": {}
     },
     "features": {
       "activity_skill_filter": {
