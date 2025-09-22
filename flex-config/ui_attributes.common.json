@@ -88,7 +88,8 @@
           "AFRICA-SSA-Clinical Commercial",
           "AFRICA-MA-Customer Support",
           "AFRICA-MA-Clinical Commercial",
-          "AFRICA-MA-ISR"
+          "AFRICA-MA-ISR",
+          "AFRICA-MA-ISR-Support"
         ],
         "BENELUX": [
           "BENELUX-Customer Support",
@@ -219,7 +220,8 @@
           "AFRICA-CS-invisalign-ZA",
           "AFRICA-CS-iTero-ZA",
           "AFRICA-iTero-TechSupport-Outbound",
-          "AFRICA-ISR-Outbound"
+          "AFRICA-ISR-Outbound",
+           "AFRICA-ISR-Outbound Support"
         ],
         "BENELUX": [
           "BENELUX-CS-Outbound",
