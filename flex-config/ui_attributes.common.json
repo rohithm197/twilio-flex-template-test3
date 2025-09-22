@@ -91,10 +91,10 @@
           "AFRICA-MA-ISR"
         ],
         "BENELUX": [
-          "Benelux-Customer Support",
-          "Benelux-Tech Support",
-          "Benelux-Clinical Commercial",
-          "Benelux-CS-Sales Support"
+          "BENELUX-Customer Support",
+          "BENELUX-Tech Support",
+          "BENELUX-Clinical Commercial",
+          "BENELUX-CS-Sales Support"
         ]
       },
       "queuesList": {
@@ -221,20 +221,19 @@
           "AFRICA-iTero-TechSupport-Outbound",
           "AFRICA-ISR-Outbound"
         ],
-
         "BENELUX": [
-          "Benelux-CS-Outbound",
-          "Benelux-CS-Invisalign-Secondary-NL",
-          "Benelux-CS-Invisalign-Primary-NL",
-          "Benelux-CS-iTero-Primary-NL",
-          "Benelux-CS-iTero-Secondary-NL",
-          "Benelux-CS-Invisalign-FR",
-          "Benelux-CS-iTero-FR",
-          "Benelux-CS-Invisalign-EN",
-          "Benelux-CS-iTero-EN",
-          "Benelux-ClinicalCommercial-Outbound",
-          "Benelux-iTero-TechSupport-Outbound",
-          "Benelux-CS-SalesSupport-Outbound"
+          "BENELUX-CS-Outbound",
+          "BENELUX-CS-Invisalign-Secondary-NL",
+          "BENELUX-CS-Invisalign-Primary-NL",
+          "BENELUX-CS-iTero-Primary-NL",
+          "BENELUX-CS-iTero-Secondary-NL",
+          "BENELUX-CS-Invisalign-FR",
+          "BENELUX-CS-iTero-FR",
+          "BENELUX-CS-Invisalign-EN",
+          "BENELUX-CS-iTero-EN",
+          "BENELUX-ClinicalCommercial-Outbound",
+          "BENELUX-iTero-TechSupport-Outbound",
+          "BENELUX-CS-SalesSupport-Outbound"
         ]
       },
       "departments": [
