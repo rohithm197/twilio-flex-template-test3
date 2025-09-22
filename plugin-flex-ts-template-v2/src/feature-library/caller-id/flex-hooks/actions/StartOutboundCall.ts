@@ -201,13 +201,13 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
       let callerIdBENELUXData = null;
   
 
-      if (workerTeamName === 'Benelux-Customer Support') {
+      if (workerTeamName === 'BENELUX-Customer Support') {
         callerIdBENELUXData = callerIdBENELUXCountry['BeneluxCustomerSupport'];
-      } else if (workerTeamName === 'Benelux-Tech Support') {
+      } else if (workerTeamName === 'BENELUX-Tech Support') {
         callerIdBENELUXData = callerIdBENELUXCountry['BeneluxTechSupport'];
-      } else if (workerTeamName === 'Benelux-Clinical Commercial') {
+      } else if (workerTeamName === 'BENELUX-Clinical Commercial') {
         callerIdBENELUXData = callerIdBENELUXCountry['BeneluxClinicalCommercial'];
-      }else if (workerTeamName === 'Benelux-CS-Sales Support') {
+      }else if (workerTeamName === 'BENELUX-CS-Sales Support') {
         callerIdBENELUXData = callerIdBENELUXCountry['BeneluxCSSalesSupport'];
       }
 
