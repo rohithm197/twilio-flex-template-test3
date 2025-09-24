@@ -296,6 +296,12 @@
           "queueName": "CEBI-CS-Outbound",
           "queueSid": "WQ83629cebd641c50d37baa49fae8b01dd",
           "country_code": "IL"
+        },
+        "NL": {
+          "phoneNumber": "+318002800299",
+          "queueName": "Benelux-CS-Outbound",
+          "queueSid": "WQ817f3ef86b8586d7979e357c53eedc9c",
+          "country_code": "NL"
         }
       },
       "callerIdPLCountry": {
