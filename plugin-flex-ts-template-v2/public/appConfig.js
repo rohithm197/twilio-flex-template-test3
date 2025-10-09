@@ -331,25 +331,25 @@ var appConfig = {
       callerIdPLCountry: {
         PlDistributor: {
           NL: {
-            phoneNumber: '+318003510027',
+            phoneNumber: '+48717166016',
             queueName: 'PL-DistributorSupport-Outbound',
             queueSid: 'WQ408df40a0c92d105a18cf86d51cd695f',
             country_code: 'NL',
           },
           SE: {
-            phoneNumber: '+4620881600',
+            phoneNumber: '+48717166016',
             queueName: 'PL-DistributorSupport-Outbound',
             queueSid: 'WQ408df40a0c92d105a18cf86d51cd695f',
             country_code: 'SE',
           },
           DK: {
-            phoneNumber: '+4580820210',
+            phoneNumber: '+48717166016',
             queueName: 'PL-DistributorSupport-Outbound',
             queueSid: 'WQ408df40a0c92d105a18cf86d51cd695f',
             country_code: 'DK',
           },
           FI: {
-            phoneNumber: '+358800552070',
+            phoneNumber: '+48717166016',
             queueName: 'PL-DistributorSupport-Outbound',
             queueSid: 'WQ408df40a0c92d105a18cf86d51cd695f',
             country_code: 'FI',
@@ -367,13 +367,13 @@ var appConfig = {
             country_code: 'PL',
           },
           SI: {
-            phoneNumber: '+38680755700',
+            phoneNumber: '+48717166016',
             queueName: 'PL-DistributorSupport-Outbound',
             queueSid: 'WQ408df40a0c92d105a18cf86d51cd695f',
             country_code: 'SI',
           },
           NO: {
-            phoneNumber: '+4780022673',
+            phoneNumber: '+48717166016',
             queueName: 'PL-DistributorSupport-Outbound',
             queueSid: 'WQ408df40a0c92d105a18cf86d51cd695f',
             country_code: 'NO',
@@ -385,13 +385,13 @@ var appConfig = {
             country_code: 'RS',
           },
           KE: {
-            phoneNumber: '+254207640139',
+            phoneNumber: '+48717166016',
             queueName: 'PL-DistributorSupport-Outbound',
             queueSid: 'WQ408df40a0c92d105a18cf86d51cd695f',
             country_code: 'KE',
           },
           TN: {
-            phoneNumber: '+21631365940',
+            phoneNumber: '+48717166016',
             queueName: 'PL-DistributorSupport-Outbound',
             queueSid: 'WQ408df40a0c92d105a18cf86d51cd695f',
             country_code: 'TN',
