@@ -9,7 +9,8 @@ import {
   getCallerIdCEBICountry,
   getCallerIdPLCountry,
   getCallerIdAFCountry,
-  getCallerIdBENELUXCountry
+  getCallerIdBENELUXCountry,
+  getCallerIdNordicsCountry,
 } from '../../config';
 
 export const actionEvent = FlexActionEvent.before;
@@ -39,6 +40,7 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
     const workerLocationCEBIIL = loggedInWorkerLocation == 'CEBIIL';
     const workerLocationCEBI = loggedInWorkerLocation == 'CEBI';
     const workerLocationBENELUX = loggedInWorkerLocation == 'BENELUX';
+    const workerLocationNordics = loggedInWorkerLocation == 'NORDICS';
     const workerLocationAF =
       loggedInWorkerLocation == 'GH' || loggedInWorkerLocation == 'MA' || loggedInWorkerLocation == 'ZA';
 
@@ -199,7 +201,6 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
     } else if (workerLocationBENELUX) {
       const callerIdBENELUXCountry = getCallerIdBENELUXCountry();
       let callerIdBENELUXData = null;
-  
 
       if (workerTeamName === 'BENELUX-Customer Support') {
         callerIdBENELUXData = callerIdBENELUXCountry['BeneluxCustomerSupport'];
@@ -207,7 +208,7 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
         callerIdBENELUXData = callerIdBENELUXCountry['BeneluxTechSupport'];
       } else if (workerTeamName === 'BENELUX-Clinical Commercial') {
         callerIdBENELUXData = callerIdBENELUXCountry['BeneluxClinicalCommercial'];
-      }else if (workerTeamName === 'BENELUX-CS-Sales Support') {
+      } else if (workerTeamName === 'BENELUX-CS-Sales Support') {
         callerIdBENELUXData = callerIdBENELUXCountry['BeneluxCSSalesSupport'];
       }
 
@@ -223,9 +224,31 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
       payload.queueSid = defaultBENELUX?.queueSid || dynamicQueueSid;
       console.log(`BENELUX fallback to NL: ${payload.callerId}, ${payload.queueSid}`);
       return;
-    }
-    
-    else {
+    } else if (workerLocationNordics) {
+      const callerIdNordicsCountry = getCallerIdNordicsCountry();
+      let callerIdNordicsData = null;
+
+      if (workerTeamName === 'NORDICS-Customer Support') {
+        callerIdNordicsData = callerIdNordicsCountry['NordicsCustomerSupport'];
+      } else if (workerTeamName === 'NORDICS-Tech Support') {
+        callerIdNordicsData = callerIdNordicsCountry['NordicsTechSupport'];
+      } else if (workerTeamName === 'NORDICS-Clinical Commercial') {
+        callerIdNordicsData = callerIdNordicsCountry['NordicsClinical'];
+      }
+
+      if (callerIdNordicsData && destinationCountryCode && callerIdNordicsData[destinationCountryCode]) {
+        payload.callerId = callerIdNordicsData[destinationCountryCode].phoneNumber;
+        payload.queueSid = callerIdNordicsData[destinationCountryCode].queueSid;
+        console.log(`NORDICS assigned callerId: ${payload.callerId}, queueSid: ${payload.queueSid}`);
+        return;
+      }
+
+      const defaultNORDICS = callerIdList['DK']; // Default fallback to Denmark
+      payload.callerId = defaultNORDICS?.phoneNumber || dynamicCallerId;
+      payload.queueSid = defaultNORDICS?.queueSid || dynamicQueueSid;
+      console.log(`NORDICS fallback to DK: ${payload.callerId}, ${payload.queueSid}`);
+      return;
+    } else {
       // Logic PolandHUB-based worker locations
       if (workerLocationPLHUB && workerTeamNamePLHUB) {
         let callerIdData = null;
