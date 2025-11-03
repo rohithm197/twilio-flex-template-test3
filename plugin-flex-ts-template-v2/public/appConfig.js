@@ -109,6 +109,7 @@ var appConfig = {
           'BENELUX-Clinical Commercial',
           'BENELUX-CS-Sales Support',
         ],
+        NORDICS: ['NORDICS-Customer Support', 'NORDICS-Tech Support', 'NORDICS-Clinical Commercial'],
       },
       queuesList: {
         UK: [
@@ -259,6 +260,23 @@ var appConfig = {
           'BENELUX-iTero-TechSupport-Outbound',
           'BENELUX-CS-SalesSupport-Outbound',
         ],
+        NORDICS: [
+          'NORDICS-CS-Outbound',
+          'NORDICS-CS-Invisalign-FI',
+          'NORDICS-CS-Invisalign-DK',
+          'NORDICS-CS-Invisalign-NO',
+          'NORDICS-CS-Invisalign-SE',
+          'NORDICS-CS-Invisalign-IS',
+          'NORDICS-CS-iTero-FI',
+          'NORDICS-CS-iTero-DK',
+          'NORDICS-CS-iTero-NO',
+          'NORDICS-CS-iTero-SE',
+          'NORDICS-CS-iTero-IS',
+          'NORDICS-CS-Invisalign-General',
+          'NORDICS-CS-iTero-General',
+          'NORDICS-ClinicalCommercial-Outbound',
+          'NORDICS-iTero-TechSupport-Outbound',
+        ],
       },
       callerIddata: {
         ZA: {
@@ -326,6 +344,12 @@ var appConfig = {
           queueName: 'Benelux-CS-Outbound',
           queueSid: 'WQ817f3ef86b8586d7979e357c53eedc9c',
           country_code: 'NL',
+        },
+        DK: {
+          phoneNumber: '+4580820033',
+          queueName: 'NORDICS-CS-Outbound',
+          queueSid: 'WQc3e42193b187731b56c5746879a5bbd7',
+          country_code: 'DK',
         },
       },
       callerIdPLCountry: {
@@ -1306,6 +1330,104 @@ var appConfig = {
             queueName: 'Benelux-CS-SalesSupport-Outbound',
             queueSid: 'WQ7c037620fde092fbe5504f12932e2bc5',
             country_code: 'LU',
+          },
+        },
+      },
+      callerIdNordicsCountry: {
+        NordicsCustomerSupport: {
+          SE: {
+            phoneNumber: '+4620889227',
+            queueName: 'NORDICS-CS-Outbound',
+            queueSid: 'WQc3e42193b187731b56c5746879a5bbd7',
+            country_code: 'SE',
+          },
+          DK: {
+            phoneNumber: '+4580820033',
+            queueName: 'NORDICS-CS-Outbound',
+            queueSid: 'WQc3e42193b187731b56c5746879a5bbd7',
+            country_code: 'DK',
+          },
+          FI: {
+            phoneNumber: '+358800550148',
+            queueName: 'NORDICS-CS-Outbound',
+            queueSid: 'WQc3e42193b187731b56c5746879a5bbd7',
+            country_code: 'FI',
+          },
+          NO: {
+            phoneNumber: '+4780012172',
+            queueName: 'NORDICS-CS-Outbound',
+            queueSid: 'WQc3e42193b187731b56c5746879a5bbd7',
+            country_code: 'NO',
+          },
+          IS: {
+            phoneNumber: '+3548007644',
+            queueName: 'NORDICS-CS-Outbound',
+            queueSid: 'WQc3e42193b187731b56c5746879a5bbd7',
+            country_code: 'IS',
+          },
+        },
+        NordicsTechSupport: {
+          SE: {
+            phoneNumber: '+4620889227',
+            queueName: 'NORDICS-iTero-TechSupport-Outbound',
+            queueSid: 'WQ34e53b7619ebe3e6c5697586f04db9dd',
+            country_code: 'SE',
+          },
+          DK: {
+            phoneNumber: '+4580820033',
+            queueName: 'NORDICS-iTero-TechSupport-Outbound',
+            queueSid: 'WQ34e53b7619ebe3e6c5697586f04db9dd',
+            country_code: 'DK',
+          },
+          FI: {
+            phoneNumber: '+358800550148',
+            queueName: 'NORDICS-iTero-TechSupport-Outbound',
+            queueSid: 'WQ34e53b7619ebe3e6c5697586f04db9dd',
+            country_code: 'FI',
+          },
+          NO: {
+            phoneNumber: '+4780012172',
+            queueName: 'NORDICS-iTero-TechSupport-Outbound',
+            queueSid: 'WQ34e53b7619ebe3e6c5697586f04db9dd',
+            country_code: 'NO',
+          },
+          IS: {
+            phoneNumber: '+3548007644',
+            queueName: 'NORDICS-iTero-TechSupport-Outbound',
+            queueSid: 'WQ34e53b7619ebe3e6c5697586f04db9dd',
+            country_code: 'IS',
+          },
+        },
+        NordicsClinical: {
+          SE: {
+            phoneNumber: '+4620110388',
+            queueName: 'NORDICS-ClinicalCommercial-Outbound',
+            queueSid: 'WQccb9d41410fe893b45f37786910c2c91',
+            country_code: 'SE',
+          },
+          DK: {
+            phoneNumber: '+4580705857',
+            queueName: 'NORDICS-ClinicalCommercial-Outbound',
+            queueSid: 'WQccb9d41410fe893b45f37786910c2c91',
+            country_code: 'DK',
+          },
+          FI: {
+            phoneNumber: '+358800413673',
+            queueName: 'NORDICS-ClinicalCommercial-Outbound',
+            queueSid: 'WQccb9d41410fe893b45f37786910c2c91',
+            country_code: 'FI',
+          },
+          NO: {
+            phoneNumber: '',
+            queueName: 'NORDICS-ClinicalCommercial-Outbound',
+            queueSid: 'WQccb9d41410fe893b45f37786910c2c91',
+            country_code: 'NO',
+          },
+          IS: {
+            phoneNumber: '+3548007648',
+            queueName: 'NORDICS-ClinicalCommercial-Outbound',
+            queueSid: 'WQccb9d41410fe893b45f37786910c2c91',
+            country_code: 'IS',
           },
         },
       },
