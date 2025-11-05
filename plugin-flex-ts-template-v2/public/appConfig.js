@@ -1412,19 +1412,19 @@ var appConfig = {
             country_code: 'DK',
           },
           FI: {
-            phoneNumber: '+358800413673',
+            phoneNumber: '+358800413673', 
             queueName: 'NORDICS-ClinicalCommercial-Outbound',
             queueSid: 'WQccb9d41410fe893b45f37786910c2c91',
             country_code: 'FI',
           },
           NO: {
-            phoneNumber: '',
+            phoneNumber: '+4580705857', // Using DK number for NO as well as we need to update on this further.
             queueName: 'NORDICS-ClinicalCommercial-Outbound',
             queueSid: 'WQccb9d41410fe893b45f37786910c2c91',
             country_code: 'NO',
           },
           IS: {
-            phoneNumber: '+3548007648',
+            phoneNumber: '+3548007643',
             queueName: 'NORDICS-ClinicalCommercial-Outbound',
             queueSid: 'WQccb9d41410fe893b45f37786910c2c91',
             country_code: 'IS',
