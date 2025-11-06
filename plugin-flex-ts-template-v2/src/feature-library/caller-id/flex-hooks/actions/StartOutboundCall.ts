@@ -253,7 +253,14 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
       if (workerLocationPLHUB && workerTeamNamePLHUB) {
         let callerIdData = null;
         // Only allow calls to UK, Spain (ES), or Portugal (PT)
-        if (destinationCountryCode === 'GB' || destinationCountryCode === 'ES' || destinationCountryCode === 'PT') {
+        if (
+          destinationCountryCode === 'GB' ||
+          destinationCountryCode === 'ES' ||
+          destinationCountryCode === 'PT' ||
+          destinationCountryCode === 'AT' ||
+          destinationCountryCode === 'DE' ||
+          destinationCountryCode === 'CH'
+        ) {
           console.log(`Destination country PLHUB code is valid: ${destinationCountryCode}`);
 
           let countryKey =
