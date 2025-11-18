@@ -1387,7 +1387,7 @@ var appConfig = {
             country_code: 'NO',
           },
           IS: {
-            phoneNumber: '+3548007644',
+            phoneNumber: '+3548007643',
             queueName: 'NORDICS-CS-Outbound',
             queueSid: 'WQc3e42193b187731b56c5746879a5bbd7',
             country_code: 'IS',
@@ -1419,7 +1419,7 @@ var appConfig = {
             country_code: 'NO',
           },
           IS: {
-            phoneNumber: '+3548007644',
+            phoneNumber: '+3548007643',
             queueName: 'NORDICS-iTero-TechSupport-Outbound',
             queueSid: 'WQ34e53b7619ebe3e6c5697586f04db9dd',
             country_code: 'IS',
