@@ -21,24 +21,48 @@ const OutboundQueueIDSelectorComponent = () => {
 
   useEffect(() => {
     const manager = Manager.getInstance();
-    const loggedInWorkerLocation = manager.workerClient?.attributes.location || 'IB'; // Default to 'IB' if location is missing
 
-    // Fetch dynamic queue information from the worker's attributes
+    // Mapping worker locations to actual callerIdList keys
+    const locationCountryMap: Record<string, string> = {
+      DACH: 'CH',
+      CEBIIL: 'IL',
+      CEBI: 'BG',
+      BENELUX: 'NL',
+      PLHUB: 'UK',
+      NORDICS: 'DK',
+    };
+
+    // Worker location from attributes
+    const loggedInWorkerLocation = manager.workerClient?.attributes.location || 'IB';
+
+    // Convert BENELUX → NL, PLHUB → UK
+    const mappedLocation = locationCountryMap[loggedInWorkerLocation] || loggedInWorkerLocation;
+
+    // Fetch dynamic queue information
     const dynamicQueueName = manager.workerClient?.attributes.caller_primaryqueue_name;
     const dynamicQueueSid = manager.workerClient?.attributes.caller_queuesid;
 
     if (dynamicQueueName && dynamicQueueSid) {
-      // If dynamic data exists, use it
+      // Use dynamic data when available
       setSelectOptions([{ friendlyName: dynamicQueueName, phoneNumber: dynamicQueueSid }]);
     } else {
-      // Fallback to callerIdList if dynamic data is not available
-      const fallbackQueue = callerIdList[loggedInWorkerLocation];
+      // Fallback to callerIdList using the mapped key
+      const fallbackQueue = callerIdList[mappedLocation];
+
       if (fallbackQueue) {
         setSelectOptions([{ friendlyName: fallbackQueue.queueName, phoneNumber: fallbackQueue.queueSid }]);
-        console.log(`Fallback to callerIdList for ${loggedInWorkerLocation}:`);
+        console.log(`Fallback to callerIdList for ${loggedInWorkerLocation}`);
+        console.log(`Fallback to callerIdList for mapped Location ${loggedInWorkerLocation} → ${mappedLocation}`);
+
         console.log(`Fallback Queue Name: ${fallbackQueue.queueName}, Fallback Queue SID: ${fallbackQueue.queueSid}`);
       } else {
-        console.error('No fallback data found in callerIdList for the worker location:', loggedInWorkerLocation);
+        console.log(
+          'fallback data found in callerIdList for the worker location:',
+          loggedInWorkerLocation,
+          '(mapped as:',
+          mappedLocation,
+          ')',
+        );
       }
     }
   }, []);

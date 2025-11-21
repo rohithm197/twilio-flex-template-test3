@@ -357,6 +357,12 @@
           "queueName": "NORDICS-CS-Outbound",
           "queueSid": "WQc3e42193b187731b56c5746879a5bbd7",
           "country_code": "DK"
+        },
+        "BG": {
+          "phoneNumber": "+35980046052",
+          "queueName": "CEBI-CS-Outbound",
+          "queueSid": "WQ83629cebd641c50d37baa49fae8b01dd",
+          "country_code": "BG"
         }
       },
       "callerIdPLCountry": {
