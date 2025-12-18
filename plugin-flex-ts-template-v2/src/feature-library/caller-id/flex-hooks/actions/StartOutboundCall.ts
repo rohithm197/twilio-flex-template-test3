@@ -8,6 +8,7 @@ import {
   getCallerIdCEBIILCountry,
   getCallerIdCEBICountry,
   getCallerIdPLCountry,
+  getCallerIdPLBIZCountry,
   getCallerIdAFCountry,
   getCallerIdBENELUXCountry,
   getCallerIdNordicsCountry,
@@ -36,6 +37,7 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
     // const workerLocationPLHUB = loggedInWorkerLocation?.includes('PLHUB');
     const workerLocationPoland = loggedInWorkerLocation == 'PL';
     const workerLocationPLHUB = loggedInWorkerLocation == 'PLHUB';
+    const workerLocationPLBIZ = loggedInWorkerLocation == 'PLBIZ';
     const workerLocationDACH = loggedInWorkerLocation == 'DACH';
     const workerLocationCEBIIL = loggedInWorkerLocation == 'CEBIIL';
     const workerLocationCEBI = loggedInWorkerLocation == 'CEBI';
@@ -46,6 +48,7 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
 
     const callerIdFallback = callerIdList[loggedInWorkerLocation];
     const workerTeamNamePLHUB = workerTeamName === 'EMEA Hub Team';
+    const workerTeamNamePLBIZ = workerTeamName === 'PL-iTero-BizOps-UK';
 
     console.log('Is Worker in PLHUB?', workerLocationPLHUB);
     console.log('Is Worker part of EMEA Hub Team?', workerTeamNamePLHUB);
@@ -247,6 +250,26 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
       payload.callerId = defaultNORDICS?.phoneNumber || dynamicCallerId;
       payload.queueSid = defaultNORDICS?.queueSid || dynamicQueueSid;
       console.log(`NORDICS fallback to DK: ${payload.callerId}, ${payload.queueSid}`);
+      return;
+    } else if (workerLocationPLBIZ && workerTeamNamePLBIZ) {
+      const callerIdPLBIZCountry = getCallerIdPLBIZCountry();
+      let callerIdPLBIZData = null;
+
+      if (workerTeamName === 'PL-iTero-BizOps-UK') {
+        callerIdPLBIZData = callerIdPLBIZCountry['PLBIZ'];
+      }
+
+      if (callerIdPLBIZData && destinationCountryCode && callerIdPLBIZData[destinationCountryCode]) {
+        payload.callerId = callerIdPLBIZData[destinationCountryCode].phoneNumber;
+        payload.queueSid = callerIdPLBIZData[destinationCountryCode].queueSid;
+        console.log(`PLBiz assigned callerId: ${payload.callerId}, queueSid: ${payload.queueSid}`);
+        return;
+      }
+
+      const defaultPLBIZ = callerIdPLBIZCountry?.PLBIZ?.UK;
+      payload.callerId = defaultPLBIZ?.phoneNumber || dynamicCallerId;
+      payload.queueSid = defaultPLBIZ?.queueSid || dynamicQueueSid;
+      console.log(`PLBIZ fallback to UK: ${payload.callerId}, ${payload.queueSid}`);
       return;
     } else {
       // Logic PolandHUB-based worker locations

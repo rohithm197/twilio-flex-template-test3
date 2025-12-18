@@ -83,6 +83,7 @@ var appConfig = {
           'DACH-iTero TechSupport onboarding',
           'DACH-Clinical Commercial',
         ],
+        PLBIZ: ['PL-iTero-BizOps-UK'],
         DACH: [
           'DACH-Invisalign CS',
           'DACH-iTero CS',
@@ -221,6 +222,7 @@ var appConfig = {
           'DACH-iTero-Onboarding',
           'DACH-Clinical Commercial',
         ],
+        PLBIZ: ['PL-iTero-BizOps-UK'],
         DACH: [
           'DACH-CS-Outbound',
           'DACH-Treat-Outbound',
@@ -651,6 +653,16 @@ var appConfig = {
             queueName: 'PL-Treat-Outbound',
             queueSid: 'WQadec06513fb65c64ca8305fe5ba9ed4a',
             country_code: 'PL',
+          },
+        },
+      },
+      callerIdPLBIZCountry: {
+        PLBIZ: {
+          UK: {
+            phoneNumber: '+448001017006',
+            queueName: 'PL-iTero-BizOps-UK',
+            queueSid: 'WQc755f8ec478580354a1cdff9c86b175d',
+            country_code: 'UK',
           },
         },
       },

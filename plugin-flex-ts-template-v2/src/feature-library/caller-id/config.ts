@@ -49,4 +49,8 @@ export const getCallerIdNordicsCountry = () => {
   return getFeatureFlags()?.common?.callerIdNordicsCountry || {};
 }
 
+export const getCallerIdPLBIZCountry = () => {
+  return getFeatureFlags()?.common?.callerIdPLBIZCountry || {};
+}
+
 export { callerIdList };
