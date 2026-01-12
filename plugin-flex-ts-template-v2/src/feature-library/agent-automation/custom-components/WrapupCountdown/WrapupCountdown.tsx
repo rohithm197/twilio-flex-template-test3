@@ -18,22 +18,26 @@ export interface OwnProps {
 
 const WrapupCountdown = ({ task, channelDefinition }: OwnProps) => {
   const [, setClock] = useState(true);
-
   const taskHelper = new Flex.TaskHelper(task);
 
   const { extendedReservationSids } = useSelector(
     (state: AppState) => state[reduxNamespace].extendedWrapup as ExtendedWrapupState,
   );
 
+  /**
+   * Re-render every second
+   */
   useEffect(() => {
-    // set up interval to trigger re-render every second
     const interval = setInterval(() => {
-      setClock((clock) => !clock);
+      setClock((c) => !c);
     }, 1000);
 
     return () => clearInterval(interval);
   }, []);
 
+  /**
+   * Default template
+   */
   const getDefaultTemplate = () => (
     <Flex.Template
       code={Flex.TaskChannelHelper.getTemplateForStatus(
@@ -46,29 +50,47 @@ const WrapupCountdown = ({ task, channelDefinition }: OwnProps) => {
     />
   );
 
+  /**
+   * FIXED wrap-up countdown logic
+   */
   const getWrapupTemplate = () => {
-    if (!task) {
-      return getDefaultTemplate();
-    }
-
     const taskConfig = getMatchingTaskConfiguration(task);
-    if (!taskConfig || !taskConfig.auto_wrapup) {
-      // No auto-wrap for this task; use the default behavior
+
+    if (!taskConfig?.auto_wrapup) {
       return getDefaultTemplate();
     }
 
     try {
-      let autoWrapTime = (task.dateUpdated.getTime() as number) + taskConfig.wrapup_time;
+      /**
+       * ✅ FIX: stable wrap-up start time
+       */
+      const wrapupStartedAt = Number(task.attributes?.wrapupStartedAt) || task.dateUpdated.getTime(); // fallback for old tasks
 
-      if (extendedReservationSids.includes(task.sid) && taskConfig.extended_wrapup_time > 0) {
-        // Auto-wrap enabled and extended
+      let autoWrapTime = wrapupStartedAt + taskConfig.wrapup_time;
+
+      const isExtended = extendedReservationSids.includes(task.sid);
+
+      if (isExtended && taskConfig.extended_wrapup_time > 0) {
         autoWrapTime += taskConfig.extended_wrapup_time;
-      } else if (extendedReservationSids.includes(task.sid) && taskConfig.extended_wrapup_time < 1) {
-        // Auto-wrap enabled and extended, but the extension is unlimited; use the default behavior
+      } else if (isExtended && taskConfig.extended_wrapup_time < 1) {
         return getDefaultTemplate();
       }
 
-      const seconds = Math.ceil(Math.max(autoWrapTime - Date.now(), 0) / 1000);
+      const remainingMs = autoWrapTime - Date.now();
+      const seconds = Math.max(Math.floor(remainingMs / 1000), 0);
+
+      /**
+       * ✅ Important PROD logs only
+       */
+
+      console.debug('[WrapupCountdown]', {
+        taskSid: task.sid,
+        wrapupStartedAt,
+        autoWrapTime,
+        remainingSeconds: seconds,
+        isExtended,
+      });
+
       return (
         <Flex.Template
           source={Flex.templates[StringTemplates.WrapupSecondsRemaining]}
@@ -76,7 +98,11 @@ const WrapupCountdown = ({ task, channelDefinition }: OwnProps) => {
           singular={seconds === 1}
         />
       );
-    } catch {
+    } catch (error) {
+      console.error('[WrapupCountdown] Failed to calculate wrap-up timer', {
+        taskSid: task.sid,
+        error,
+      });
       return getDefaultTemplate();
     }
   };
