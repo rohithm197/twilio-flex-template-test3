@@ -34,16 +34,11 @@ const startTimer = (
   const systemNow = formatTime(systemNowMs);
 
   // --- TASK UPDATED TIME (FROM FLEX) ---
-  const taskUpdatedMs = task.dateUpdated
-    ? task.dateUpdated.getTime()
-    : systemNowMs;
+  const taskUpdatedMs = task.dateUpdated ? task.dateUpdated.getTime() : systemNowMs;
   const taskUpdated = formatTime(taskUpdatedMs);
 
   // --- SCHEDULED AUTO-WRAPUP TIME ---
-  const scheduledMs =
-    taskUpdatedMs +
-    taskConfig.wrapup_time +
-    (isExtended ? taskConfig.extended_wrapup_time : 0);
+  const scheduledMs = taskUpdatedMs + taskConfig.wrapup_time + (isExtended ? taskConfig.extended_wrapup_time : 0);
   const scheduled = formatTime(scheduledMs);
 
   // --- REMAINING TIME ---
@@ -84,9 +79,7 @@ const startTimer = (
     logger.info('[agent-automation][TIME DEBUG] Timeout fired', {
       firedAt: fired,
       expectedAt: scheduled,
-      driftSeconds: Math.abs(
-        Math.floor(firedMs / 1000) - Math.floor(scheduledMs / 1000)
-      ),
+      driftSeconds: Math.abs(Math.floor(firedMs / 1000) - Math.floor(scheduledMs / 1000)),
     });
 
     // Always unsubscribe
@@ -107,7 +100,12 @@ const startTimer = (
             true,
           );
         } catch (error) {
-          logger.error('[agent-automation] Error updating task outcome', error);
+          {
+            logger.error(
+              '[agent-automation] Error updating task outcome',
+              error instanceof Error ? { message: error.message, stack: error.stack } : { error },
+            );
+          }
         }
       }
 
@@ -116,9 +114,7 @@ const startTimer = (
       return;
     }
 
-    logger.info(
-      `[agent-automation] Skipping auto-wrapup, task already completed for ${task.sid}`,
-    );
+    logger.info(`[agent-automation] Skipping auto-wrapup, task already completed for ${task.sid}`);
   }, timeoutMs);
 };
 
@@ -131,15 +127,12 @@ export const setAutoCompleteTimeout = async (
   taskConfig: TaskQualificationConfig,
 ) => {
   const state = manager.store.getState() as AppState;
-  const { extendedReservationSids } =
-    state[reduxNamespace].extendedWrapup as ExtendedWrapupState;
+  const { extendedReservationSids } = state[reduxNamespace].extendedWrapup as ExtendedWrapupState;
 
   const { sid } = task;
   let isExtended = extendedReservationSids.includes(sid);
 
-  logger.info(
-    `[agent-automation] setAutoCompleteTimeout called for ${sid}, isExtended=${isExtended}`,
-  );
+  logger.info(`[agent-automation] setAutoCompleteTimeout called for ${sid}, isExtended=${isExtended}`);
 
   if (!taskConfig) {
     logger.warn('[agent-automation] taskConfig is undefined');
@@ -159,8 +152,8 @@ export const setAutoCompleteTimeout = async (
     const unsubscribe = taskConfig.allow_extended_wrapup
       ? manager.store.subscribe(() => {
           const newState = manager.store.getState() as AppState;
-          const { extendedReservationSids: newExtended } =
-            newState[reduxNamespace].extendedWrapup as ExtendedWrapupState;
+          const { extendedReservationSids: newExtended } = newState[reduxNamespace]
+            .extendedWrapup as ExtendedWrapupState;
 
           const newIsExtended = newExtended.includes(sid);
           if (isExtended === newIsExtended) {
@@ -173,10 +166,7 @@ export const setAutoCompleteTimeout = async (
             window.clearTimeout(wrapTimer);
           }
 
-          if (
-            taskConfig.auto_wrapup &&
-            (!isExtended || taskConfig.extended_wrapup_time > 0)
-          ) {
+          if (taskConfig.auto_wrapup && (!isExtended || taskConfig.extended_wrapup_time > 0)) {
             wrapTimer = startTimer(task, taskConfig, isExtended, unsubscribe);
           }
         })
@@ -185,9 +175,6 @@ export const setAutoCompleteTimeout = async (
     // Initial timer
     wrapTimer = startTimer(task, taskConfig, isExtended, unsubscribe);
   } catch (error: any) {
-    logger.error(
-      `[agent-automation] Error setting wrap-up timeout for ${sid}`,
-      error,
-    );
+    logger.error(`[agent-automation] Error setting wrap-up timeout for ${sid}`, error);
   }
 };
