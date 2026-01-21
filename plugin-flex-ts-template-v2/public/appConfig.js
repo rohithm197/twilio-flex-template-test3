@@ -36,6 +36,9 @@ var appConfig = {
           'UK-Treat',
           'UK-Credit & Collections',
           'UK-ISRs',
+          'UKI-Invisalign Sales Support',
+          'UKI-iTero Sales Support',
+          'UKI-iTero-BizOps',
         ],
         PL: [
           'PL-Invisalign CS',
@@ -135,6 +138,9 @@ var appConfig = {
           'UKI-Onboarding-iTero',
           'UKI-VIP-CS-Invisalign',
           'UKI-VIP-CS-iTero',
+          'UKI-iTero-BizOps',
+          'UKI-Invisalign Sales Support',
+          'UKI-iTero Sales Support',
         ],
         PL: [
           'PL-CS-Invisalign',
