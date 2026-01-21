@@ -16,12 +16,37 @@ export interface OwnProps {
   channelDefinition?: Flex.TaskChannelDefinition;
 }
 
+/**
+ * Convert milliseconds → human readable seconds (MM:SS)
+ */
+const formatDuration = (ms: number) => {
+  const totalSeconds = Math.max(Math.floor(ms / 1000), 0);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+
+  return `${minutes.toString().padStart(2, '0')}:${seconds
+    .toString()
+    .padStart(2, '0')}`;
+};
+
+/**
+ * Absolute time formatter (for correlation)
+ */
+const formatAbsoluteTime = (ms: number) => {
+  const date = new Date(ms);
+  return {
+    iso: date.toISOString(),
+    local: date.toLocaleString(),
+  };
+};
+
 const WrapupCountdown = ({ task, channelDefinition }: OwnProps) => {
   const [, setClock] = useState(true);
   const taskHelper = new Flex.TaskHelper(task);
 
   const { extendedReservationSids } = useSelector(
-    (state: AppState) => state[reduxNamespace].extendedWrapup as ExtendedWrapupState,
+    (state: AppState) =>
+      state[reduxNamespace].extendedWrapup as ExtendedWrapupState,
   );
 
   /**
@@ -51,7 +76,7 @@ const WrapupCountdown = ({ task, channelDefinition }: OwnProps) => {
   );
 
   /**
-   * FIXED wrap-up countdown logic
+   * Wrap-up countdown template with HUMAN-READABLE SECOND LOGS
    */
   const getWrapupTemplate = () => {
     const taskConfig = getMatchingTaskConfiguration(task);
@@ -62,40 +87,61 @@ const WrapupCountdown = ({ task, channelDefinition }: OwnProps) => {
 
     try {
       /**
-       * ✅ FIX: stable wrap-up start time
+       * Stable wrap-up start time
        */
-      const wrapupStartedAt = Number(task.attributes?.wrapupStartedAt) || task.dateUpdated.getTime(); // fallback for old tasks
-
-      let autoWrapTime = wrapupStartedAt + taskConfig.wrapup_time;
+      const wrapupStartedAtMs =
+        Number(task.attributes?.wrapupStartedAt) ||
+        task.dateUpdated.getTime(); // fallback for old tasks
 
       const isExtended = extendedReservationSids.includes(task.sid);
 
+      /**
+       * Auto wrap-up target time
+       */
+      let autoWrapAtMs = wrapupStartedAtMs + taskConfig.wrapup_time;
+
       if (isExtended && taskConfig.extended_wrapup_time > 0) {
-        autoWrapTime += taskConfig.extended_wrapup_time;
+        autoWrapAtMs += taskConfig.extended_wrapup_time;
       } else if (isExtended && taskConfig.extended_wrapup_time < 1) {
         return getDefaultTemplate();
       }
 
-      const remainingMs = autoWrapTime - Date.now();
-      const seconds = Math.max(Math.floor(remainingMs / 1000), 0);
+      /**
+       * System time
+       */
+      const systemNowMs = Date.now();
 
       /**
-       * ✅ Important PROD logs only
+       * Remaining time
        */
+      const remainingMs = autoWrapAtMs - systemNowMs;
+      const remainingSeconds = Math.max(
+        Math.floor(remainingMs / 1000),
+        0,
+      );
 
-      console.debug('[WrapupCountdown]', {
+      /**
+       * 🔥 TIME DEBUG LOG (HUMAN READABLE SECONDS)
+       */
+      console.debug('[WrapupCountdown][TIME DEBUG]', {
         taskSid: task.sid,
-        wrapupStartedAt,
-        autoWrapTime,
-        remainingSeconds: seconds,
+        systemNow: formatAbsoluteTime(systemNowMs),
+        wrapupStartedAt: formatAbsoluteTime(wrapupStartedAtMs),
+        autoWrapAt: formatAbsoluteTime(autoWrapAtMs),
+        configuredWrapup: formatDuration(taskConfig.wrapup_time),
+        configuredExtended: isExtended
+          ? formatDuration(taskConfig.extended_wrapup_time)
+          : '00:00',
+        remaining: formatDuration(remainingMs),
+        remainingSeconds,
         isExtended,
       });
 
       return (
         <Flex.Template
           source={Flex.templates[StringTemplates.WrapupSecondsRemaining]}
-          seconds={seconds}
-          singular={seconds === 1}
+          seconds={remainingSeconds}
+          singular={remainingSeconds === 1}
         />
       );
     } catch (error) {
@@ -120,6 +166,7 @@ const WrapupCountdown = ({ task, channelDefinition }: OwnProps) => {
           helper={taskHelper}
         />
       </Text>
+
       <Text as="p" element="WRAPUP_HEADER_COUNTDOWN">
         {getWrapupTemplate()}
       </Text>
