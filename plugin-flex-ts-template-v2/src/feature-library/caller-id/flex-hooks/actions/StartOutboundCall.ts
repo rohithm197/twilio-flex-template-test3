@@ -12,6 +12,8 @@ import {
   getCallerIdAFCountry,
   getCallerIdBENELUXCountry,
   getCallerIdNordicsCountry,
+  getCallerIdTurkeyCountry,
+  getTurkeySipUrl,
 } from '../../config';
 
 export const actionEvent = FlexActionEvent.before;
@@ -49,6 +51,7 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
     const callerIdFallback = callerIdList[loggedInWorkerLocation];
     const workerTeamNamePLHUB = workerTeamName === 'EMEA Hub Team';
     const workerTeamNamePLBIZ = workerTeamName === 'PL-iTero-BizOps-UK';
+    const workerLocationTurkey = loggedInWorkerLocation == 'TURKEY';
 
     console.log('Is Worker in PLHUB?', workerLocationPLHUB);
     console.log('Is Worker part of EMEA Hub Team?', workerTeamNamePLHUB);
@@ -270,6 +273,53 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
       payload.callerId = defaultPLBIZ?.phoneNumber || dynamicCallerId;
       payload.queueSid = defaultPLBIZ?.queueSid || dynamicQueueSid;
       console.log(`PLBIZ fallback to UK: ${payload.callerId}, ${payload.queueSid}`);
+      return;
+    } else if (workerLocationTurkey) {
+      const callerIdTurkeyCountry = getCallerIdTurkeyCountry();
+      let callerIdTurkeyData = null;
+
+      if (workerTeamName === 'TURKEY-CS-Outbound') {
+        callerIdTurkeyData = callerIdTurkeyCountry['TurkeyCustomerSupport'];
+      } else if (workerTeamName === 'TURKEY-iTero-TechSupport-Outbound') {
+        callerIdTurkeyData = callerIdTurkeyCountry['TurkeyTechSupport'];
+      } else if (workerTeamName === 'TURKEY-ClinicalCommercial-Outbound') {
+        callerIdTurkeyData = callerIdTurkeyCountry['TurkeyClinicalCommercial'];
+      } else if (workerTeamName === 'TURKEY-iTero-Training-Outbound') {
+        callerIdTurkeyData = callerIdTurkeyCountry['TurkeyIteroTraining'];
+      }
+      if (callerIdTurkeyData?.TR) {
+        payload.callerId = callerIdTurkeyData.TR.phoneNumber;
+        payload.queueSid = callerIdTurkeyData.TR.queueSid;
+        // payload.destination = `sip:${payload.destination}@37288-turkeytest.de1.trunks.avoxi.com?X-AlignTech=!3vb7734nv`;
+        // ✅ MUST stay E.164
+        payload.destination = payload.destination;
+        console.log('[TURKEY] Routing via Function:', payload.destination);
+
+        // ✅ Tell Twilio to use your Function
+        payload.twimlAppSid = 'AP887544c60744bcf8466674b29f20b7b8';
+
+        console.log('[TURKEY] Using TwiML App routing');
+        return;
+      }
+
+      // if (callerIdTurkeyData && callerIdTurkeyData['TR']) {
+      //   payload.from = callerIdTurkeyData['TR'].phoneNumber;
+      //   payload.queueSid = callerIdTurkeyData['TR'].queueSid;
+      //   const turkeyFunctionUrl = 'https://turkey-test-2892.twil.io/turkey-outbound-router';
+
+      //   // payload.destination MUST be the number only
+      //   const dialedNumber = payload.destination;
+
+      //   payload.destination = `${turkeyFunctionUrl}?to=${encodeURIComponent(dialedNumber)}`;
+
+      //   console.log('[TURKEY] Routing via Function:', payload.destination);
+      //   return;
+      // }
+
+      const defaultTURKEY = callerIdList['TR'];
+      payload.callerId = defaultTURKEY?.phoneNumber || dynamicCallerId;
+      payload.queueSid = defaultTURKEY?.queueSid || dynamicQueueSid;
+      console.log(`TURKEY fallback to TR: ${payload.callerId}, ${payload.queueSid}`);
       return;
     } else {
       // Logic PolandHUB-based worker locations

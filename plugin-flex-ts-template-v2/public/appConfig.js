@@ -15,6 +15,7 @@ var appConfig = {
     serverless_functions_domain: 'localhost',
     common: {
       log_level: 'debug',
+      TurkeySipUrl: '37288-turkeytest.de1.trunks.avoxi.com?X-AlignTech=!3vb7734nv',
       audit_log_ttl: 1209600,
       teams: [],
       teamList: {
@@ -128,6 +129,20 @@ var appConfig = {
           'BENELUX-CS-Sales Support',
         ],
         NORDICS: ['NORDICS-Customer Support', 'NORDICS-Tech Support', 'NORDICS-Clinical Commercial'],
+        TURKEY: [
+          'TURKEY-Customer Support',
+          'TURKEY-iTero Tech Support',
+          'TURKEY-iTero Onboarding',
+          'TURKEY-iTero Training',
+          'TURKEY-Invisalign Sales Support',
+          'TURKEY-iTero Sales Support',
+          'TURKEY-Clinical Commercial',
+          'TURKEY-Treat',
+          'TURKEY-IPP',
+          'TURKEY-Credit & Collections',
+          'TURKEY-ISR',
+          'TURKEY-iTero Lab Support',
+        ],
       },
       queuesList: {
         UK: [
@@ -311,6 +326,14 @@ var appConfig = {
           'NORDICS-CS-iTero-General',
           'NORDICS-ClinicalCommercial-Outbound',
           'NORDICS-iTero-TechSupport-Outbound',
+        ],
+        TURKEY: [
+          'TURKEY-CS-Outbound',
+          'TURKEY-iTero-TechSupport-Outbound',
+          'TURKEY-ClinicalCommercial-Outbound',
+          'TURKEY-iTero-Training-Outbound',
+          'TURKEY-CS-Invisalign',
+          'TURKEY-CS-iTero-ZA',
         ],
       },
       callerIddata: {
@@ -1479,6 +1502,41 @@ var appConfig = {
             queueName: 'NORDICS-ClinicalCommercial-Outbound',
             queueSid: 'WQccb9d41410fe893b45f37786910c2c91',
             country_code: 'IS',
+          },
+        },
+      },
+
+      callerIdTurkeyCountry: {
+        TurkeyCustomerSupport: {
+          TR: {
+            phoneNumber: '+902129008772',
+            queueName: 'TURKEY-CS-Outbound',
+            queueSid: 'WQ6848c85a0882decca6c5ccb5744f91fc',
+            country_code: 'TR',
+          },
+        },
+        TurkeyTechSupport: {
+          TR: {
+            phoneNumber: '+902129008772',
+            queueName: 'TURKEY-TechSupport-Outbound',
+            queueSid: 'WQ6848c85a0882decca6c5ccb5744f91fc',
+            country_code: 'TR',
+          },
+        },
+        TurkeyClinicalCommercial: {
+          TR: {
+            phoneNumber: '++902129008772',
+            queueName: 'TURKEY-ClinicalCommercial-Outbound',
+            queueSid: 'WQ6848c85a0882decca6c5ccb5744f91fc',
+            country_code: 'TR',
+          },
+        },
+        TurkeyIteroTraining: {
+          TR: {
+            phoneNumber: '+902129008772',
+            queueName: 'TURKEY-iTeroTraining-Outbound',
+            queueSid: 'WQ6848c85a0882decca6c5ccb5744f91fc',
+            country_code: 'TR',
           },
         },
       },

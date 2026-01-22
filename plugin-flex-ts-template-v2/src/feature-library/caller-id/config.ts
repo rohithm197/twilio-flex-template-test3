@@ -18,6 +18,10 @@ export const isOutgoingOnlyNumbersEnabled = () => {
   return include_outgoing_only_numbers;
 };
 
+export const getTurkeySipUrl = () => {
+  return getFeatureFlags()?.common?.TurkeySipUrl || '';
+};
+
 export const getCommonFeatureDetails = () => {
   return getFeatureFlags().common || {};
 };
@@ -37,7 +41,7 @@ export const getCallerIdCEBICountry = () => {
   return getFeatureFlags()?.common?.callerIdAFCountry || {};
 };
 
-export const  getCallerIdBENELUXCountry = () => {
+export const getCallerIdBENELUXCountry = () => {
   return getFeatureFlags()?.common?.callerIdBeneluxCountry || {};
 };
 
@@ -47,10 +51,14 @@ export const getCallerIdAFCountry = () => {
 
 export const getCallerIdNordicsCountry = () => {
   return getFeatureFlags()?.common?.callerIdNordicsCountry || {};
-}
+};
 
 export const getCallerIdPLBIZCountry = () => {
   return getFeatureFlags()?.common?.callerIdPLBIZCountry || {};
-}
+};
+
+export const getCallerIdTurkeyCountry = () => {
+  return getFeatureFlags()?.common?.callerIdTurkeyCountry || {};
+};
 
 export { callerIdList };
