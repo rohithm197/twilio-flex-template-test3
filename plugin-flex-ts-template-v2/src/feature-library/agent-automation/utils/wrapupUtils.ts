@@ -14,13 +14,9 @@ const startTimer = (
   isExtended: boolean,
   unsubscribe?: Unsubscribe,
 ) => {
-  const wrapupStartedAt =
-    task.attributes?.wrapupStartedAt ?? task.dateUpdated.getTime();
+  const wrapupStartedAt = task.attributes?.wrapupStartedAt ?? task.dateUpdated.getTime();
 
-  const scheduledTime =
-    wrapupStartedAt +
-    taskConfig.wrapup_time +
-    (isExtended ? taskConfig.extended_wrapup_time : 0);
+  const scheduledTime = wrapupStartedAt + taskConfig.wrapup_time + (isExtended ? taskConfig.extended_wrapup_time : 0);
 
   const timeout = Math.max(scheduledTime - Date.now(), 0);
 
@@ -40,7 +36,7 @@ const startTimer = (
             true,
           );
         } catch (error) {
-          logger.error('[agent-automation] Outcome update failed', error);
+          logger.error('[agent-automation] Outcome update failed', error as object);
         }
       }
 
@@ -58,8 +54,7 @@ export const setAutoCompleteTimeout = async (
   if (!taskConfig?.auto_wrapup) return;
 
   const state = manager.store.getState() as AppState;
-  const { extendedReservationSids } =
-    state[reduxNamespace].extendedWrapup as ExtendedWrapupState;
+  const { extendedReservationSids } = state[reduxNamespace].extendedWrapup as ExtendedWrapupState;
 
   let isExtended = extendedReservationSids.includes(task.sid);
   let wrapTimer: number;
@@ -67,9 +62,9 @@ export const setAutoCompleteTimeout = async (
   const unsubscribe = taskConfig.allow_extended_wrapup
     ? manager.store.subscribe(() => {
         const newState = manager.store.getState() as AppState;
-        const newExtended =
-          (newState[reduxNamespace].extendedWrapup as ExtendedWrapupState)
-            .extendedReservationSids.includes(task.sid);
+        const newExtended = (
+          newState[reduxNamespace].extendedWrapup as ExtendedWrapupState
+        ).extendedReservationSids.includes(task.sid);
 
         if (newExtended === isExtended) return;
 
