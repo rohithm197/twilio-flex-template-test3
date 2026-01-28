@@ -287,34 +287,22 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
       } else if (workerTeamName === 'TURKEY-iTero-Training-Outbound') {
         callerIdTurkeyData = callerIdTurkeyCountry['TurkeyIteroTraining'];
       }
+      //+902126363636
       if (callerIdTurkeyData?.TR) {
         payload.callerId = callerIdTurkeyData.TR.phoneNumber;
         payload.queueSid = callerIdTurkeyData.TR.queueSid;
-        // payload.destination = `sip:${payload.destination}@37288-turkeytest.de1.trunks.avoxi.com?X-AlignTech=!3vb7734nv`;
-        // ✅ MUST stay E.164
-        payload.destination = payload.destination;
-        console.log('[TURKEY] Routing via Function:', payload.destination);
+        console.log(`TURKEY assigned callerId: ${payload.callerId}, queueSid: ${payload.queueSid}`);
+        payload.destination = `sip:${payload.destination}@37288-turkeyproduction.de1.trunks.avoxi.com?X-AlignTech=!3vb7734nvB`;
+        console.log('================ TURKEY ROUTING ================');
 
-        // ✅ Tell Twilio to use your Function
-        payload.twimlAppSid = 'AP887544c60744bcf8466674b29f20b7b8';
+        console.log('[TURKEY] SIP destination:', payload.destination);
+        console.log('[TURKEY] Caller ID:', payload.callerId);
+        console.log('[TURKEY] Queue SID:', payload.queueSid);
+        console.log('================================================');
 
-        console.log('[TURKEY] Using TwiML App routing');
+        console.log('[TURKEY] Using TwiML App routing', payload.destination);
         return;
       }
-
-      // if (callerIdTurkeyData && callerIdTurkeyData['TR']) {
-      //   payload.from = callerIdTurkeyData['TR'].phoneNumber;
-      //   payload.queueSid = callerIdTurkeyData['TR'].queueSid;
-      //   const turkeyFunctionUrl = 'https://turkey-test-2892.twil.io/turkey-outbound-router';
-
-      //   // payload.destination MUST be the number only
-      //   const dialedNumber = payload.destination;
-
-      //   payload.destination = `${turkeyFunctionUrl}?to=${encodeURIComponent(dialedNumber)}`;
-
-      //   console.log('[TURKEY] Routing via Function:', payload.destination);
-      //   return;
-      // }
 
       const defaultTURKEY = callerIdList['TR'];
       payload.callerId = defaultTURKEY?.phoneNumber || dynamicCallerId;

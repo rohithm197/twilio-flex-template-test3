@@ -1519,15 +1519,15 @@ var appConfig = {
           TR: {
             phoneNumber: '+902129008772',
             queueName: 'TURKEY-TechSupport-Outbound',
-            queueSid: 'WQ6848c85a0882decca6c5ccb5744f91fc',
+            queueSid: 'WQac1793ef42421f113aeb4e3a7ac559a5',
             country_code: 'TR',
           },
         },
         TurkeyClinicalCommercial: {
           TR: {
-            phoneNumber: '++902129008772',
+            phoneNumber: '+902129008772',
             queueName: 'TURKEY-ClinicalCommercial-Outbound',
-            queueSid: 'WQ6848c85a0882decca6c5ccb5744f91fc',
+            queueSid: 'WQ702884c78fb012d03f8687d58b0f9eca',
             country_code: 'TR',
           },
         },
@@ -1535,7 +1535,7 @@ var appConfig = {
           TR: {
             phoneNumber: '+902129008772',
             queueName: 'TURKEY-iTeroTraining-Outbound',
-            queueSid: 'WQ6848c85a0882decca6c5ccb5744f91fc',
+            queueSid: 'WQd1d0c2b36e8f93fd2407f17ec6073f7f',
             country_code: 'TR',
           },
         },
