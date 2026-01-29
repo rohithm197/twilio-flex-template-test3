@@ -278,13 +278,13 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
       const callerIdTurkeyCountry = getCallerIdTurkeyCountry();
       let callerIdTurkeyData = null;
 
-      if (workerTeamName === 'TURKEY-CS-Outbound') {
+      if (workerTeamName === 'TURKEY-Customer Support') {
         callerIdTurkeyData = callerIdTurkeyCountry['TurkeyCustomerSupport'];
-      } else if (workerTeamName === 'TURKEY-iTero-TechSupport-Outbound') {
+      } else if (workerTeamName === 'TURKEY-iTero Tech Support') {
         callerIdTurkeyData = callerIdTurkeyCountry['TurkeyTechSupport'];
-      } else if (workerTeamName === 'TURKEY-ClinicalCommercial-Outbound') {
+      } else if (workerTeamName === 'TURKEY-Clinical Commercial') {
         callerIdTurkeyData = callerIdTurkeyCountry['TurkeyClinicalCommercial'];
-      } else if (workerTeamName === 'TURKEY-iTero-Training-Outbound') {
+      } else if (workerTeamName === 'TURKEY-iTero Training') {
         callerIdTurkeyData = callerIdTurkeyCountry['TurkeyIteroTraining'];
       }
       //+902126363636
