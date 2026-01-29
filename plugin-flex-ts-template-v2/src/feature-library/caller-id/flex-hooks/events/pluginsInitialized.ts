@@ -17,6 +17,8 @@ export const eventHook = function initializeCallerIdCountry(flex: typeof Flex, m
     workerLocationPLHUB = 'IL'
   }else if(loggedInWorkerLocation.includes('PLBIZ')){
     workerLocationPLHUB = 'UK'
+  }else if(loggedInWorkerLocation.includes('TURKEY')){
+    workerLocationPLHUB = 'TR'
   }
   
   // Get the dynamic country code based on the worker's location

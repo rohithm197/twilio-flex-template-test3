@@ -280,7 +280,7 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
 
       if (workerTeamName === 'TURKEY-Customer Support') {
         callerIdTurkeyData = callerIdTurkeyCountry['TurkeyCustomerSupport'];
-      } else if (workerTeamName === 'TURKEY-iTero Tech Support') {
+      } else if (workerTeamName === 'TURKEY-Tech Support') {
         callerIdTurkeyData = callerIdTurkeyCountry['TurkeyTechSupport'];
       } else if (workerTeamName === 'TURKEY-Clinical Commercial') {
         callerIdTurkeyData = callerIdTurkeyCountry['TurkeyClinicalCommercial'];

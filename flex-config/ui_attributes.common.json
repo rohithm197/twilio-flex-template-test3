@@ -121,17 +121,9 @@
         ],
         "TURKEY": [
           "TURKEY-Customer Support",
-          "TURKEY-iTero Tech Support",
-          "TURKEY-iTero Onboarding",
-          "TURKEY-iTero Training",
-          "TURKEY-Invisalign Sales Support",
-          "TURKEY-iTero Sales Support",
+          "TURKEY-Tech Support",
           "TURKEY-Clinical Commercial",
-          "TURKEY-Treat",
-          "TURKEY-IPP",
-          "TURKEY-Credit & Collections",
-          "TURKEY-ISR",
-          "TURKEY-iTero Lab Support"
+          "TURKEY-iTero Training"
         ]
       },
       "queuesList": {
@@ -308,11 +300,11 @@
         ],
         "TURKEY": [
           "TURKEY-CS-Outbound",
-          "TURKEY-iTero-TechSupport-Outbound",
+          "TURKEY-CS-Invisalign",
+          "TURKEY-CS-iTero",
           "TURKEY-ClinicalCommercial-Outbound",
           "TURKEY-iTero-Training-Outbound",
-          "TURKEY-CS-Invisalign",
-          "TURKEY-CS-iTero-ZA"
+          "TURKEY-iTero-TechSupport-Outbound"
         ]
       },
       "callerIddata": {
@@ -393,6 +385,12 @@
           "queueName": "CEBI-CS-Outbound",
           "queueSid": "WQ83629cebd641c50d37baa49fae8b01dd",
           "country_code": "BG"
+        },
+        "TR": {
+          "phoneNumber": "+902129008772",
+          "queueName": "TURKEY-CS-Outbound",
+          "queueSid": "WQ6848c85a0882decca6c5ccb5744f91fc",
+          "country_code": "TR"
         }
       },
       "callerIdPLCountry": {
