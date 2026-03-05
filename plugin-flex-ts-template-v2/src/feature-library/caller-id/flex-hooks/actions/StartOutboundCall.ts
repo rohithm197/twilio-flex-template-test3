@@ -64,6 +64,8 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
       // Set callerIdData based on team name
       if (workerTeamName === 'PL-Distributor Support') {
         callerIdData = callerIdPLCountry['PlDistributor'];
+      } else if (workerTeamName === 'PL-Invisalign CS') {
+        callerIdData = callerIdPLCountry['PLCustomerSupport'];
       } else if (workerTeamName === 'PL-iTero TechSupport') {
         callerIdData = callerIdPLCountry['PLIteroTechSupport'];
       } else if (workerTeamName === 'PL-iTero Onboarding') {

@@ -135,8 +135,28 @@ var appConfig = {
           'TURKEY-Clinical Commercial',
           'TURKEY-iTero Training',
         ],
+        FRANCE: [
+          'FRANCE-Customer-Support',
+          'FRANCE-Treat-Teams',
+          'FRANCE-Sales-Support',
+          'FRANCE-Clinical-Commercial',
+          'FRANCE-Tech-Support',
+          'FRANCE-iTero-Training',
+          'FRANCE-iTero-Onboarding',
+        ],
       },
       queuesList: {
+        FRANCE: [
+          'FRANCE-CS-invisalign',
+          'FRANCE-CS-iTero',
+          'FRANCE-CS-Outbound',
+          'FRANCE-Sales-Support',
+          'FRANCE-Treat-Outbound',
+          'FRANCE-Clinical-Commercial',
+          'FRANCE-Tech-Support',
+          'FRANCE-iTero-Training',
+          'FRANCE-iTero-Onboarding',
+        ],
         UK: [
           'UKI-CS-Invisalign',
           'UKI-CS-iTero',
@@ -501,7 +521,6 @@ var appConfig = {
             country_code: 'RU',
           },
         },
-
         PLIteroTechSupport: {
           HR: {
             phoneNumber: '+385800200553',
@@ -680,6 +699,20 @@ var appConfig = {
             queueName: 'PL-Treat-Outbound',
             queueSid: 'WQadec06513fb65c64ca8305fe5ba9ed4a',
             country_code: 'PL',
+          },
+        },
+        PLCustomerSupport: {
+          PL: {
+            phoneNumber: '+48732070515',
+            queueName: 'PL-CS-Outbound',
+            queueSid: 'WQ7c4b1df6a46b4b780e19ce3eaf373b08',
+            country_code: 'PL',
+          },
+          DE: {
+            phoneNumber: '+498002524990',
+            queueName: 'DACH-CS-Outbound',
+            queueSid: 'WQ0d0233f449763882d57e89e9f697131e',
+            country_code: 'DE',
           },
         },
       },
@@ -1503,6 +1536,56 @@ var appConfig = {
           },
         },
       },
+      callerIdFRCountry: {
+        FRCustomerSupport: {
+          FR: {
+            phoneNumber: '+33757912814',
+            queueName: 'FRANCE-CS-Outbound',
+            queueSid: 'WQed1420fdb01e6062f84d47c00b0eee23',
+            country_code: 'FR',
+          },
+        },
+        FRTreatTeam: {
+          FR: {
+            phoneNumber: '+33805980315',
+            queueName: 'FRANCE-Treat-Outbound',
+            queueSid: 'WQac02c696645305ad9d2a6c662ba6b13f',
+            country_code: 'FR',
+          },
+        },
+        FRClinicalCommercial: {
+          FR: {
+            phoneNumber: '+33757912814',
+            queueName: 'FRANCE-Clinical-Commercial',
+            queueSid: 'WQ6a8d2de4d968cb2c2d2fd22e5bfeee6b',
+            country_code: 'FR',
+          },
+        },
+        FRTechSupport: {
+          FR: {
+            phoneNumber: '+33757912814',
+            queueName: 'FRANCE-Tech-Support',
+            queueSid: 'WQ6fd59c87ca5aae7a52c929aca5c279e8',
+            country_code: 'FR',
+          },
+        },
+        FRiTeroTraining: {
+          FR: {
+            phoneNumber: '+33757912814',
+            queueName: 'FRANCE-iTero-Training',
+            queueSid: 'WQ1f54c93f19c5b8949f66a3e19e1bda7b',
+            country_code: 'FR',
+          },
+        },
+        FRiTeroOnboarding: {
+          FR: {
+            phoneNumber: '+33757912814',
+            queueName: 'FRANCE-iTero-Onboarding',
+            queueSid: 'WQ199007f760cbd090b68e81d76128f943',
+            country_code: 'FR',
+          },
+        },
+      },
 
       callerIdTurkeyCountry: {
         TurkeyCustomerSupport: {
@@ -1706,6 +1789,9 @@ var appConfig = {
         enabled: true,
         serverless_domain: 'schedule-manager-5057-dev.twil.io',
       },
+      teams_queues_dashboard: {
+        enabled: true,
+      },
       multi_call: {
         enabled: false,
       },
@@ -1718,6 +1804,35 @@ var appConfig = {
       agent_automation: {
         enabled: true,
         configuration: [
+          // 🇮🇹 ITALY
+          {
+            channel: 'voice',
+            auto_accept: true,
+            auto_select: false,
+            auto_wrapup: true,
+            required_attributes: [],
+            required_worker_attributes: [{ key: 'location', value: 'IT' }],
+            wrapup_time: 90000,
+            allow_extended_wrapup: false,
+            extended_wrapup_time: 0,
+            default_outcome: 'Automatically completed',
+          },
+
+          // 🇫🇷 FRANCE
+          {
+            channel: 'voice',
+            auto_accept: true,
+            auto_select: false,
+            auto_wrapup: true,
+            required_attributes: [],
+            required_worker_attributes: [{ key: 'location', value: 'FR' }],
+            wrapup_time: 60000,
+            allow_extended_wrapup: false,
+            extended_wrapup_time: 0,
+            default_outcome: 'Automatically completed',
+          },
+
+          // 🌍 DEFAULT VOICE (UK, INDIA, others)
           {
             channel: 'voice',
             auto_accept: true,
@@ -1725,11 +1840,13 @@ var appConfig = {
             auto_wrapup: true,
             required_attributes: [],
             required_worker_attributes: [],
-            wrapup_time: 90000,
+            wrapup_time: 45000, // default for all other locations
             allow_extended_wrapup: false,
             extended_wrapup_time: 0,
             default_outcome: 'Automatically completed',
           },
+
+          // 💬 CHAT
           {
             channel: 'chat',
             auto_accept: false,
@@ -1744,6 +1861,7 @@ var appConfig = {
           },
         ],
       },
+
       supervisor_complete_reservation: {
         enabled: true,
         outcome: 'Completed by supervisor',

@@ -659,6 +659,20 @@
             "queueSid": "WQadec06513fb65c64ca8305fe5ba9ed4a",
             "country_code": "PL"
           }
+        },
+        "PLCustomerSupport": {
+          "PL": {
+            "phoneNumber": "+48732070515",
+            "queueName": "PL-CS-Outbound",
+            "queueSid": "WQ7c4b1df6a46b4b780e19ce3eaf373b08",
+            "country_code": "PL"
+          },
+          "DE": {
+            "phoneNumber": "+498002524990",
+            "queueName": "DACH-CS-Outbound",
+            "queueSid": "WQ0d0233f449763882d57e89e9f697131e",
+            "country_code": "DE"
+          }
         }
       },
       "callerIdPLBIZCountry": {
