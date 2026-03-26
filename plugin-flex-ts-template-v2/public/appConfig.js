@@ -1459,13 +1459,15 @@ var appConfig = {
             country_code: 'FI',
           },
           NO: {
-            phoneNumber: '+4780012172',
+            // phoneNumber: '+4780012172',
+            phoneNumber: '+4580705857', // Using DK number for NO as well as we need to update on this further.
             queueName: 'NORDICS-CS-Outbound',
             queueSid: 'WQc3e42193b187731b56c5746879a5bbd7',
             country_code: 'NO',
           },
           IS: {
-            phoneNumber: '+3548007643',
+            // phoneNumber: '+3548007643',
+            phoneNumber: '+4580705857', // Using DK number for NO as well as we need to update on this further.
             queueName: 'NORDICS-CS-Outbound',
             queueSid: 'WQc3e42193b187731b56c5746879a5bbd7',
             country_code: 'IS',
@@ -1491,13 +1493,15 @@ var appConfig = {
             country_code: 'FI',
           },
           NO: {
-            phoneNumber: '+4780012172',
+            // phoneNumber: '+4780012172',
+            phoneNumber: '+4580705857', // Using DK number for NO as well as we need to update on this further.
             queueName: 'NORDICS-iTero-TechSupport-Outbound',
             queueSid: 'WQ34e53b7619ebe3e6c5697586f04db9dd',
             country_code: 'NO',
           },
           IS: {
-            phoneNumber: '+3548007643',
+            // phoneNumber: '+3548007643',
+            phoneNumber: '+4580705857', // Using DK number for NO as well as we need to update on this further.
             queueName: 'NORDICS-iTero-TechSupport-Outbound',
             queueSid: 'WQ34e53b7619ebe3e6c5697586f04db9dd',
             country_code: 'IS',
@@ -1529,7 +1533,8 @@ var appConfig = {
             country_code: 'NO',
           },
           IS: {
-            phoneNumber: '+3548007643',
+            // phoneNumber: '+3548007643',
+            phoneNumber: '+4580705857', // Using DK number for NO as well as we need to update on this further.
             queueName: 'NORDICS-ClinicalCommercial-Outbound',
             queueSid: 'WQccb9d41410fe893b45f37786910c2c91',
             country_code: 'IS',
