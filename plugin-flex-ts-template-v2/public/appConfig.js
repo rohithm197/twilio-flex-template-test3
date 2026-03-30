@@ -254,6 +254,7 @@ var appConfig = {
           'DACH-iTero-TechSupport',
           'DACH-iTero-Onboarding',
           'DACH-Clinical Commercial',
+          'Poland-HUB-German-Invisalign'
         ],
         PLBIZ: ['PL-iTero-BizOps-UK'],
         DACH: [
