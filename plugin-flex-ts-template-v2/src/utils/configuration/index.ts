@@ -50,9 +50,7 @@ export const getFeatureFlags = () => {
     } else {
       teams = selectedTeams ? teamList[selectedTeams] : [];
       queuesStatsList = workerQueues
-        ? location === 'plhub'
-          ? [...(queuesList?.IB || []), ...(queuesList?.UK || []),...(queuesList?.DACH || []),...(queuesList?.PLHUB || [])]
-          : queuesList[workerQueues]
+        ?queuesList[workerQueues]
         : [];
     }
 
