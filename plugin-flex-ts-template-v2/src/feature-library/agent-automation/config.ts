@@ -29,6 +29,9 @@ export const getMatchingTaskConfiguration = (task: ITask): TaskQualificationConf
           matched_config = false;
         }
       });
+      if(!config.auto_accept_location_list.map((location:any) => location.toUpperCase()).includes(workerAttributes?.location.toUpperCase())){
+        matched_config = false;
+      }
       if (matched_config && !first_matched_config) {
         first_matched_config = config;
       }

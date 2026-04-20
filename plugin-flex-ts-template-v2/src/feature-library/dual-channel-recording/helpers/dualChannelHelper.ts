@@ -2,11 +2,12 @@ import { ConferenceParticipant, ITask, Manager, TaskHelper } from '@twilio/flex-
 
 import TaskRouterService from '../../../utils/serverless/TaskRouter/TaskRouterService';
 import { FetchedRecording } from '../../../types/serverless/twilio-api';
-import { getChannelToRecord, getExcludedAttributes, getExcludedQueues } from '../config';
+import { getChannelToRecord, getExcludedAttributes, getExcludedQueues, getRecordingLocationList } from '../config';
 import DualChannelService from './DualChannelService';
 import logger from '../../../utils/logger';
 
 const manager = Manager.getInstance();
+const workerLocation = manager.workerClient?.attributes?.location;
 
 export const canRecordTask = (task: ITask): boolean => {
   if (getExcludedQueues().findIndex((queue) => queue === task.queueName || queue === task.queueSid) >= 0) {
@@ -19,7 +20,15 @@ export const canRecordTask = (task: ITask): boolean => {
     }
   }
 
-  return true;
+  if (
+    getRecordingLocationList()
+      .map((location: any) => location.toUpperCase())
+      .includes(workerLocation.toUpperCase())
+  ) {
+    return true;
+  }
+
+  return false;
 };
 
 const addCallDataToTask = async (task: ITask, callSid: string | null, recording: FetchedRecording | null) => {
