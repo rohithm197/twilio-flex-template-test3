@@ -71,7 +71,18 @@
           "DACH-Credit Collections",
           "DACH-ISR",
           "DACH-iTero TechSupport onboarding",
-          "DACH-Clinical Commercial"
+          "DACH-Clinical Commercial",
+          "PL-Invisalign CS",
+          "PL-iTero CS",
+          "PL-Treat Team",
+          "PL-iTero Tech Support",
+          "PL-iTero Onboarding",
+          "PL-Distributor Support",
+          "CEBI-Customer Support",
+          "CEBI-Clinical Commercial",
+          "CEBI-Treat Team",
+          "CEBI-iTero Tech Support",
+          "CEBI-iTero Onboarding"
         ],
         "PLBIZ": ["PL-iTero-BizOps-UK"],
         "DACH": [
@@ -214,7 +225,7 @@
           "DACH-Clinical Commercial",
           "Poland-HUB-German-Invisalign",
 
-           "PL-CS-Invisalign",
+          "PL-CS-Invisalign",
           "PL-CS-iTero",
           "PL-Treat-Hotline",
           "PL-TechSupport-iTero",
@@ -222,13 +233,12 @@
           "PL-DistributorSupport-Outbound",
           "PL-Treat-Outbound",
 
-            "CEBI-CS-Outbound",
+          "CEBI-CS-Outbound",
           "CEBI-iTero-TechSupport-Outbound",
           "CEBI-CS-IL-Invisalign",
           "CEBI-CS-IL-iTero",
           "CEBI-iTero-TechSupport-IL",
           "CEBI-iTero-Onboarding-IL"
-
         ],
         "PLBIZ": ["PL-iTero-BizOps-UK"],
         "DACH": [
