@@ -496,6 +496,18 @@
             "queueName": "PL-DistributorSupport-Outbound",
             "queueSid": "WQ408df40a0c92d105a18cf86d51cd695f",
             "country_code": "RU"
+          },
+          "DE": {
+            "phoneNumber": "+498002524990",
+            "queueName": "PL-DistributorSupport-Outbound",
+            "queueSid": "WQ408df40a0c92d105a18cf86d51cd695f",
+            "country_code": "DE"
+          },
+          "UK": {
+            "phoneNumber": "+448001017006",
+            "queueName": "PL-DistributorSupport-Outbound",
+            "queueSid": "WQ408df40a0c92d105a18cf86d51cd695f",
+            "country_code": "UK"
           }
         },
         "PLIteroTechSupport": {
@@ -582,6 +594,24 @@
             "queueName": "PL-TechSupport-iTero",
             "queueSid": "WQa0d1f980e53400842842510b0b7c9bc6",
             "country_code": "IS"
+          },
+          "DE": {
+            "phoneNumber": "+498002524990",
+            "queueName": "PL-TechSupport-iTero",
+            "queueSid": "WQa0d1f980e53400842842510b0b7c9bc6",
+            "country_code": "DE"
+          },
+          "UK": {
+            "phoneNumber": "+448001017006",
+            "queueName": "PL-TechSupport-iTero",
+            "queueSid": "WQa0d1f980e53400842842510b0b7c9bc6",
+            "country_code": "UK"
+          },
+          "PL": {
+            "phoneNumber": "+48732070515",
+            "queueName": "PL-TechSupport-iTero",
+            "queueSid": "WQa0d1f980e53400842842510b0b7c9bc6",
+            "country_code": "PL"
           }
         },
         "PLIteroTechOnboarding": {
@@ -668,6 +698,24 @@
             "queueName": "PL-Onboarding-iTero",
             "queueSid": "WQdbb2c9b47750893e07e7d98477e07518",
             "country_code": "IS"
+          },
+          "DE": {
+            "phoneNumber": "+498002524990",
+            "queueName": "PL-Onboarding-iTero",
+            "queueSid": "WQdbb2c9b47750893e07e7d98477e07518",
+            "country_code": "DE"
+          },
+          "UK": {
+            "phoneNumber": "+448001017006",
+            "queueName": "PL-Onboarding-iTero",
+            "queueSid": "WQdbb2c9b47750893e07e7d98477e07518",
+            "country_code": "UK"
+          },
+          "PL": {
+            "phoneNumber": "+48732070515",
+            "queueName": "PL-Onboarding-iTero",
+            "queueSid": "WQdbb2c9b47750893e07e7d98477e07518",
+            "country_code": "PL"
           }
         },
         "PLTreatTeam": {
@@ -687,9 +735,15 @@
           },
           "DE": {
             "phoneNumber": "+498002524990",
-            "queueName": "DACH-CS-Outbound",
-            "queueSid": "WQ0d0233f449763882d57e89e9f697131e",
+            "queueName": "PL-CS-Outbound",
+            "queueSid": "WQ7c4b1df6a46b4b780e19ce3eaf373b08",
             "country_code": "DE"
+          },
+          "UK": {
+            "phoneNumber": "+448001017006",
+            "queueName": "PL-CS-Outbound",
+            "queueSid": "WQ7c4b1df6a46b4b780e19ce3eaf373b08",
+            "country_code": "UK"
           }
         }
       },
