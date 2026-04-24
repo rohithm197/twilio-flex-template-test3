@@ -72,7 +72,7 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
         callerIdData = callerIdPLCountry['PLIteroTechOnboarding'];
       } else if (workerTeamName === 'PL-Treat Team') {
         callerIdData = callerIdPLCountry['PLTreatTeam'];
-        destinationCountryCode = 'PL';
+        destinationCountryCode = destinationCountryCode === 'IS' ? 'IS' : 'PL';
       }
 
       if (callerIdData && destinationCountryCode && callerIdData[destinationCountryCode]) {
