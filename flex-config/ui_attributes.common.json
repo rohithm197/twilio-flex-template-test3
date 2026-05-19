@@ -158,7 +158,9 @@
           "IB-SalesSupport-Invisalign-ES",
           "IB-SalesSupport-iTero-PT",
           "IB-SalesSupport-Invisalign-PT",
-          "IB-ClinicalCommercial-Outbound"
+          "IB-ClinicalCommercial-Outbound",
+          "Poland-HUB-Spanish-iTero",
+          "Poland-HUB-Portugues-iTero"
         ],
         "UK": [
           "UKI-CS-Invisalign",
@@ -170,7 +172,8 @@
           "UKI-VIP-CS-iTero",
           "UKI-iTero-BizOps",
           "UKI-Invisalign Sales Support",
-          "UKI-iTero Sales Support"
+          "UKI-iTero Sales Support",
+          "Poland-HUB-UKI-iTero"
         ],
         "PL": [
           "PL-CS-Invisalign",
@@ -179,7 +182,8 @@
           "PL-TechSupport-iTero",
           "PL-Onboarding-iTero",
           "PL-DistributorSupport-Outbound",
-          "PL-Treat-Outbound"
+          "PL-Treat-Outbound",
+          "Poland-HUB-Polish-iTero"
         ],
         "PLHUB": [
           "IB-CS-Invisalign-Primary-ES",
@@ -235,13 +239,19 @@
           "PL-Onboarding-iTero",
           "PL-DistributorSupport-Outbound",
           "PL-Treat-Outbound",
-
           "CEBI-CS-Outbound",
           "CEBI-iTero-TechSupport-Outbound",
           "CEBI-CS-IL-Invisalign",
           "CEBI-CS-IL-iTero",
           "CEBI-iTero-TechSupport-IL",
-          "CEBI-iTero-Onboarding-IL"
+          "CEBI-iTero-Onboarding-IL",
+
+          "Poland-HUB-Spanish-iTero",
+          "Poland-HUB-German-iTero",
+          "Poland-HUB-Polish-iTero",
+          "Poland-HUB-Portugues-iTero",
+          "Poland-HUB-UKI-iTero",
+          "Poland-HUB-CEB-iTero"
         ],
         "PLBIZ": ["PL-iTero-BizOps-UK"],
         "DACH": [
@@ -258,7 +268,8 @@
           "DACH-iTero-TechSupport",
           "DACH-iTero-Onboarding",
           "DACH-Clinical Commercial",
-          "DACH-iTero Sales Support"
+          "DACH-iTero Sales Support",
+          "Poland-HUB-German-iTero"
         ],
         "CEBIIL": [
           "CEBI-CS-Outbound",
