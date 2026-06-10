@@ -13,7 +13,7 @@ import {
   getCallerIdBENELUXCountry,
   getCallerIdNordicsCountry,
   getCallerIdTurkeyCountry,
-  getTurkeySipUrl,
+  getCallerIdImpressCountry,
 } from '../../config';
 
 export const actionEvent = FlexActionEvent.before;
@@ -45,6 +45,7 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
     const workerLocationCEBI = loggedInWorkerLocation == 'CEBI';
     const workerLocationBENELUX = loggedInWorkerLocation == 'BENELUX';
     const workerLocationNordics = loggedInWorkerLocation == 'NORDICS';
+     const workerLocationImpress = loggedInWorkerLocation == 'IMPRESS';
     const workerLocationAF =
       loggedInWorkerLocation == 'GH' || loggedInWorkerLocation == 'MA' || loggedInWorkerLocation == 'ZA';
 
@@ -311,7 +312,29 @@ export const actionHook = function applySelectedCallerIdForDialedNumbers(flex: t
       payload.queueSid = defaultTURKEY?.queueSid || dynamicQueueSid;
       console.log(`TURKEY fallback to TR: ${payload.callerId}, ${payload.queueSid}`);
       return;
-    } else {
+    } else if (workerLocationImpress) {
+      console.log('ENTERED IMPRESS BLOCK');
+      const callerIdImpressCountry = getCallerIdImpressCountry();
+      let callerIdImpressData = null;
+
+      if (workerTeamName === 'Impress Support') {
+        callerIdImpressData = callerIdImpressCountry['ImpressSupport'];
+      }
+
+      console.log('callerIdImpressData', callerIdImpressData);
+      if (callerIdImpressData && destinationCountryCode && callerIdImpressData[destinationCountryCode]) {
+        payload.callerId = callerIdImpressData[destinationCountryCode].phoneNumber;
+        payload.queueSid = callerIdImpressData[destinationCountryCode].queueSid;
+        console.log(`IMPRESS assigned callerId: ${payload.callerId}, queueSid: ${payload.queueSid}`);
+        return;
+      }
+
+      const defaultImpress = callerIdImpressCountry?.ImpressSupport?.PL;
+      payload.callerId = defaultImpress?.phoneNumber || dynamicCallerId;
+      payload.queueSid = defaultImpress?.queueSid || dynamicQueueSid;
+      console.log(`Impress fallback to PL${payload.callerId}, ${payload.queueSid}`);
+      return;
+    }else {
       // Logic PolandHUB-based worker locations
       if (workerLocationPLHUB && workerTeamNamePLHUB) {
         let callerIdData = null;

@@ -61,4 +61,8 @@ export const getCallerIdTurkeyCountry = () => {
   return getFeatureFlags()?.common?.callerIdTurkeyCountry || {};
 };
 
+export const getCallerIdImpressCountry = () => {
+  return getFeatureFlags()?.common?.callerIdImpressCountry || {};
+};
+
 export { callerIdList };

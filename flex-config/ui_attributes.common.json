@@ -137,7 +137,8 @@
           "TURKEY-Tech Support",
           "TURKEY-Clinical Commercial",
           "TURKEY-iTero Training"
-        ]
+        ],
+        
       },
       "queuesList": {
         "IB": [
@@ -351,7 +352,8 @@
           "TURKEY-ClinicalCommercial-Outbound",
           "TURKEY-iTero-Training-Outbound",
           "TURKEY-iTero-TechSupport-Outbound"
-        ]
+        ],
+        "IMPRESS": ["Impress Support"]
       },
       "callerIddata": {
         "ZA": {
