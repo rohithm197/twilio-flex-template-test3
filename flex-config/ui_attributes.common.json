@@ -83,7 +83,8 @@
           "CEBI-Clinical Commercial",
           "CEBI-Treat Team",
           "CEBI-iTero Tech Support",
-          "CEBI-iTero Onboarding"
+          "CEBI-iTero Onboarding",
+          "AFRICA-MA-Customer Support"
         ],
         "PLBIZ": ["PL-iTero-BizOps-UK"],
         "DACH": [
@@ -256,7 +257,9 @@
           "Poland-HUB-Polish-Tech Support",
           "Poland-HUB-Portugues-Tech Support",
           "Poland-HUB-UKI-Tech Support",
-          "Poland-HUB-CEB-Tech Support"
+          "Poland-HUB-CEB-Tech Support",
+
+          "AFRICA-CS-invisalign-MA"
         ],
 
         "PLBIZ": ["PL-iTero-BizOps-UK"],
