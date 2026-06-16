@@ -38,7 +38,7 @@ export const getCallerIdCEBIILCountry = () => {
 };
 
 export const getCallerIdCEBICountry = () => {
-  return getFeatureFlags()?.common?.callerIdAFCountry || {};
+  return getFeatureFlags()?.common?.callerIdCEBICountry || {};
 };
 
 export const getCallerIdBENELUXCountry = () => {
