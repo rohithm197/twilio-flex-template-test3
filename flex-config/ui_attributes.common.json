@@ -793,8 +793,32 @@
             "queueName": "Impress Support",
             "queueSid": "WQ5f590abedb2f844e28b3c0d481039d1e",
             "country_code": "PL"
-          }
-        }
+          },
+          "FR": {
+            "phoneNumber": "+33805980770",
+            "queueName": "Impress Support",
+            "queueSid": "WQ5f590abedb2f844e28b3c0d481039d1e",
+            "country_code": "FR"
+          },
+          "UK": {
+            "phoneNumber": "+448008203738",
+            "queueName": "Impress Support",
+            "queueSid": "WQ5f590abedb2f844e28b3c0d481039d1e",
+            "country_code": "UK"
+          },
+          "IT": {
+            "phoneNumber": "+39800140830",
+            "queueName": "Impress Support",
+            "queueSid": "WQ5f590abedb2f844e28b3c0d481039d1e",
+            "country_code": "IT"
+          },
+          "ES": {
+            "phoneNumber": "+34900759835",
+            "queueName": "Impress Support",
+            "queueSid": "WQ5f590abedb2f844e28b3c0d481039d1e",
+            "country_code": "ES"
+        },
+       }
       },
       "callerIdPLBIZCountry": {
         "PLBIZ": {
