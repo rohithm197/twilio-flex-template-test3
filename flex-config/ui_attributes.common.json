@@ -790,32 +790,32 @@
         "ImpressSupport": {
           "PL": {
             "phoneNumber": "+48732070655",
-            "queueName": "Impress Support",
-            "queueSid": "WQ5f590abedb2f844e28b3c0d481039d1e",
+            "queueName": "Impress Support Outbound",
+            "queueSid": "WQa96e1748e64119e90b9d0281c1a3cb33",
             "country_code": "PL"
           },
           "FR": {
             "phoneNumber": "+33805980770",
-            "queueName": "Impress Support",
-            "queueSid": "WQ5f590abedb2f844e28b3c0d481039d1e",
+            "queueName": "Impress Support Outbound",
+            "queueSid": "WQa96e1748e64119e90b9d0281c1a3cb33",
             "country_code": "FR"
           },
-          "UK": {
+          "GB": {
             "phoneNumber": "+448008203738",
-            "queueName": "Impress Support",
-            "queueSid": "WQ5f590abedb2f844e28b3c0d481039d1e",
-            "country_code": "UK"
+            "queueName": "Impress Support Outbound",
+            "queueSid": "WQa96e1748e64119e90b9d0281c1a3cb33",
+            "country_code": "GB"
           },
           "IT": {
             "phoneNumber": "+39800140830",
-            "queueName": "Impress Support",
-            "queueSid": "WQ5f590abedb2f844e28b3c0d481039d1e",
+            "queueName": "Impress Support Outbound",
+            "queueSid": "WQa96e1748e64119e90b9d0281c1a3cb33",
             "country_code": "IT"
           },
           "ES": {
             "phoneNumber": "+34900759835",
-            "queueName": "Impress Support",
-            "queueSid": "WQ5f590abedb2f844e28b3c0d481039d1e",
+            "queueName": "Impress Support Outbound",
+            "queueSid": "WQa96e1748e64119e90b9d0281c1a3cb33",
             "country_code": "ES"
           }
         }
