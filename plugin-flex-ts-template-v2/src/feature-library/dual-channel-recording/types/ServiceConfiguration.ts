@@ -8,4 +8,5 @@ export default interface DualChannelRecordingConfig {
   channel: 'customer' | 'worker';
   exclude_attributes: Array<AttributesQualificationConfig>;
   exclude_queues: Array<string>;
+  recording_location_list: Array<string>
 }
